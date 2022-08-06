@@ -41,7 +41,7 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
 const styles = StyleSheet.create({
   container: {
     flexWrap: 'wrap',
-    marginHorizontal: 15,
+    marginHorizontal: 10,
   },
 })
 export default withScreen(Tab1Screen)

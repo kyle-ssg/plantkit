@@ -52,14 +52,13 @@ const TabItem: FC<TabItemType> = ({ children, isActive, index, onPress }) => {
     </TouchableOpacity>
   )
 }
-const tabWidth = 150
+const tabWidth = 100
 const TabLine: FC<{ index: number }> = ({ index }) => {
   const animatedValue = useSharedValue(index * tabWidth)
   const style = useAnimatedStyle(() => {
     return {
       height: 3,
-      width: tabWidth - 20,
-      marginHorizontal: 10,
+      width: tabWidth - 40,
       backgroundColor: palette.textLight,
       position: 'absolute',
       top: 64,
