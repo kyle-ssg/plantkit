@@ -15,6 +15,8 @@ import {
   easingConfigSlide,
 } from 'project/animation-util/reanimations'
 import Logo from 'components/Logo'
+import { useNavigationState } from '@react-navigation/core'
+import NavMenu from 'components/NavMenu'
 type TabItemType = {
   isActive: boolean
   index: number
@@ -87,6 +89,7 @@ const BottomNav = ({ state, navigation }) => {
       navigation.navigate(route.name)
     }
   }
+
   return (
     <View style={styles.container}>
       <TabLine index={state.index} />
@@ -116,6 +119,7 @@ const BottomNav = ({ state, navigation }) => {
             </Flex>
           </Row>
         </Flex>
+        {/*<NavMenu index={state.index} />*/}
       </Row>
     </View>
   )

@@ -70,6 +70,7 @@ export default asStyle({
   textWhite: {
     color: 'white',
   },
+
   muted: {
     color: palette.textMuted,
   },

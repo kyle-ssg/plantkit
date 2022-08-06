@@ -1,13 +1,28 @@
 import ScreenContainer from 'components/ScreenContainer'
 import withScreen, { Screen } from './withScreen'
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import plantData from '../plantData'
 import { filter } from 'lodash'
 import PlantSummary from 'components/PlantSummary'
 import { useIsFocused } from '@react-navigation/native'
 import { useSharedValue } from 'react-native-reanimated'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { API } from 'project/api'
 type Tab1Screen = Screen & {}
-
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
 const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
   const [month, setMonth] = useState('March')
   const data = useMemo(() => {
@@ -20,14 +35,23 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
   useEffect(() => {
     active.value = isFocused ? 1 : 0
   }, [isFocused])
+  const showMonthSelect = useCallback(() => {
+    API.showOptions('Select a Month', months).then((res) => {
+      active.value = 0
+      setMonth(months[res])
+      active.value = 1
+    })
+  }, [setMonth])
   // const month = moment().format('MMMM')
   return (
     <ScreenContainer style={[Styles.body]}>
-      {/*<View style={[Styles.container, Styles.mh15, Styles.mt10]}>*/}
-      {/*  <Text animated weight='bold' size='medium' muted>*/}
-      {/*    What to plant in {month}*/}
-      {/*  </Text>*/}
-      {/*</View>*/}
+      <View style={[Styles.container, Styles.mh15, Styles.mt10]}>
+        <TouchableOpacity onPress={showMonthSelect}>
+          <Text animated weight='bold' size='medium' muted>
+            {month} <FA5Pro name='chevron-down' />
+          </Text>
+        </TouchableOpacity>
+      </View>
       <ScrollView bounces={false}>
         <Row style={styles.container}>
           {data

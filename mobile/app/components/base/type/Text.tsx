@@ -5,6 +5,7 @@ import Animated from 'react-native-reanimated'
 
 export type TextType = TextProps & {
   muted?: boolean
+  light?: boolean
   size?: 'regular' | 'medium' | 'small'
   weight?: 'bold' | 'regular'
   animated?: boolean
@@ -27,9 +28,10 @@ const TextComponent: FC<TextType> = (props) => {
     <TextComponent
       {...props}
       style={cn(
-        'text',
         {
+          text: true,
           muted: props.muted,
+          textWhite: props.light,
         },
         Styles[textSizeClass[props.size]],
         Styles[textWeightClass[props.weight]],

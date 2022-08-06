@@ -4,7 +4,7 @@ import 'common/project'
 // import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
 import { ApiTypes } from 'common/api/types/api-types'
 import { Alert, PixelRatio, Share } from 'react-native'
-// import BottomSheet from 'react-native-bottomsheet'
+import BottomSheet from 'react-native-bottomsheet'
 import storage, { MMKV } from './async-storage-api'
 import auth from './auth'
 // import ImagePicker from 'react-native-image-crop-picker';
