@@ -1,28 +1,32 @@
 import { FC } from 'react'
-import { TPlantContent } from '../plantData' // we need this to make JSX compile
-
+import WebView from 'react-native-webview'
 type PlantContentType = {
-  content: TPlantContent
+  content: string
 }
-
+const getCSS = () => {
+  return `
+app-header, app-nav, .heading-link--back, .usabilla-live-button, .article-action, .flag__body, lib-widget-plant-banner, .THX_IP, .ad-wrapper, .join-the-rhs, footer, .l-layout>.l-module:nth-child(1) {
+    display: none;
+}
+.l-col-md-7 {
+ width: 100% !important;
+}
+`
+}
 const PlantContent: FC<PlantContentType> = ({ content }) => {
   return (
-    <View>
-      <Text style={Styles.mb10} size='h2'>
-        {content.category}
-      </Text>
-      <Text>
-        {content.content.split('\\n').map(
-          (v, i) =>
-            !!v && (
-              <View style={Styles.mb10} key={i}>
-                <Text>{v}</Text>
-              </View>
-            ),
-        )}
-      </Text>
-    </View>
+    <WebView
+      injectedJavaScript={`const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css;
+// Usage: 
+addCSS(\`${getCSS()}\`)`}
+      style={styles.container}
+      source={{ uri: content }}
+    />
   )
 }
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+})
 export default PlantContent

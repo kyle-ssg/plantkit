@@ -1,22 +1,17 @@
 import { ImageSourcePropType } from 'react-native'
 
-export type TPlantContent = {
-  category: string
-  content: string
-  image?: ImageSourcePropType | null
-  imageDescription?: string
-}
 export type TPlant = {
   id: string
   title: string
   category: string
   sow: string[]
+  indoorsUntil?: string[]
   durationMonths: number
   buy: string
   ph: string
   warning: string
   image?: ImageSourcePropType | null
-  content: TPlantContent[]
+  content: string
 }
 
 const plantData: { plants: Record<string, TPlant> } = {
@@ -32,49 +27,38 @@ const plantData: { plants: Record<string, TPlant> } = {
       'image': require('./images/asparagus.jpg'),
       'ph': '6.5–7.5',
       'warning': 'Leave the asparagus to grow 2 years without harvesting',
-      'content': [
-        {
-          'category': 'Sow',
-          'content':
-            "Asparagus is usually grown from 1+ year dormant crowns, but can also be grown from seed, these plants take one year longer before you can start cropping – three years as opposed to two years grown from crowns.\\nIt is best to choose an all-male \\n\\nThese are cultivars, usually of vegetables or annual flowers, that have been bred to offer uniformity and specific desirable characteristics, such as strong, healthy growth and abundant flowers or fruits. They are produced by crossing two stable seed lines (called inbred lines). Seeds of F1 hybrids tend to be more expensive, but generally produce more robust, uniform plants that are better able to cope with adverse conditions. However, seeds saved from F1 hybrids will not produce offspring that are identical to the parents.\\n\\nGardeners often use the word variety when referring to a specific plant, but the correct botanical term is 'cultivar'. Whichever word you use, it means a distinctive plant or plants, given a specific cultivar name and usually bred to enhance certain characteristics, such as flower or fruit size, colour, flavour or fragrance, plant size, hardiness, disease resistance, etc. Additionally, it is worth knowing that, botanically, variety has another meaning - it refers to a naturally-occurring distinct plant that only has slight differences in its looks. For example, Malva alcea var. fastigiata differs from typical plants by having an upright habit.\\n\\ncultivar, as these tend to produce better and stronger spears. Non-hybrid seeds produce female as well as male plants, and these will in turn produce \\n\\nA seedling is a young plant grown from seed.\\n\\nseedlings that will need to be weeded out to prevent competition with the existing plants. Even F1 all-male seeds can produce the occasional female plant.\\n\\nSow seeds indoors in February at 13–16°C (55–61°F). Sow them singly into \\n\\nSmall individual cells, usually in a tray, used for sowing seeds. The resulting seedlings can be transplanted with minimal root disturbance.\\n\\nmodules filled with \\n\\nSeed compost is a free draining compost formulated for germinating seed. It often contains a mix of fine materials including sterilised loam, coir, coarse sand, grit or perlite. It contains low level of nutrients (High levels\\ncould damage seedlings).\\n\\nseed compost. Harden them off and transplant into their final positions in early June. Prepare the planting site by weeding thoroughly, then dig in at least one bucketful of organic matter, such as garden \\n\\nCan refer to either home-made garden compost or seed/potting compost:• Garden compost is a soil improver made from decomposed plant waste, usually in a compost bin or heap. It is added to soil to improve its fertility, structure and water-holding capacity. • Seed or potting composts are used for growing seedlings or plants in containers – a wide range of commercially produced composts are available, made from a mix of various ingredients, such as loam, coir, peat, sand and fertiliser, although you can mix your own.\\n\\ncompost or well-rotted farmyard manure, every square metre/yard.\\n\\nAlternatively, sow outside in March or April, in drills 2.5cm (1in) deep and 30–45cm (12–18in) apart. Thin the seedlings to 15cm (6in) apart and protect from slugs and snails. Transplant them to their final positions the following March.",
-          'image': require('./images/asparagus-grow.jpg'),
-          'imageDescription': 'Line up roots 30cm apart',
-        },
-        {
-          'category': 'Grow',
-          'content':
-            'To grow well, asparagus plants should be fed well and kept weed free. If you have any female plants (which produce orange-red berries), you will need to weed out any seedlings. Plants may need supporting as they grow quite tall, and should be cut down at the end of the season.',
-        },
-        {
-          'category': 'Feeding',
-          'content':
-            'In early spring, apply 100g per sq m (3oz per sq yd) of general fertiliser such as Growmore, or blood, fish and bone. If growth is weak, repeat this application once harvesting has finished.',
-        },
-        {
-          'category': 'Supporting',
-          'content':
-            'Asparagus grows into a tall, feathery plant over the summer. To avoid the stems breaking in windy weather and damaging the \\n\\n1) The crown is usually at the base of herbaceous plants, often identified by buds at ground level, usually where the roots and stems join at soil level. See plants such as rhubarb, chrysanthemum or Hylotelephium (sedum). 2) A crown can refer to the branches on a tree located at the top of a trunk, for example the canopy of an oak.\\n\\ncrown, support plants using stakes and \\n\\nTwine is a soft, fine loosely woven string treated with preservatives for outdoor use. Used for tying in climbers and other plants to supports.\\n\\ntwine to make a ‘fence’ either side of the row.',
-        },
-        {
-          'category': 'Growing out',
-          'content': 'In autumn, let it grow out.',
-        },
-        {
-          'category': 'Harvesting',
-          'content':
-            'Cut spears 8 inches leaving bottoms in the soil. Harvest often.',
-        },
-      ],
+      'content': 'https://www.rhs.org.uk/vegetables/asparagus/grow-your-own',
+    },
+    'aubergines': {
+      'id': 'aubergines',
+      'title': 'Aubergines',
+      'category': 'vegetables',
+      'sow': ['March'],
+      indoorsUntil: ['May', 'June'],
+      'durationMonths': 6,
+      'buy': 'https://www.rhsplants.co.uk/search/_/search.aubergine/sort.0/',
+      'image': require('./images/aubergine.jpg'),
+      'ph': '5.5–7.2',
+      'warning':
+        'If planting in May/June you will need to buy a plant. Grafted plants are also available – these grow strongly and usually cope better with cooler conditions outdoors.',
+      'content': 'https://www.rhs.org.uk/vegetables/aubergines/grow-your-own',
+    },
+    'beans_for_drying': {
+      'title': 'Beans for drying',
+      'id': 'beans_for_drying',
+      'category': 'vegetables',
+      'sow': ['April', 'May'],
+      indoorsUntil: ['May', 'June'],
+      'durationMonths': 6,
+      'buy': 'https://www.rhsplants.co.uk/search/_/search.aubergine/sort.0/',
+      'image': require('./images/aubergine.jpg'),
+      'ph': '5.5–7.2',
+      'warning':
+        'If planting in May/June you will need to buy a plant. Grafted plants are also available – these grow strongly and usually cope better with cooler conditions outdoors.',
+      'content':
+        'https://www.rhs.org.uk/vegetables/beans-for-drying/grow-your-own',
     },
   },
-  // 'aubergines': {
-  //   'title': 'Aubergines',
-  //   'category': 'vegetables',
-  // },
-  // 'beans_for_drying': {
-  //   'title': 'Beans for drying',
-  //   'category': 'vegetables',
-  // },
   // 'beetroot': {
   //   'title': 'Beetroot',
   //   'category': 'vegetables',
