@@ -54,26 +54,14 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
       </View>
       <ScrollView bounces={false}>
         <Row style={styles.container}>
-          {data
-            .concat(data)
-            .concat(data)
-            .concat(data)
-            .concat(data)
-            .concat(data)
-            .concat(data)
-            .concat(data)
-            .concat(data)
-            .concat(data)
-            .map((v, i) => (
-              <>
-                <PlantSummary
-                  delay={Math.floor(i / 6)}
-                  animatedValue={active}
-                  plant={v}
-                  key={v.title}
-                />
-              </>
-            ))}
+          {data.map((v, i) => (
+            <PlantSummary
+              delay={Math.floor(i / 6)}
+              animatedValue={active}
+              plant={v}
+              key={v.title}
+            />
+          ))}
         </Row>
       </ScrollView>
     </ScreenContainer>
