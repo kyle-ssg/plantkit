@@ -1,9 +1,6 @@
-import Text from 'components/base/type/Text'
-import React, { useMemo } from 'react'
+import React from 'react'
 import withScreen, { Screen } from './withScreen'
 import { TPlant } from '../plantData'
-import { SuccessMessage } from 'components/Messages'
-import PlantContent from 'components/PlantContent'
 import WebScreen from 'screens/WebScreen'
 import { WebViewProps } from 'react-native-webview'
 
