@@ -11,7 +11,7 @@ interface Props {
   testID?: string
 }
 
-const ErrorMessage: FC<Props> = ({ style, testID, children }) => {
+const Messages: FC<Props> = ({ style, testID, children }) => {
   if (children === null || typeof children === 'undefined' || !children) {
     return null
   }
@@ -49,7 +49,7 @@ export const SuccessMessage: FC<Props> = ({ testID, style, children }) => {
   )
 }
 
-export default ErrorMessage
+export default Messages
 
 const styles = StyleSheet.create({
   ErrorMessageText: {

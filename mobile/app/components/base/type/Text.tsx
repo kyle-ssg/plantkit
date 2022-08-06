@@ -1,23 +1,29 @@
 import { Text, TextProps } from 'react-native'
 import { FC } from 'react'
-import { cn, StylePropType } from '../../../style/_style_screen'
+import { asStyleProp, cn } from '../../../style/_style_screen'
 import Animated from 'react-native-reanimated'
+
+const textSizeClass = asStyleProp({
+  regular: '',
+  medium: 'textMedium',
+  small: 'textSmall',
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+})
+
+const textWeightClass = asStyleProp({
+  regular: '',
+  bold: 'textBold',
+})
 
 export type TextType = TextProps & {
   muted?: boolean
   light?: boolean
-  size?: 'regular' | 'medium' | 'small'
-  weight?: 'bold' | 'regular'
+  size?: keyof typeof textSizeClass
+  weight?: keyof typeof textWeightClass
   animated?: boolean
-}
-const textSizeClass: StylePropType<TextType['size']> = {
-  regular: '',
-  medium: 'textMedium',
-  small: 'textSmall',
-}
-const textWeightClass: StylePropType<TextType['weight']> = {
-  regular: '',
-  bold: 'textBold',
 }
 const TextComponent: FC<TextType> = (props) => {
   // @ts-ignore
@@ -30,7 +36,7 @@ const TextComponent: FC<TextType> = (props) => {
       style={cn(
         {
           text: true,
-          muted: props.muted,
+          textMuted: props.muted,
           textWhite: props.light,
         },
         Styles[textSizeClass[props.size]],

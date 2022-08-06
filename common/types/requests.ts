@@ -6,5 +6,6 @@ export type Req = {
   logout: {}
   setLocale: { value: string }
   startup: { locale: string; token?: string }
+  setTab: { id: string }
   // END OF TYPES
 }

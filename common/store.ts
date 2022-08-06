@@ -15,6 +15,7 @@ import {
 } from 'redux-persist'
 import { Persistor } from 'redux-persist/es/types'
 
+import { tabSlice } from './hooks/useTab'
 // END OF IMPORTS
 const createStore = () => {
   const storage =
@@ -26,6 +27,7 @@ const createStore = () => {
     locale: localeSlice.reducer,
     startup: startupSlice.reducer,
     user: userSlice.reducer,
+    tab: tabSlice.reducer,
     // END OF REDUCERS
   })
 

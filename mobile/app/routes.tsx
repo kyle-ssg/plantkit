@@ -62,7 +62,10 @@ export const routes: Record<RouteUrls, IRoute> = {
     component: PlantScreen,
   },
   [RouteUrls.PlantScreen]: {
-    options: {},
+    options: {
+      headerShown: true,
+      headerBackTitle: '',
+    },
     component: PlantScreen,
   },
   // END OF SCREENS

@@ -133,6 +133,12 @@ const AppNavigator: FC<ComponentType> = ({}) => {
           component={routes[RouteUrls.ModalScreen].component}
         />
 
+        <Stack.Screen
+          name={RouteUrls.PlantScreen}
+          options={routes[RouteUrls.PlantScreen].options}
+          component={routes[RouteUrls.PlantScreen].component}
+        />
+
         {/* END OF ROUTES*/}
       </Navigator>
       <LinkHandler />

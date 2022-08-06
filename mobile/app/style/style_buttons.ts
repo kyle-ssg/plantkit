@@ -27,7 +27,7 @@ export default asStyle({
   },
 
   buttonOutlinePrimaryPressed: {
-    borderColor: palette.primary,
+    borderColor: palette.primaryPressed,
   },
 
   buttonLink: {
@@ -93,12 +93,15 @@ export default asStyle({
     color: 'white',
   },
 
+  buttonTextPressed: {},
+
   buttonTextText: {
     color: palette.primary,
     fontSize: styleVariables.fontSizeH2,
   },
-
-  buttonTextPressed: {},
+  buttonTextTextPressed: {
+    color: palette.primaryPressed,
+  },
 
   buttonNav: {},
 

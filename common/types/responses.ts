@@ -5,5 +5,6 @@ export type Res = {
   locale: { value: string }
   todo: { id: string }
   thing: { id: string }
+  tab: { id: string }
   // END OF TYPES
 }

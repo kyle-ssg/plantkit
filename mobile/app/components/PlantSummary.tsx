@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { TPlant } from '../plantData'
 import { Image } from 'react-native'
 import { cn } from '../style/_style_screen'
@@ -12,6 +12,8 @@ import {
   easingConfigSlideLong,
   immediateConfig,
 } from 'project/animation-util/reanimations'
+import { useNavigation } from '@react-navigation/native'
+import { RouteUrls } from '../route-urls'
 
 type PlantSummaryType = {
   plant: TPlant
@@ -24,6 +26,14 @@ const PlantSummary: FC<PlantSummaryType> = ({
   delay,
   animatedValue,
 }) => {
+  // @ts-ignore
+  const { push } = useNavigation()
+  const onPress = useCallback(() => {
+    push(RouteUrls.PlantScreen, {
+      plant,
+      screenOptions: { title: plant.title },
+    })
+  }, [plant, push])
   const style = useAnimatedStyle(() => {
     const delayMultiple = (delay + 3) * (animatedValue.value ? 50 : 0)
     const translateY = withDelay(
@@ -49,10 +59,12 @@ const PlantSummary: FC<PlantSummaryType> = ({
   }, [])
   return (
     <Animated.View style={cn(styles.container, Styles.mb10, style)}>
-      <View style={styles.imageContainer}>
-        <Image style={styles.image} source={plant.image} resizeMode='cover' />
-      </View>
-      <Text size='small'>{plant.title}</Text>
+      <TouchableOpacity onPress={onPress} style={Styles.centeredContainer}>
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={plant.image} resizeMode='cover' />
+        </View>
+        <Text size='small'>{plant.title}</Text>
+      </TouchableOpacity>
     </Animated.View>
   )
 }

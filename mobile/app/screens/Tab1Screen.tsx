@@ -8,6 +8,7 @@ import { useIsFocused } from '@react-navigation/native'
 import { useSharedValue } from 'react-native-reanimated'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { API } from 'project/api'
+import { useTab } from 'common/hooks/useTab'
 type Tab1Screen = Screen & {}
 const months = [
   'January',
@@ -25,16 +26,24 @@ const months = [
 ]
 const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
   const [month, setMonth] = useState('March')
-  const data = useMemo(() => {
-    return filter(plantData.plants, (plant, key) => {
-      return plant.sow.includes(month)
-    })
-  }, [month])
-  const isFocused = useIsFocused()
+  const { tab } = useTab()
+  const isFocused = tab === 0
   const active = useSharedValue(isFocused ? 1 : 0)
   useEffect(() => {
     active.value = isFocused ? 1 : 0
   }, [isFocused])
+  const data = useMemo(() => {
+    return filter(plantData.plants, (plant, key) => {
+      return plant.sow.includes(month)
+    }).map((v, i) => (
+      <PlantSummary
+        delay={Math.floor(i / 6)}
+        animatedValue={active}
+        plant={v}
+        key={v.title}
+      />
+    ))
+  }, [month, active])
   const showMonthSelect = useCallback(() => {
     API.showOptions('Select a Month', months).then((res) => {
       active.value = 0
@@ -53,16 +62,7 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
         </TouchableOpacity>
       </View>
       <ScrollView bounces={false}>
-        <Row style={styles.container}>
-          {data.map((v, i) => (
-            <PlantSummary
-              delay={Math.floor(i / 6)}
-              animatedValue={active}
-              plant={v}
-              key={v.title}
-            />
-          ))}
-        </Row>
+        <Row style={styles.container}>{data}</Row>
       </ScrollView>
     </ScreenContainer>
   )

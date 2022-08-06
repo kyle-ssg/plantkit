@@ -11,19 +11,22 @@ import Utils from 'common/utils/base/_utils'
 import { debounce } from 'lodash'
 import { FunctionComponent, ReactNode, useCallback, useMemo } from 'react'
 import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
-import { cn } from '../../../style/_style_screen'
+import { asStyleProp, cn } from '../../../style/_style_screen'
+
+const themeClass = asStyleProp({
+  text: 'buttonText',
+  tertiary: 'buttonTertiary',
+  link: 'buttonLink',
+  outlinePrimary: 'buttonOutlinePrimary',
+  secondary: 'buttonSecondary',
+  primary: 'buttonPrimary',
+})
 
 export type ButtonType = PressableProps & {
   children: ReactNode
   icon?: boolean
   iconColour?: string
-  theme?:
-    | 'text'
-    | 'tertiary'
-    | 'link'
-    | 'outlinePrimary'
-    | 'secondary'
-    | 'primary'
+  theme?: keyof typeof themeClass
   textStyle?: StyleProp<TextStyle | TextStyle[]>
   pressedStyle?: StyleProp<ViewStyle> | ViewStyle[]
   pressedTextStyle?: TextStyle | TextStyle[]
@@ -50,7 +53,7 @@ const Button: FunctionComponent<ButtonType> = ({
   pressedTextStyle,
   textStyle,
   icon,
-  theme,
+  theme = 'primary',
   iconColour,
   onPress,
   throttle: _throttle = 500,
@@ -63,28 +66,10 @@ const Button: FunctionComponent<ButtonType> = ({
     (pressed) =>
       cn(
         'buttonText',
+        `${themeClass[theme]}Text`,
         textStyle,
-        {
-          buttonPrimaryText: theme === 'primary',
-          buttonPrimaryTextPressed: pressed && theme === 'primary',
-
-          buttonTextText: theme === 'text',
-          buttonTextPressed: pressed && theme === 'text',
-
-          buttonSecondaryText: theme === 'primary',
-          buttonSecondaryTextPressed: pressed && theme === 'primary',
-
-          buttonTertiaryText: theme === 'tertiary',
-          buttonTertiaryTextPressed: pressed && theme === 'tertiary',
-
-          buttonLinkText: theme === 'link',
-          buttonLinkTextPressed: pressed && theme === 'link',
-
-          buttonOutlinePrimaryText: theme === 'outlinePrimary',
-          buttonOutlinePrimaryTextPressed:
-            pressed && theme === 'outlinePrimary',
-        },
-        pressed ? pressedTextStyle : 0,
+        pressed ? `${themeClass[theme]}TextPressed` : 0,
+        pressed && pressedTextStyle,
       ),
     [pressedTextStyle, textStyle, theme],
   )
@@ -93,27 +78,9 @@ const Button: FunctionComponent<ButtonType> = ({
     ({ pressed }) =>
       cn(
         'buttonGroup',
-        {
-          buttonGroupPressed: pressed,
-          buttonDisabled: disabled,
-
-          buttonPrimary: theme === 'primary',
-          buttonPrimaryPressed: pressed && theme === 'primary',
-
-          buttonText: theme === 'text',
-
-          buttonSecondary: theme === 'secondary',
-          buttonSecondaryPressed: pressed && theme === 'secondary',
-
-          buttonTertiary: theme === 'tertiary',
-          buttonTertiaryPressed: pressed && theme === 'tertiary',
-
-          buttonLink: theme === 'link',
-          buttonLinkPressed: pressed && theme === 'link',
-
-          buttonOutlinePrimary: theme === 'outlinePrimary',
-          buttonOutlinePrimaryPressed: pressed && theme === 'outlinePrimary',
-        },
+        themeClass[theme],
+        pressed ? `${themeClass[theme]}Pressed` : 0,
+        pressed && pressedStyle,
         style,
       ),
     [style, disabled, pressedStyle, theme],
@@ -128,15 +95,13 @@ const Button: FunctionComponent<ButtonType> = ({
         disabled={disabled}
         android_ripple={android_ripple || darkAndroidRipple}
       >
-        {Utils.reactChildIsString(children)
-          ? ({ pressed }) => (
-              // @ts-ignore
-              <Text style={textStyles(pressed)}>
-                {/*@ts-ignore*/}
-                {children.length === 1 ? children[0] : children}
-              </Text>
-            )
-          : children}
+        {({ pressed }) => (
+          // @ts-ignore
+          <Text style={textStyles(pressed)}>
+            {/*@ts-ignore*/}
+            {children}
+          </Text>
+        )}
       </Pressable>
       {icon ? (
         <View style={Styles.buttonIcon}>

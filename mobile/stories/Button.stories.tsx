@@ -1,10 +1,5 @@
 import { ComponentStory } from '@storybook/react-native'
-import Button, {
-  ButtonSecondary,
-  ButtonTertiary,
-  ButtonText,
-} from 'components/base/forms/Button'
-
+import Button from 'components/base/forms/Button'
 export default {
   title: 'Button',
   component: Button,

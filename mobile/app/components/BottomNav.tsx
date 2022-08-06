@@ -17,6 +17,7 @@ import {
 import Logo from 'components/Logo'
 import { useNavigationState } from '@react-navigation/core'
 import NavMenu from 'components/NavMenu'
+import { useTab } from 'common/hooks/useTab'
 type TabItemType = {
   isActive: boolean
   index: number
@@ -76,6 +77,7 @@ const TabLine: FC<{ index: number }> = ({ index }) => {
 }
 
 const BottomNav = ({ state, navigation }) => {
+  const { setTab } = useTab()
   const onPress = (index) => {
     const route = state.routes[index]
     const isFocused = state.index === index
@@ -89,6 +91,9 @@ const BottomNav = ({ state, navigation }) => {
       navigation.navigate(route.name)
     }
   }
+  useEffect(() => {
+    setTab(state.index)
+  }, [state.index])
 
   return (
     <View style={styles.container}>
