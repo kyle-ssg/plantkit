@@ -1,0 +1,24 @@
+name: Run E2E tests
+description: "Run the E2E tests against an environment"
+
+inputs:
+  ENV:
+    description: "The project_ENV file to use."
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+    - name: Test with Chromedriver
+      working-directory: .
+      env:
+        ENV: ${{ inputs.ENV }}
+      run: |
+        echo "Done"
+      shell: bash
+
+#      run: |
+#        npm i
+#        npm run env
+#        npm run test:e2e:prod

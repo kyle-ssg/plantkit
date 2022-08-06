@@ -1,0 +1,27 @@
+diff --git a/node_modules/typescript/lib/lib.dom.d.ts b/node_modules/typescript/lib/lib.dom.d.ts
+index 47bb467..a704bd9 100644
+--- a/node_modules/typescript/lib/lib.dom.d.ts
++++ b/node_modules/typescript/lib/lib.dom.d.ts
+@@ -2444,9 +2444,7 @@ declare var ByteLengthQueuingStrategy: {
+     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
+ };
+ 
+-/** A CDATA section that can be used within XML to include extended portions of unescaped text. The symbols < and & don’t need escaping as they normally do when inside a CDATA section. */
+-interface CDATASection extends Text {
+-}
++
+ 
+ declare var CDATASection: {
+     prototype: CDATASection;
+@@ -13459,11 +13457,6 @@ interface Text extends CharacterData, Slottable {
+     splitText(offset: number): Text;
+ }
+ 
+-declare var Text: {
+-    prototype: Text;
+-    new(data?: string): Text;
+-};
+-
+ /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+ interface TextDecoder extends TextDecoderCommon {
+     /**

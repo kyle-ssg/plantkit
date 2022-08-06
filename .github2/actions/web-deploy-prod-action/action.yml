@@ -1,0 +1,28 @@
+name: Run E2E tests
+description: "Run the E2E tests against an environment"
+
+inputs:
+  ENV:
+    description: "The project_ENV file to use."
+    required: true
+  NOW_TOKEN:
+    description: "The NOW_TOKEN file to use."
+    required: true
+  NOW_TEAM_NAME:
+    description: "The NOW_TEAM_NAME file to use."
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+    - name: Deploy to Production
+      working-directory: .
+      env:
+        ENV: ${{ inputs.ENV }}
+        NOW_TOKEN: ${{ inputs.NOW_TOKEN }}
+        NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
+      run: |
+        name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
+        npx vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME  --confirm --build-env ENV=$ENV --name=$name
+      shell: bash

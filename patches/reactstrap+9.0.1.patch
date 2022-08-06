@@ -1,0 +1,20 @@
+diff --git a/node_modules/reactstrap/dist/reactstrap.modern.js b/node_modules/reactstrap/dist/reactstrap.modern.js
+index 3ca869a..0a066e3 100644
+--- a/node_modules/reactstrap/dist/reactstrap.modern.js
++++ b/node_modules/reactstrap/dist/reactstrap.modern.js
+@@ -6487,7 +6487,6 @@ const List = forwardRef((props, ref) => {
+     ref: ref
+   }));
+ });
+-List.name = 'List';
+ List.propTypes = propTypes$5;
+ List.defaultProps = defaultProps$5;
+ var List$1 = List;
+@@ -6515,7 +6514,6 @@ const ListInlineItem = forwardRef((props, ref) => {
+     ref: ref
+   }));
+ });
+-ListInlineItem.name = 'ListInlineItem';
+ ListInlineItem.propTypes = propTypes$4;
+ ListInlineItem.defaultProps = defaultProps$4;
+ var ListInlineItem$1 = ListInlineItem;

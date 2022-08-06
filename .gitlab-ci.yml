@@ -1,0 +1,200 @@
+# $APPCENTER_NAME_ANDROID_PRODUCTION = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-Android
+# $APPCENTER_NAME_ANDROID_STAGING = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-Android
+# $APPCENTER_NAME_IOS_PRODUCTION = The App Center project name for ios e.g. Solid-State-Group/Hero-Wellbeing-iOS
+# $APPCENTER_NAME_IOS_STAGING = The App Center project name for ios e.g. Solid-State-Group/Hero-Wellbeing-iOS-Staging
+# APPCENTER_ACCESS_TOKEN = The token needed in order to use the appcenter cli in distribute-mobile.sh
+# $CODE_PUSH_NAME_IOS = The AppCenter Project all iOS codepush builds go to e.g. Solid-State-Group/Hero-Wellbeing-iOS
+# $CODE_PUSH_NAME_ANDROID = The AppCenter Project all iOS codepush builds go to e.g. Solid-State-Group/Hero-Wellbeing-iOS
+# $NOW_TEAM_NAME - The vercel team name to deploy with e.g. solidstategroup
+# $NOW_TOKEN - The vercel token to build web - https://vercel.com/account/tokens
+
+
+stages:
+  - test
+  - deploy
+
+.web_cache: &web_cache
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - node_modules/
+    - .next
+    - .vercel
+  policy: pull-push
+
+.mobile_cache: &mobile_cache
+  key:
+    files:
+      - mobile/package-lock.json
+  paths:
+    - mobile/node_modules/
+  policy: pull-push
+
+
+.mobile_deploy_common_before_script: &mobile_deploy_common_before_script
+  before_script:
+    - cd mobile
+    - npm i
+    - npm run env_script
+
+.mobile_deploy_common_required_changes: &mobile_deploy_common_required_changes
+  changes:
+    - common/**/*
+    - mobile/**/*
+
+.web_deploy_common_required_changes: &web_deploy_common_required_changes
+  changes:
+    - "*"
+    - common/**/*
+    - components/**/*
+    - pages/**/*
+    - project/**/*
+    - static/**/*
+    - patches/**/*
+    - public/**/*
+    - styles/**/*
+    - tests/**/*
+
+android-staging:
+  image: node:16.13.2
+  stage: deploy
+  cache:
+    <<: *mobile_cache
+  variables:
+    ENV: prod
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Staging $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - /^mobile\/staging\/.*$/
+    variables:
+      - $APPCENTER_ACCESS_TOKEN
+      - $APPCENTER_NAME_ANDROID_PRODUCTION
+      - $CODE_PUSH_NAME_ANDROID
+
+ios-staging:
+  image: node:16.13.2
+  stage: deploy
+  cache:
+    <<: *mobile_cache
+  variables:
+    ENV: prod
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Staging $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - /^mobile\/staging\/.*$/
+    variables:
+      - $APPCENTER_ACCESS_TOKEN
+      - $APPCENTER_NAME_IOS_PRODUCTION
+      - $CODE_PUSH_NAME_IOS
+
+ios-production:
+  image: node:16.13.2
+  stage: deploy
+  cache:
+    <<: *mobile_cache
+  variables:
+    ENV: prod
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Production $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - master
+      - /^mobile\/production\/.*$/
+    variables:
+      - $APPCENTER_ACCESS_TOKEN
+      - $APPCENTER_NAME_IOS_PRODUCTION
+      - $CODE_PUSH_NAME_IOS
+
+android-production:
+  image: node:16.13.2
+  stage: deploy
+  cache:
+    <<: *mobile_cache
+  variables:
+    ENV: prod
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Production $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - master
+      - /^mobile\/production\/.*$/
+    variables:
+      - $APPCENTER_ACCESS_TOKEN
+      - $APPCENTER_NAME_ANDROID_PRODUCTION
+      - $CODE_PUSH_NAME_ANDROID
+
+.web_deploy_common_script: &web_deploy_common_script
+  before_script:
+    - npm i -g vercel
+    - npm run env_script
+
+test:
+  cache:
+    <<: *web_cache
+
+  image: solidstategroup/testcafe:16.98
+  stage: test
+  script:
+    - npm install
+    - npm run test:e2e:prod
+  rules:
+    # Run only in merge request.
+    # We don't want the e2e to be trigger for each commit
+    - if: $CI_MERGE_REQUEST_ID
+
+
+web-production:
+  image: solidstategroup/testcafe:16.98
+  cache:
+    <<: *web_cache
+
+  stage: deploy
+  variables:
+    ENV: prod
+  <<: *web_deploy_common_script
+  script:
+    - bash
+    - npm i
+    - npm run test:e2e:prod
+    - vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$CI_PROJECT_NAME
+  only:
+    refs:
+      - master
+    <<: *web_deploy_common_required_changes
+    variables:
+      - $NOW_TOKEN
+      - $NOW_TEAM_NAME
+web-feature:
+  image: node:16.13.2
+  cache:
+    <<: *web_cache
+
+  stage: deploy
+  variables:
+    ENV: dev
+  <<: *web_deploy_common_script
+  script:
+    - bash
+    - url=$(vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
+    - vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-$CI_COMMIT_REF_SLUG
+  except:
+    refs:
+      - /^mobile\/.*$/
+      - master
+      - staging
+  only:
+    <<: *web_deploy_common_required_changes
+    variables:
+      - $NOW_TOKEN
+      - $NOW_TEAM_NAME

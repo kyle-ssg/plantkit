@@ -1,0 +1,29 @@
+name: Web Cache
+description: "Pulls Web Node Modules Cache"
+
+runs:
+  using: composite
+
+  steps:
+    - name: Cache web node modules
+      id: cache-npm
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-node-modules
+      with:
+        # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: |
+          ~/.npm
+          ${{ github.workspace }}/node_nodules
+          ${{ github.workspace }}/.next/cache
+          ${{ github.workspace }}/.vercel
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+          - if: ${{ steps.cache-npm.outputs.cache-hit == false }}
+              name: List the state of node modules
+              continue-on-error: true
+              run: npm list

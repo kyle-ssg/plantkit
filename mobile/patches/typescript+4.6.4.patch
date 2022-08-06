@@ -1,0 +1,109 @@
+diff --git a/node_modules/typescript/lib/lib.dom.d.ts b/node_modules/typescript/lib/lib.dom.d.ts
+index 7d91468..409a752 100644
+--- a/node_modules/typescript/lib/lib.dom.d.ts
++++ b/node_modules/typescript/lib/lib.dom.d.ts
+@@ -2474,15 +2474,6 @@ declare var ByteLengthQueuingStrategy: {
+     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
+ };
+ 
+-/** A CDATA section that can be used within XML to include extended portions of unescaped text. The symbols < and & don’t need escaping as they normally do when inside a CDATA section. */
+-interface CDATASection extends Text {
+-}
+-
+-declare var CDATASection: {
+-    prototype: CDATASection;
+-    new(): CDATASection;
+-};
+-
+ interface CSSAnimation extends Animation {
+     readonly animationName: string;
+     addEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSAnimation, ev: AnimationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+@@ -2549,7 +2540,6 @@ declare var CSSGroupingRule: {
+ interface CSSImportRule extends CSSRule {
+     readonly href: string;
+     readonly media: MediaList;
+-    readonly styleSheet: CSSStyleSheet;
+ }
+ 
+ declare var CSSImportRule: {
+@@ -3205,25 +3195,6 @@ declare var CSSStyleRule: {
+     new(): CSSStyleRule;
+ };
+ 
+-/** A single CSS style sheet. It inherits properties and methods from its parent, StyleSheet. */
+-interface CSSStyleSheet extends StyleSheet {
+-    readonly cssRules: CSSRuleList;
+-    readonly ownerRule: CSSRule | null;
+-    /** @deprecated */
+-    readonly rules: CSSRuleList;
+-    /** @deprecated */
+-    addRule(selector?: string, style?: string, index?: number): number;
+-    deleteRule(index: number): void;
+-    insertRule(rule: string, index?: number): number;
+-    /** @deprecated */
+-    removeRule(index?: number): void;
+-}
+-
+-declare var CSSStyleSheet: {
+-    prototype: CSSStyleSheet;
+-    new(options?: CSSStyleSheetInit): CSSStyleSheet;
+-};
+-
+ /** An object representing a single CSS @supports at-rule. It implements the CSSConditionRule interface, and therefore the CSSRule and CSSGroupingRule interfaces with a type value of 12 (CSSRule.SUPPORTS_RULE). */
+ interface CSSSupportsRule extends CSSConditionRule {
+ }
+@@ -13525,34 +13496,6 @@ interface StyleMedia {
+     matchMedium(mediaquery: string): boolean;
+ }
+ 
+-/** A single style sheet. CSS style sheets will further implement the more specialized CSSStyleSheet interface. */
+-interface StyleSheet {
+-    disabled: boolean;
+-    readonly href: string | null;
+-    readonly media: MediaList;
+-    readonly ownerNode: Element | ProcessingInstruction | null;
+-    readonly parentStyleSheet: CSSStyleSheet | null;
+-    readonly title: string | null;
+-    readonly type: string;
+-}
+-
+-declare var StyleSheet: {
+-    prototype: StyleSheet;
+-    new(): StyleSheet;
+-};
+-
+-/** A list of StyleSheet. */
+-interface StyleSheetList {
+-    readonly length: number;
+-    item(index: number): CSSStyleSheet | null;
+-    [index: number]: CSSStyleSheet;
+-}
+-
+-declare var StyleSheetList: {
+-    prototype: StyleSheetList;
+-    new(): StyleSheetList;
+-};
+-
+ interface SubmitEvent extends Event {
+     /** Returns the element representing the submit button that triggered the form submission, or null if the submission was not triggered by a button. */
+     readonly submitter: HTMLElement | null;
+@@ -13591,19 +13534,6 @@ declare var SubtleCrypto: {
+     new(): SubtleCrypto;
+ };
+ 
+-/** The textual content of Element or Attr. If an element has no markup within its content, it has a single child implementing Text that contains the element's text. However, if the element contains markup, it is parsed into information items and Text nodes that form its children. */
+-interface Text extends CharacterData, Slottable {
+-    /** Returns the combined data of all direct Text node siblings. */
+-    readonly wholeText: string;
+-    /** Splits data at the given offset and returns the remainder as Text node. */
+-    splitText(offset: number): Text;
+-}
+-
+-declare var Text: {
+-    prototype: Text;
+-    new(data?: string): Text;
+-};
+-
+ /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+ interface TextDecoder extends TextDecoderCommon {
+     /**

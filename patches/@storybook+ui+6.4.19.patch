@@ -1,0 +1,13 @@
+diff --git a/node_modules/@storybook/ui/paths.js b/node_modules/@storybook/ui/paths.js
+index 935886a..4c52985 100644
+--- a/node_modules/@storybook/ui/paths.js
++++ b/node_modules/@storybook/ui/paths.js
+@@ -14,6 +14,6 @@ module.exports = {
+   '@storybook/router': dirname(resolve('@storybook/router/package.json')),
+   '@storybook/theming': dirname(resolve('@storybook/theming/package.json')),
+   '@storybook/ui': dirname(resolve('@storybook/ui/package.json')),
+-  react: dirname(resolve('react/package.json')),
+-  'react-dom': dirname(resolve('react-dom/package.json')),
++  react: dirname(resolve('preact/compat/package.json')),
++  'react-dom': dirname(resolve('preact/compat/package.json')),
+ };

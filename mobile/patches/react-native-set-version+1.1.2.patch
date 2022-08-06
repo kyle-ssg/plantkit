@@ -1,0 +1,40 @@
+diff --git a/node_modules/react-native-set-version/build/index.js b/node_modules/react-native-set-version/build/index.js
+index 60baf53..9e0fedd 100755
+--- a/node_modules/react-native-set-version/build/index.js
++++ b/node_modules/react-native-set-version/build/index.js
+@@ -20,7 +20,7 @@ const display = console.log; // eslint-disable-line no-console
+ const paths = {
+   androidManifest: './android/app/src/main/AndroidManifest.xml',
+   buildGradle: './android/app/build.gradle',
+-  infoPlist: './ios/<APP_NAME>/Info.plist',
++  infoPlist: './ios/Info.plist',
+   packageJson: './package.json'
+ };
+ 
+@@ -75,7 +75,7 @@ async function setIosApplicationVersion(versionText) {
+   const {
+     version
+   } = await getIOSVersionInfo(versionText);
+-  const bundleVersion = `${version.major}.${version.minor}.${version.patch}.${version.build}`;
++  const bundleVersion = `${version.major}.${version.minor}.${version.patch}`;
+ 
+   if (version) {
+     display('');
+@@ -143,7 +143,7 @@ async function setAndroidApplicationVersion(versionText) {
+     try {
+       const buildGradle = _fs.default.readFileSync(paths.buildGradle, 'utf8');
+ 
+-      const newBuildGradle = buildGradle.replace(/versionCode \d+/g, `versionCode ${versionCode}`).replace(/versionName "[^"]*"/g, `versionName "${versionText}"`);
++      const newBuildGradle = buildGradle.replace(/versionName "[^"]*"/g, `versionName "${versionText}"`);
+ 
+       _fs.default.writeFileSync(paths.buildGradle, newBuildGradle, 'utf8');
+ 
+@@ -156,7 +156,7 @@ async function setAndroidApplicationVersion(versionText) {
+       const androidManifest = _fs.default.readFileSync(paths.androidManifest, 'utf8');
+ 
+       if (androidManifest.includes('android:versionCode') || androidManifest.includes('android:versionName')) {
+-        const newAndroidManifest = androidManifest.replace(/android:versionCode="\d*"/g, `android:versionCode="${versionCode}"`).replace(/android:versionName="[^"]*"/g, `android:versionName="${versionText}"`);
++        const newAndroidManifest = androidManifest.replace(/android:versionName="[^"]*"/g, `android:versionName="${versionText}"`);
+ 
+         _fs.default.writeFileSync(paths.androidManifest, newAndroidManifest, 'utf8');
+ 

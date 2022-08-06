@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-globals/lite.js b/node_modules/react-native-globals/lite.js
+index ab08788..7aed2a2 100644
+--- a/node_modules/react-native-globals/lite.js
++++ b/node_modules/react-native-globals/lite.js
+@@ -1,6 +1,7 @@
+ //Parent globals
+ import ReactNative from 'react-native';
+-
++import React from 'react';
++global.React = React
+ //React native components
+ global.ActivityIndicator = ReactNative.ActivityIndicator;
+ global.Button = ReactNative.Button;

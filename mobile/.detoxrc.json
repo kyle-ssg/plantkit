@@ -1,0 +1,55 @@
+{
+  "testRunner": "jest",
+  "runnerConfig": "e2e/config.json",
+  "configurations": {
+    "iosProd": {
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/TheApp Staging.app",
+      "build": "xcodebuild -workspace ./ios/mobile.xcworkspace -scheme mobile-staging -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 11 Pro"
+      }
+    },
+    "ios": {
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/TheApp Local.app",
+      "build": "xcodebuild -workspace ./ios/mobile.xcworkspace -scheme mobile -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 11",
+        "os": "iOS 14.5"
+      }
+    },
+    "ios12": {
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/TheApp Local.app",
+      "build": "xcodebuild -workspace ./ios/mobile.xcworkspace -scheme mobile -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 5s"
+      }
+    },
+    "ipad": {
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/TheApp Local.app",
+      "build": "xcodebuild -workspace ./ios/mobile.xcworkspace -scheme mobile -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPad (5th generation)"
+      }
+    },
+    "android28": {
+      "type": "android.emulator",
+      "build": "cd android && ./gradlew assembleUatDebugAndroidTest -DtestBuildType=debug && cd ..",
+      "binaryPath": "android/app/build/outputs/apk/uat/debug/app-uat-debug.apk",
+      "device": {
+        "avdName": "Pixel_XL_API_28"
+      }
+    },
+    "android30": {
+      "type": "android.emulator",
+      "build": "cd android && ./gradlew assembleUatDebugAndroidTest -DtestBuildType=debug && cd ..",
+      "binaryPath": "android/app/build/outputs/apk/uat/debug/app-uat-debug.apk",
+      "device": {
+        "avdName": "Pixel_XL_API_30"
+      }
+    }
+  }
+}

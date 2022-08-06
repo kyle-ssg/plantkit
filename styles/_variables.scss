@@ -1,0 +1,111 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+
+// Customize some Bootstrap defaults
+//$body-color: #333;
+$body-bg: #fefefe;
+//$border-radius: .4rem;
+
+// Override some or all of Bootstrap's individual color variables
+
+// Colours
+$primary: #1AC0C6;
+$secondary: #2C2733;
+$success: #3e8d63;
+$info: #13101c;
+$warning: #945707;
+$danger: #d62518;
+$light: #f8f9fa;
+$dark: #343a40;
+//Links
+$link-color: $primary;
+$link-hover-color: shift-color($primary, $link-shade-percentage);
+$btn-link-color: $link-color;
+$btn-link-hover-color: $link-hover-color;
+//Forms
+$component-active-bg: $primary;
+$input-btn-focus-color: rgba($component-active-bg, $input-btn-focus-color-opacity);
+$input-btn-focus-box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color;
+$form-check-input-focus-border: $input-focus-border-color;
+$form-check-input-focus-box-shadow: $input-btn-focus-box-shadow;
+$form-check-input-checked-bg-color: $primary;
+$form-check-input-checked-border-color: darken($primary, 10);
+//Inputs
+$input-focus-border-color: tint-color($component-active-bg, 50%);
+$input-focus-box-shadow: $input-btn-focus-box-shadow;
+//Select
+$form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focus-color;
+$form-select-focus-border-color:  $input-focus-border-color;
+//Tabs
+$nav-link-color: $link-color;
+$nav-link-hover-color: $link-hover-color;
+$nav-pills-link-active-bg:          $component-active-bg;
+//Buttons
+$btn-focus-box-shadow: $input-btn-focus-box-shadow;
+
+// Then add them to your custom theme-colors map, together with any additional colors you might need
+$theme-colors: (
+        primary: $primary,
+        secondary: $secondary,
+        success: $success,
+        info: $info,
+        warning: $warning,
+        danger: $danger,
+        light: $light,
+        dark: $dark,
+  // add any additional color below
+);
+
+// Colours (old - needs removing)
+$brand-primary: #1AC0C6;
+$brand-secondary: #2C2733;
+
+$text: #333;
+
+// Border Radius
+$base-border-radius: 6px;
+
+//Input component variables
+$alert-danger-border: #c70000;
+$input-line-height: 25px;
+$input-font-size: inherit;
+$input-font-weight: 200;
+$input-border-color: rgb(224, 224, 224);
+$input-placeholder-color: rgb(224, 224, 224);
+$input-border-highlight-color: rgb(0, 188, 212);
+
+//Panel component variables
+$panel-heading-height: 50px;
+$panel-bg: #fff;
+$panel-heading-bg: #f7f7f7;
+$panel-heading-color: #333;
+$panel-heading-border: 1px solid #f1f1f1;
+$panel-icon-color: #36a39c;
+$panel-icon-border-color: #ddd;
+$panel-icon-background-color: #fff;
+$panel-alt-heading-bg: #36a39c;
+$panel-alt-heading-color: #fff;
+$large-border-radius:12px;
+//Tab component styles
+$tab-background: transparent;
+$tab-background-hover: transparent;
+$tab-background-active: #1AC0C6;
+$tab-active-background: transparent;
+$tab-inactive-color: lighten(black, 20);
+$tab-active-color: white;
+$tab-line-color: $brand-primary;
+
+//Toast component styles
+$toast-bg:rgba(0,0,0,.9);
+$toast-color:$body-color;
+
+//Scaffolding
+$breakpoints: (
+        mobile-small: 320px,
+        mobile: 375px,
+        handheld-device: 576px,
+        tablet: 768px,
+        tablet-large: 992px,
+        desktop: 1200px
+)

@@ -1,0 +1,26 @@
+diff --git a/node_modules/@storybook/client-api/dist/esm/story_store.js b/node_modules/@storybook/client-api/dist/esm/story_store.js
+index e884215..f795302 100644
+--- a/node_modules/@storybook/client-api/dist/esm/story_store.js
++++ b/node_modules/@storybook/client-api/dist/esm/story_store.js
+@@ -526,7 +526,7 @@ var StoryStore = /*#__PURE__*/function () {
+   }, {
+     key: "addArgsEnhancer",
+     value: function addArgsEnhancer(argsEnhancer) {
+-      if (Object.keys(this._stories).length > 0) throw new Error('Cannot add an args enhancer to the store after a story has been added.');
++      if (Object.keys(this._stories).length > 0) return;
+ 
+       this._argsEnhancers.push(argsEnhancer);
+     }
+diff --git a/node_modules/@storybook/client-api/dist/modern/story_store.js b/node_modules/@storybook/client-api/dist/modern/story_store.js
+index d1e0e21..a5602ec 100644
+--- a/node_modules/@storybook/client-api/dist/modern/story_store.js
++++ b/node_modules/@storybook/client-api/dist/modern/story_store.js
+@@ -412,7 +412,7 @@ export default class StoryStore {
+   }
+ 
+   addArgsEnhancer(argsEnhancer) {
+-    if (Object.keys(this._stories).length > 0) throw new Error('Cannot add an args enhancer to the store after a story has been added.');
++    if (Object.keys(this._stories).length > 0) return;
+ 
+     this._argsEnhancers.push(argsEnhancer);
+   }

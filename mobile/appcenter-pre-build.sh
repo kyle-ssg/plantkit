@@ -1,0 +1,1 @@
+echo "cmake.dir=$ANDROID_HOME/cmake/3.18.1" >> ./android/local.properties

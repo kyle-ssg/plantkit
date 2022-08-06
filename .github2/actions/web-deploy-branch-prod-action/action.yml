@@ -1,0 +1,31 @@
+name: Web Deploy Branch Prod
+description: "Deploys the branch to vercel pointing to the production API"
+
+inputs:
+  ENV:
+    description: "The project_ENV file to use."
+    required: true
+  NOW_TOKEN:
+    description: "The NOW_TOKEN file to use."
+    required: true
+  NOW_TEAM_NAME:
+    description: "The NOW_TEAM_NAME file to use."
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+    - name: Deploy to Branch Using production environment
+      working-directory: .
+      env:
+        ENV: ${{ inputs.ENV }}
+        NOW_TOKEN: ${{ inputs.NOW_TOKEN }}
+        NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
+
+      run: |
+        name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
+        alias=`echo "$name-$GITHUB_HEAD_REF-prod" | tr '_' '-' | tr '/' '-' | tr '.' '-'`
+        url=$(npx vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$name)
+        npx vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url $alias
+      shell: bash

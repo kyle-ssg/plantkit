@@ -1,0 +1,46 @@
+name: Mobile Cache
+description: "Pulls Mobile Node Modules Cache"
+
+runs:
+  using: composite
+
+  steps:
+   # Restore react-native metro cache for speed-up publish time
+   # See: https://github.com/facebook/metro/blob/7dca99af2e2af17921aa4a1e16b1972adc0d11e4/packages/metro-config/src/defaults/index.js#L121-L125
+    - name: Find Metro cache
+      id: metro-cache-dir-path
+      uses: actions/github-script@v4
+      with:
+        result-encoding: string
+        script: |
+          const os = require('os');
+          const path = require('path');
+          return path.join(os.tmpdir(), 'metro-cache');
+    - name: Restore Metro cache
+      uses: actions/cache@v2
+      with:
+        path: ${{ steps.metro-cache-dir-path.outputs.result }}
+        key: ${{ runner.os }}-metro-cache-${{ matrix.app }}-${{ github.ref }}
+        restore-keys: |
+          ${{ runner.os }}-metro-cache-${{ matrix.app }}-${{ github.base_ref }}
+          ${{ runner.os }}-metro-cache-${{ matrix.app }}-
+    - name: Cache mobile node modules
+      id: cache-npm
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-mobile-node-modules
+      with:
+        # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: |
+          ~/.npm
+          ./mobile/node_modules
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+          - if: ${{ steps.cache-npm.outputs.cache-hit == false }}
+              name: List the state of node modules
+              continue-on-error: true
+              run: npm list

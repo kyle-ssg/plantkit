@@ -1,0 +1,50 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- group: global
+- ${{ if eq(variables['build.SourceBranchName'], 'master') }}:
+  - group: master
+- ${{ if eq(variables['build.SourceBranchName'], 'staging') }}:
+  - group: staging
+- ${{ if eq(variables['build.SourceBranchName'], 'develop') }}:
+  - group: develop
+- ${{ if notIn(variables['build.SourceBranchName'], 'develop', 'staging', 'master') }}:
+  - group: branch
+
+trigger:
+- master
+- staging
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    export APPCENTER_ACCESS_TOKEN=$(APPCENTER_ACCESS_TOKEN)
+    cd mobile
+    npm i
+    npm run env_script
+  displayName: 'Build Project'
+
+- script: |
+    apk add --no-cache git bash curl
+    npm i appcenter-cli -g
+  condition: and(succeeded(), in(variables['Build.SourceBranchName'], 'develop', 'staging', 'master'))
+  displayName: 'Install Dependencies'
+
+- script: |
+    export APPCENTER_ACCESS_TOKEN=$(APPCENTER_ACCESS_TOKEN)
+    cd mobile
+    ./.bin/distribute-mobile.sh $(APP_CENTER_NAME_ANDROID) $(CODE_PUSH_ENV) $(Build.SourceBranchName) android $(CODE_PUSH_NAME_ANDROID)
+  condition: and(succeeded(), in(variables['Build.SourceBranchName'], 'develop', 'staging', 'master'))
+  displayName: 'Deploy Android'
+
+- script: |
+    export APPCENTER_ACCESS_TOKEN=$(APPCENTER_ACCESS_TOKEN)
+    cd mobile
+    ./.bin/distribute-mobile.sh $(CODE_PUSH_APP_NAME_IOS) $(CODE_PUSH_ENV) $(Build.SourceBranchName) ios $(CODE_PUSH_NAME_IOS) $(IOS_TARGET)
+  condition: and(succeeded(), in(variables['Build.SourceBranchName'], 'develop', 'staging', 'master'))
+  displayName: 'Deploy iOS'

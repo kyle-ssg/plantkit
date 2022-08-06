@@ -1,0 +1,25 @@
+diff --git a/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js b/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js
+index 1e67a28..d1f01c9 100644
+--- a/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js
++++ b/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js
+@@ -390,7 +390,7 @@ function getAndroidHermesEnabled(gradleFile) {
+         throw new Error(`Unable to parse the "${buildGradlePath}" file. Please ensure it is a well-formed Gradle file.`);
+     })
+         .then((buildGradle) => {
+-        return Array.from(buildGradle["project.ext.react"] || []).includes("enableHermes: true");
++        return Array.from(buildGradle["project.ext.react"] || []).some((line) => /^enableHermes\s{0,}:\s{0,}true/.test(line));
+     });
+ }
+ exports.getAndroidHermesEnabled = getAndroidHermesEnabled;
+@@ -443,6 +443,11 @@ function getHermesCommand() {
+             return false;
+         }
+     };
++    // Hermes is bundled with react-native since 0.69
++    const bundledHermesEngine = path.join("node_modules", "react-native", "sdks", "hermesc", getHermesOSBin(), getHermesOSExe());
++    if (fileExists(bundledHermesEngine)) {
++        return bundledHermesEngine;
++    }
+     // assume if hermes-engine exists it should be used instead of hermesvm
+     const hermesEngine = path.join("node_modules", "hermes-engine", getHermesOSBin(), getHermesOSExe());
+     if (fileExists(hermesEngine)) {
