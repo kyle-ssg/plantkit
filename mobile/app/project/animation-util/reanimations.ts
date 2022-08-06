@@ -19,6 +19,14 @@ export const easingConfigSlide: AnimationConfigType = {
   duration: 400,
   easing: Easing.bezier(0.25, 0.1, 0.25, 1).factory(), //Easing.ease
 }
+export const easingConfigSlideLong: AnimationConfigType = {
+  duration: 700,
+  easing: Easing.bezier(0.25, 0.1, 0.25, 1).factory(), //Easing.ease
+}
+export const immediateConfig: AnimationConfigType = {
+  duration: 0,
+  easing: Easing.bezier(0.25, 0.1, 0.25, 1).factory(), //Easing.ease
+}
 
 export const easingConfigModal: AnimationConfigType = {
   duration: 250,
