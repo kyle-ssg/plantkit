@@ -127,7 +127,7 @@
     "node-fetch": "3.2.0",
     "patch-package": "6.4.7",
     "react-dom": "17.0.2",
-    "react-native-asset": "^2.0.1",
+    "react-native-asset": "2.0.1",
     "react-native-launch-arguments": "^3.0.1",
     "react-native-performance-monitor": "^2.0.0",
     "react-native-set-version": "^1.1.2",
