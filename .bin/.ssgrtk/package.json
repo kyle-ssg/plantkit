@@ -1,6 +1,6 @@
 {
   "name": "ssgrtk",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "RTK cli commands",
   "author": "@kyle-ssg",
   "bin": {

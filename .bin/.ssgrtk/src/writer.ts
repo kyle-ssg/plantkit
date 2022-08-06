@@ -18,6 +18,17 @@ const importPointer = '// END OF IMPORTS';
 const middlewarePointer = '// END OF MIDDLEWARE';
 const functionPointer = '// END OF FUNCTION_EXPORTS';
 const reducerPointer = '// END OF REDUCERS';
+
+
+const routes = path.join(rootPath, './mobile/app/routes.tsx');
+const mobileScreens = path.join(rootPath, './mobile/app/screens');
+const routeUrls = path.join(rootPath, './mobile/app/route-urls.ts');
+const routeUrlsPointer = '// END OF SCREENS';
+const routesImportPointer = '// END OF IMPORT';
+const routesScreensPointer = '// END OF SCREENS';
+
+
+
 const capitlizeFirst =  function(str:string) {
   // checks for null, undefined and empty string
   if (!str) return "";
@@ -51,6 +62,20 @@ export async function writeRequestTypes(action: "create" | "update" | "patch" | 
   const func = functionName(action,name)
   await writeGeneric(requests,`${func}: {${includeId?"id:string":""}}`, typePointer, "Request Types", `${func}:`)
   await writeGeneric(responses,`${name}: {${includeIdResponse?"id:string":""}}`, typePointer, "Response Types", `${name}:`)
+}
+
+export async function writeScreen(name:string, path:string) {
+  await getScreenPath(name)
+  await writeGeneric(routeUrls,`"${name}" = "${path}",`, routeUrlsPointer, "route urls")
+  await writeGeneric(routes,`[RouteUrls.${name}]: {
+    options: {
+    },
+    component: ${name},
+  },`, routesScreensPointer, "screen string")
+  await writeGeneric(routes,`import ${name} from "screens/${name}";
+`, routesImportPointer, "route import")
+  await writeGeneric(routes,`import ${name} from "screens/${name}";
+`, routesImportPointer, "route import")
 }
 
 
@@ -160,6 +185,34 @@ export const {
 // const { data, isLoading } = useGet${capitalize(name)}Query({ id: 2 }, {}) get hook
 // const [create${capitalize(name)}, { isLoading, data, isSuccess }] = useCreate${capitalize(name)}Mutation() create hook
 // ${singular(name)}Service.endpoints.get${capitalize(name)}.select({id: 2})(store.getState()) access data from any function
+`)
+  }
+  return location;
+}
+export async function getScreenPath(name:string) {
+
+  const location = path.join(mobileScreens, `${name}.tsx`);
+
+  if (fs.existsSync(location)){
+    console.log("Screen already exists")
+  } else {
+    fs.writeFileSync(location, `import Text from "components/base/type/Text";
+import ScreenContainer from "components/ScreenContainer";
+import React from "react";
+import withScreen, { Screen } from "./withScreen";
+
+type ${name} = Screen & {
+}
+
+const ${name}: React.FC<${name}> = ({ children }) => {
+  return (
+      <ScreenContainer style={Styles.body}>
+        <Text>I am the ${name}</Text>
+      </ScreenContainer>
+  );
+};
+
+export default withScreen(${name});
 `)
   }
   return location;

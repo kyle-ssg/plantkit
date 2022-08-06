@@ -16,7 +16,7 @@ $ npm install -g ssgrtk
 $ ssg COMMAND
 running command...
 $ ssg (--version)
-ssgrtk/0.1.8 darwin-x64 node-v16.13.2
+ssgrtk/0.1.9 darwin-x64 node-v16.13.2
 $ ssg --help [COMMAND]
 USAGE
   $ ssg COMMAND
@@ -34,11 +34,15 @@ USAGE
 * [`ssg help [COMMAND]`](#ssg-help-command)
 * [`ssg patch`](#ssg-patch)
 * [`ssg plugins`](#ssg-plugins)
-* [`ssg plugins:inspect PLUGIN...`](#ssg-pluginsinspect-plugin)
 * [`ssg plugins:install PLUGIN...`](#ssg-pluginsinstall-plugin)
+* [`ssg plugins:inspect PLUGIN...`](#ssg-pluginsinspect-plugin)
+* [`ssg plugins:install PLUGIN...`](#ssg-pluginsinstall-plugin-1)
 * [`ssg plugins:link PLUGIN`](#ssg-pluginslink-plugin)
 * [`ssg plugins:uninstall PLUGIN...`](#ssg-pluginsuninstall-plugin)
+* [`ssg plugins:uninstall PLUGIN...`](#ssg-pluginsuninstall-plugin-1)
+* [`ssg plugins:uninstall PLUGIN...`](#ssg-pluginsuninstall-plugin-2)
 * [`ssg plugins update`](#ssg-plugins-update)
+* [`ssg screen`](#ssg-screen)
 * [`ssg update`](#ssg-update)
 
 ## `ssg action`
@@ -53,7 +57,7 @@ DESCRIPTION
   Reducer Slice: Dispatch an action that stores global state
 ```
 
-_See code: [dist/commands/action.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/action.ts)_
+_See code: [dist/commands/action.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/action.ts)_
 
 ## `ssg collection`
 
@@ -67,7 +71,7 @@ DESCRIPTION
   RTK Service: Retrieve a collection of things from an api
 ```
 
-_See code: [dist/commands/collection.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/collection.ts)_
+_See code: [dist/commands/collection.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/collection.ts)_
 
 ## `ssg create`
 
@@ -81,7 +85,7 @@ DESCRIPTION
   RTK Service: Create a thing with an api
 ```
 
-_See code: [dist/commands/create.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/create.ts)_
+_See code: [dist/commands/create.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/create.ts)_
 
 ## `ssg crud`
 
@@ -95,7 +99,7 @@ DESCRIPTION
   RTK Service: Create,get,update and delete a thing with an api
 ```
 
-_See code: [dist/commands/crud.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/crud.ts)_
+_See code: [dist/commands/crud.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/crud.ts)_
 
 ## `ssg delete`
 
@@ -109,7 +113,7 @@ DESCRIPTION
   RTK Service: Delete a thing with an api
 ```
 
-_See code: [dist/commands/delete.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/delete.ts)_
+_See code: [dist/commands/delete.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/delete.ts)_
 
 ## `ssg get`
 
@@ -123,7 +127,7 @@ DESCRIPTION
   RTK Service: Get a thing with an api
 ```
 
-_See code: [dist/commands/get.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/get.ts)_
+_See code: [dist/commands/get.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/get.ts)_
 
 ## `ssg help [COMMAND]`
 
@@ -143,7 +147,7 @@ DESCRIPTION
   Display help for ssg.
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.11/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.12/src/commands/help.ts)_
 
 ## `ssg patch`
 
@@ -157,7 +161,7 @@ DESCRIPTION
   RTK Service: Patch a thing with an api
 ```
 
-_See code: [dist/commands/patch.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/patch.ts)_
+_See code: [dist/commands/patch.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/patch.ts)_
 
 ## `ssg plugins`
 
@@ -177,7 +181,45 @@ EXAMPLES
   $ ssg plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.0.11/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.1.0/src/commands/plugins/index.ts)_
+
+## `ssg plugins:install PLUGIN...`
+
+Installs a plugin into the CLI.
+
+```
+USAGE
+  $ ssg plugins:install PLUGIN...
+
+ARGUMENTS
+  PLUGIN  Plugin to install.
+
+FLAGS
+  -f, --force    Run yarn install with force flag.
+  -h, --help     Show CLI help.
+  -v, --verbose
+
+DESCRIPTION
+  Installs a plugin into the CLI.
+
+  Can be installed from npm or a git url.
+
+  Installation of a user-installed plugin will override a core plugin.
+
+  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
+  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
+  the CLI without the need to patch and update the whole CLI.
+
+ALIASES
+  $ ssg plugins add
+
+EXAMPLES
+  $ ssg plugins:install myplugin 
+
+  $ ssg plugins:install https://github.com/someuser/someplugin
+
+  $ ssg plugins:install someuser/someplugin
+```
 
 ## `ssg plugins:inspect PLUGIN...`
 
@@ -289,6 +331,52 @@ ALIASES
   $ ssg plugins remove
 ```
 
+## `ssg plugins:uninstall PLUGIN...`
+
+Removes a plugin from the CLI.
+
+```
+USAGE
+  $ ssg plugins:uninstall PLUGIN...
+
+ARGUMENTS
+  PLUGIN  plugin to uninstall
+
+FLAGS
+  -h, --help     Show CLI help.
+  -v, --verbose
+
+DESCRIPTION
+  Removes a plugin from the CLI.
+
+ALIASES
+  $ ssg plugins unlink
+  $ ssg plugins remove
+```
+
+## `ssg plugins:uninstall PLUGIN...`
+
+Removes a plugin from the CLI.
+
+```
+USAGE
+  $ ssg plugins:uninstall PLUGIN...
+
+ARGUMENTS
+  PLUGIN  plugin to uninstall
+
+FLAGS
+  -h, --help     Show CLI help.
+  -v, --verbose
+
+DESCRIPTION
+  Removes a plugin from the CLI.
+
+ALIASES
+  $ ssg plugins unlink
+  $ ssg plugins remove
+```
+
 ## `ssg plugins update`
 
 Update installed plugins.
@@ -305,6 +393,20 @@ DESCRIPTION
   Update installed plugins.
 ```
 
+## `ssg screen`
+
+Screen: creates a ReactNative Screen and Route
+
+```
+USAGE
+  $ ssg screen
+
+DESCRIPTION
+  Screen: creates a ReactNative Screen and Route
+```
+
+_See code: [dist/commands/screen.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/screen.ts)_
+
 ## `ssg update`
 
 RTK Service: Update a thing with an api
@@ -317,5 +419,5 @@ DESCRIPTION
   RTK Service: Update a thing with an api
 ```
 
-_See code: [dist/commands/update.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/update.ts)_
+_See code: [dist/commands/update.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.9/dist/commands/update.ts)_
 <!-- commandsstop -->
