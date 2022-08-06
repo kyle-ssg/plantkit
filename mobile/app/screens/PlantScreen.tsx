@@ -9,7 +9,7 @@ type PlantScreen = Screen & {
   plant: TPlant
 }
 
-const PlantScreen: React.FC<PlantScreen> = ({ children, plant, push }) => {
+const PlantScreen: React.FC<PlantScreen> = ({ plant }) => {
   const content = useMemo(() => {
     return plant.content.map((v) => (
       <PlantContent content={v} key={v.category} />
