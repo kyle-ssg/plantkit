@@ -4,5 +4,4 @@ export default asStyle({
   body: {
     flex: 1,
   },
-
 })

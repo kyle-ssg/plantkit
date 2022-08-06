@@ -42,9 +42,7 @@ const Stack2 = () => (
 const MainAppNavigator = ({}) => {
   const insets = useInsets()
   const navStyle = useMemo(() => {
-    return [
-      Styles.body,
-    ]
+    return [Styles.body]
   }, [insets])
   return (
     <Flex style={navStyle}>

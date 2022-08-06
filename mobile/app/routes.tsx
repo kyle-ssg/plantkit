@@ -3,12 +3,10 @@ import { RouteUrls } from './route-urls'
 import BottomTabsNavigator from 'navigation/BottomTabsNavigator'
 import HomeScreen from 'screens/HomeScreen'
 import WebScreen from 'screens/WebScreen'
-
 import Tab1Screen from 'screens/Tab1Screen'
-
 import Tab2Screen from 'screens/Tab2Screen'
-
 import ModalScreen from 'screens/ModalScreen'
+import PlantScreen from 'screens/PlantScreen'
 
 // END OF IMPORT
 
@@ -58,6 +56,14 @@ export const routes: Record<RouteUrls, IRoute> = {
     },
     params: {},
     component: ModalScreen,
+  },
+  [RouteUrls.PlantScreen]: {
+    options: {},
+    component: PlantScreen,
+  },
+  [RouteUrls.PlantScreen]: {
+    options: {},
+    component: PlantScreen,
   },
   // END OF SCREENS
 }

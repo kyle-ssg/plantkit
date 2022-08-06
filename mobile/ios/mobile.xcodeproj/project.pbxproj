@@ -30,20 +30,20 @@
 		27B6E32725E010F700800717 /* FontAwesome5_Pro_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462138919F9B4C3D88ED0258 /* FontAwesome5_Pro_Light.ttf */; };
 		27B6E32825E010F700800717 /* FontAwesome5_Pro_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C200711F53C430595F55258 /* FontAwesome5_Pro_Regular.ttf */; };
 		27B6E32925E010F700800717 /* FontAwesome5_Pro_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99863E139B7B47E49141BA60 /* FontAwesome5_Pro_Solid.ttf */; };
+		29982A1EF5594CDFBC8AC50F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43A230EAFFB747ADA3C1EEA4 /* Lato-Regular.ttf */; };
 		29EEC43AF3EC4DE1BCB05E84 /* FontAwesome5_Pro_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E370A70F9A494D37A9E1A143 /* FontAwesome5_Pro_Brands.ttf */; };
 		348A0E35058244418D9D0CE5 /* FontAwesome5_Pro_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462138919F9B4C3D88ED0258 /* FontAwesome5_Pro_Light.ttf */; };
 		365337126E9FDE78D578F5C2 /* libPods-appcenter-staging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C0F034062BCDAD733704E5 /* libPods-appcenter-staging.a */; };
 		5002CCDBF18E41C815640AFB /* libPods-mobile-staging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF36949C068E056889EF00B /* libPods-mobile-staging.a */; };
 		75A15D746B57DE8488FDF2BF /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		7D69833B9F484054B4A8D382 /* FontAwesome5_Pro_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99863E139B7B47E49141BA60 /* FontAwesome5_Pro_Solid.ttf */; };
+		90A78FD4E9E34C6B93E9CC33 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39345F9136F64A718C6DDF44 /* Lato-Bold.ttf */; };
 		A76EA58DE1F48F5486914B1C /* libPods-appcenter-production.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EED8618777C03FB9D380A7E0 /* libPods-appcenter-production.a */; };
 		E20AE0E6E9A041639AA08C50 /* FontAwesome5_Pro_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C200711F53C430595F55258 /* FontAwesome5_Pro_Regular.ttf */; };
 		E500B82E28104E18001FC6F9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E500B82D28104E18001FC6F9 /* AppDelegate.mm */; };
 		E500B82F28104E18001FC6F9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E500B82D28104E18001FC6F9 /* AppDelegate.mm */; };
 		E500B83028104E18001FC6F9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E500B82D28104E18001FC6F9 /* AppDelegate.mm */; };
 		E500B83128104E18001FC6F9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E500B82D28104E18001FC6F9 /* AppDelegate.mm */; };
-		248A0CF6344D473B9AE2FB6C /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185704E0F3C74B87BBC94BDE /* Lato-Bold.ttf */; };
-		572FA7EC78654E1CB23CD5B6 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 796E45296A3541A0BD2BA05A /* Lato-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +70,9 @@
 		27B6E06525DFDE3600800717 /* TheApp Local.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "TheApp Local.entitlements"; path = "mobile/TheApp Local.entitlements"; sourceTree = "<group>"; };
 		27B6E18B25DFED5800800717 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		27B6E33025E010F700800717 /* mobile-staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39345F9136F64A718C6DDF44 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
 		3C55C56CDA87808E3D8E4BED /* Pods-appcenter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appcenter.debug.xcconfig"; path = "Target Support Files/Pods-appcenter/Pods-appcenter.debug.xcconfig"; sourceTree = "<group>"; };
+		43A230EAFFB747ADA3C1EEA4 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		462138919F9B4C3D88ED0258 /* FontAwesome5_Pro_Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Pro_Light.ttf; path = ../assets/fonts/FontAwesome5_Pro_Light.ttf; sourceTree = "<group>"; };
 		57835855309209A366DA9A97 /* Pods-mobile-mobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-mobileTests.debug.xcconfig"; path = "Target Support Files/Pods-mobile-mobileTests/Pods-mobile-mobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5BB3D82E00D1FEF7E0A9FEEC /* Pods-mobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-mobile-tvOSTests/Pods-mobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,8 +96,6 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EED8618777C03FB9D380A7E0 /* libPods-appcenter-production.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appcenter-production.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47AC33C4A6E5D29F96D12AD /* libPods-mobile-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		185704E0F3C74B87BBC94BDE /* Lato-Bold.ttf */ = {isa = PBXFileReference; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		796E45296A3541A0BD2BA05A /* Lato-Regular.ttf */ = {isa = PBXFileReference; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,8 +144,8 @@
 				462138919F9B4C3D88ED0258 /* FontAwesome5_Pro_Light.ttf */,
 				5C200711F53C430595F55258 /* FontAwesome5_Pro_Regular.ttf */,
 				99863E139B7B47E49141BA60 /* FontAwesome5_Pro_Solid.ttf */,
-				185704E0F3C74B87BBC94BDE /* Lato-Bold.ttf */,
-				796E45296A3541A0BD2BA05A /* Lato-Regular.ttf */,
+				39345F9136F64A718C6DDF44 /* Lato-Bold.ttf */,
+				43A230EAFFB747ADA3C1EEA4 /* Lato-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -399,8 +399,8 @@
 				348A0E35058244418D9D0CE5 /* FontAwesome5_Pro_Light.ttf in Resources */,
 				E20AE0E6E9A041639AA08C50 /* FontAwesome5_Pro_Regular.ttf in Resources */,
 				7D69833B9F484054B4A8D382 /* FontAwesome5_Pro_Solid.ttf in Resources */,
-				248A0CF6344D473B9AE2FB6C /* Lato-Bold.ttf in Resources */,
-				572FA7EC78654E1CB23CD5B6 /* Lato-Regular.ttf in Resources */,
+				90A78FD4E9E34C6B93E9CC33 /* Lato-Bold.ttf in Resources */,
+				29982A1EF5594CDFBC8AC50F /* Lato-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,12 +835,14 @@
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -907,12 +909,14 @@
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1014,12 +1018,14 @@
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1058,12 +1064,14 @@
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1582,7 +1590,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1644,7 +1652,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

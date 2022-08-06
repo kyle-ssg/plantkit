@@ -1,0 +1,168 @@
+diff --git a/node_modules/react-native-asset/lib/clean-assets/ios.js b/node_modules/react-native-asset/lib/clean-assets/ios.js
+index 5c90a48..ff12d63 100644
+--- a/node_modules/react-native-asset/lib/clean-assets/ios.js
++++ b/node_modules/react-native-asset/lib/clean-assets/ios.js
+@@ -3,7 +3,9 @@ const path = require('path');
+ const xcode = require('xcode');
+ const createGroupWithMessage = require('../react-native-lib/ios/createGroupWithMessage');
+ const getPlist = require('../react-native-lib/ios/getPlist');
++const getStagingPlist = require('../react-native-lib/ios/getStagingPlist');
+ const writePlist = require('../react-native-lib/ios/writePlist');
++const writeStagingPlist = require('../react-native-lib/ios/writeStagingPlist');
+ 
+ /**
+  * This function works in a similar manner to its Android version,
+@@ -12,6 +14,7 @@ const writePlist = require('../react-native-lib/ios/writePlist');
+ module.exports = function cleanAssetsIOS(files, projectConfig, { addFont }) {
+   const project = xcode.project(projectConfig.pbxprojPath).parseSync();
+   const plist = getPlist(project, projectConfig.sourceDir);
++  const plist2 = getStagingPlist(project, projectConfig.sourceDir);
+ 
+   createGroupWithMessage(project, 'Resources');
+ 
+@@ -33,6 +36,7 @@ module.exports = function cleanAssetsIOS(files, projectConfig, { addFont }) {
+     const existingFonts = (plist.UIAppFonts || []);
+     const allFonts = existingFonts.filter(file => removedFiles.indexOf(file) === -1);
+     plist.UIAppFonts = Array.from(new Set(allFonts)); // use Set to dedupe w/existing
++    plist2.UIAppFonts = Array.from(new Set(allFonts)); // use Set to dedupe w/existing
+   }
+ 
+   fs.writeFileSync(
+@@ -41,4 +45,5 @@ module.exports = function cleanAssetsIOS(files, projectConfig, { addFont }) {
+   );
+ 
+   writePlist(project, projectConfig.sourceDir, plist);
++  writeStagingPlist(project, projectConfig.sourceDir, plist2);
+ };
+diff --git a/node_modules/react-native-asset/lib/copy-assets/ios.js b/node_modules/react-native-asset/lib/copy-assets/ios.js
+index a87b1d8..f20d74f 100644
+--- a/node_modules/react-native-asset/lib/copy-assets/ios.js
++++ b/node_modules/react-native-asset/lib/copy-assets/ios.js
+@@ -3,7 +3,9 @@ const path = require('path');
+ const xcode = require('xcode');
+ const createGroupWithMessage = require('../react-native-lib/ios/createGroupWithMessage');
+ const getPlist = require('../react-native-lib/ios/getPlist');
++const getStagingPlist = require('../react-native-lib/ios/getStagingPlist');
+ const writePlist = require('../react-native-lib/ios/writePlist');
++const writeStagingPlist = require('../react-native-lib/ios/writeStagingPlist');
+ 
+ /**
+  * This function works in a similar manner to its Android version,
+@@ -12,6 +14,7 @@ const writePlist = require('../react-native-lib/ios/writePlist');
+ module.exports = function linkAssetsIOS(files, projectConfig, { addFont }) {
+   const project = xcode.project(projectConfig.pbxprojPath).parseSync();
+   const plist = getPlist(project, projectConfig.sourceDir);
++  const plist2 = getPlist(project, projectConfig.sourceDir);
+ 
+   createGroupWithMessage(project, 'Resources');
+ 
+@@ -33,6 +36,7 @@ module.exports = function linkAssetsIOS(files, projectConfig, { addFont }) {
+     const existingFonts = (plist.UIAppFonts || []);
+     const allFonts = [...existingFonts, ...addedFiles];
+     plist.UIAppFonts = Array.from(new Set(allFonts)); // use Set to dedupe w/existing
++    plist2.UIAppFonts = Array.from(new Set(allFonts)); // use Set to dedupe w/existing
+   }
+ 
+   fs.writeFileSync(
+@@ -41,4 +45,5 @@ module.exports = function linkAssetsIOS(files, projectConfig, { addFont }) {
+   );
+ 
+   writePlist(project, projectConfig.sourceDir, plist);
++  writeStagingPlist(project, projectConfig.sourceDir, plist2);
+ };
+diff --git a/node_modules/react-native-asset/lib/react-native-lib/ios/getStagingPlist.js b/node_modules/react-native-asset/lib/react-native-lib/ios/getStagingPlist.js
+new file mode 100644
+index 0000000..adb0fd6
+--- /dev/null
++++ b/node_modules/react-native-asset/lib/react-native-lib/ios/getStagingPlist.js
+@@ -0,0 +1,25 @@
++/**
++ * Copyright (c) 2015-present, Facebook, Inc.
++ *
++ * This source code is licensed under the MIT license found in the
++ * LICENSE file in the root directory of this source tree.
++ */
++
++const plistParser = require('plist');
++const getPlistPath = require('./getStagingPlistPath');
++const fs = require('fs');
++
++/**
++ * Returns Info.plist located in the iOS project
++ *
++ * Returns `null` if INFOPLIST_FILE is not specified.
++ */
++module.exports = function getPlist(project, sourceDir) {
++  const plistPath = getPlistPath(project, sourceDir);
++
++  if (!plistPath || !fs.existsSync(plistPath)) {
++    return null;
++  }
++
++  return plistParser.parse(fs.readFileSync(plistPath, 'utf-8'));
++};
+diff --git a/node_modules/react-native-asset/lib/react-native-lib/ios/getStagingPlistPath.js b/node_modules/react-native-asset/lib/react-native-lib/ios/getStagingPlistPath.js
+new file mode 100644
+index 0000000..92056df
+--- /dev/null
++++ b/node_modules/react-native-asset/lib/react-native-lib/ios/getStagingPlistPath.js
+@@ -0,0 +1,22 @@
++/**
++ * Copyright (c) 2015-present, Facebook, Inc.
++ *
++ * This source code is licensed under the MIT license found in the
++ * LICENSE file in the root directory of this source tree.
++ */
++
++const path = require('path');
++const getBuildProperty = require('./getBuildProperty');
++
++module.exports = function getPlistPath(project, sourceDir) {
++  const plistFile = getBuildProperty(project, 'INFOPLIST_FILE').replace("Info.plist", "staging-Info.plist");
++
++  if (!plistFile) {
++    return null;
++  }
++
++  return path.join(
++    sourceDir,
++    plistFile.replace(/"/g, '').replace('$(SRCROOT)', ''),
++  );
++};
+diff --git a/node_modules/react-native-asset/lib/react-native-lib/ios/writeStagingPlist.js b/node_modules/react-native-asset/lib/react-native-lib/ios/writeStagingPlist.js
+new file mode 100644
+index 0000000..c75f55c
+--- /dev/null
++++ b/node_modules/react-native-asset/lib/react-native-lib/ios/writeStagingPlist.js
+@@ -0,0 +1,31 @@
++/**
++ * Copyright (c) 2015-present, Facebook, Inc.
++ *
++ * This source code is licensed under the MIT license found in the
++ * LICENSE file in the root directory of this source tree.
++ */
++
++const plistParser = require('plist');
++const getPlistPath = require('./getStagingPlistPath');
++const fs = require('fs');
++
++/**
++ * Writes to Info.plist located in the iOS project
++ *
++ * Returns `null` if INFOPLIST_FILE is not specified or file is non-existent.
++ */
++module.exports = function writePlist(project, sourceDir, plist) {
++  const plistPath = getPlistPath(project, sourceDir);
++
++  if (!plistPath) {
++    return null;
++  }
++
++  // We start with an offset of -1, because Xcode maintains a custom
++  // indentation of the plist.
++  // Ref: https://github.com/facebook/react-native/issues/11668
++  return fs.writeFileSync(
++    plistPath,
++    `${plistParser.build(plist, { indent: '\t', offset: -1 })}\n`,
++  );
++};

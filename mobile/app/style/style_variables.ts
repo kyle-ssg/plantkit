@@ -33,10 +33,20 @@ export const styleVariables = {
   fontSizeH4: em(1), // 16px
   fontSizeH5: em(0.8),
 
-  normalFontFamily: Platform.select({ ios: 'System', android: 'System' }),
-  italicFontFamily: Platform.select({ ios: 'System', android: 'System' }),
-  boldFontFamily: Platform.select({ ios: 'System', android: 'System' }),
-  buttonFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+  // rename font files to match their
+  normalFontFamily: Platform.select({
+    ios: 'Lato-Regular',
+    android: 'Lato-Regular',
+  }),
+  italicFontFamily: Platform.select({
+    ios: 'Lato-Italic',
+    android: 'Lato-Italic',
+  }),
+  boldFontFamily: Platform.select({ ios: 'Lato-Bold', android: 'Lato-Bold' }),
+  buttonFontFamily: Platform.select({
+    ios: 'Lato-Regular',
+    android: 'Lato-Regular',
+  }),
 
   // Buttons
   buttonHeight: 48,

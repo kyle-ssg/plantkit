@@ -44,6 +44,7 @@ export default asStyle({
   },
 
   text: {
+    letterSpacing: 1.1,
     backgroundColor: 'transparent',
     color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
