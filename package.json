@@ -53,7 +53,6 @@
     "reactstrap": "9.0.1",
     "redux": "4.2.0",
     "redux-persist": "^6.0.0",
-    "ssgrtk": "^0.0.2",
     "yup": "0.32.11"
   },
   "devDependencies": {
@@ -93,6 +92,7 @@
     "patch-package": "6.4.7",
     "postcss": "^8.3.0",
     "prettier": "^2.5.1",
+    "ssgrtk": "^0.2.0",
     "sass": "1.32.13",
     "sass-loader": "10.2.0",
     "storybook-addon-pseudo-states": "^1.9.0",

@@ -6,5 +6,6 @@ export type Res = {
   todo: { id: string }
   thing: { id: string }
   tab: { id: string }
+  DeviceToken: { id: string }
   // END OF TYPES
 }

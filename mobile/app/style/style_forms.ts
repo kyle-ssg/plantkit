@@ -1,5 +1,6 @@
 import asStyle from './style-utils/asStyle'
 import { palette, styleVariables } from './style_variables'
+import { paddingBase } from './style_grid'
 
 export default asStyle({
   textInput: {
@@ -7,7 +8,10 @@ export default asStyle({
     fontSize: styleVariables.fontSizeH3,
     fontFamily: styleVariables.normalFontFamily,
     backgroundColor: 'white',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: palette.inputBorder,
     paddingLeft: styleVariables.gutterBase,
+    borderRadius: styleVariables.baseBorderRadius,
   },
 
   textInputGrey: {},
@@ -24,7 +28,8 @@ export default asStyle({
     color: palette.text,
   },
   inputLabel: {
-    fontSize: 16,
+    fontSize: styleVariables.fontSizeH3,
+    marginBottom: paddingBase,
   },
   selectBoxContainer: {
     padding: 10,

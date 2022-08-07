@@ -48,11 +48,17 @@ const MainAppNavigator = ({}) => {
     <Flex style={navStyle}>
       <Tab.Navigator
         screenOptions={defaultNavigationOptions as any}
-        initialRouteName={RouteUrls.Tab1Screen}
+        initialRouteName={`${RouteUrls.Tab1Screen}Container`}
         tabBar={(props) => <BottomNav {...props} />}
       >
-        <Tab.Screen name={RouteUrls.Tab1Screen} component={Stack1} />
-        <Tab.Screen name={RouteUrls.Tab2Screen} component={Stack2} />
+        <Tab.Screen
+          name={`${RouteUrls.Tab1Screen}Container`}
+          component={Stack1}
+        />
+        <Tab.Screen
+          name={`${RouteUrls.Tab2Screen}Container`}
+          component={Stack2}
+        />
       </Tab.Navigator>
     </Flex>
   )

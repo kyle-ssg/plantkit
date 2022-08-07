@@ -7,5 +7,6 @@ export type Req = {
   setLocale: { value: string }
   startup: { locale: string; token?: string }
   setTab: { id: string }
+  setDeviceToken: { id: string }
   // END OF TYPES
 }

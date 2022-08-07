@@ -16,6 +16,7 @@ import {
 import { Persistor } from 'redux-persist/es/types'
 
 import { tabSlice } from './hooks/useTab'
+import { DeviceTokenSlice } from './hooks/useDeviceToken'
 // END OF IMPORTS
 const createStore = () => {
   const storage =
@@ -28,6 +29,7 @@ const createStore = () => {
     startup: startupSlice.reducer,
     user: userSlice.reducer,
     tab: tabSlice.reducer,
+    DeviceToken: DeviceTokenSlice.reducer,
     // END OF REDUCERS
   })
 

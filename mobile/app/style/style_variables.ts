@@ -11,6 +11,7 @@ export const palette = {
   text: '#000000',
   textInactive: '#000000',
   textMuted: '#6A6A6A',
+  inputBorder: '#e1e1e1',
   textLight: '#fff',
   textLightInactive: 'rgba(255,255,255,0.8)',
   backdrop: 'rgba(0,0,0,.2)',

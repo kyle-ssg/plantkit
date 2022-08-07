@@ -55,7 +55,9 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
     <>
       {props.title && (
         <FormGroup>
-          <Text style={[Styles.textBold, props.textStyle]}>{props.title}</Text>
+          <Text style={[Styles.textBold, Styles.inputLabel, props.textStyle]}>
+            {props.title}
+          </Text>
         </FormGroup>
       )}
       <View>
