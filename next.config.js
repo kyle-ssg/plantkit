@@ -42,7 +42,6 @@ const nextConfig = async (phase, { defaultConfig }) => {
         trailingSlash: true,
         productionBrowserSourceMaps: true,
         typescript: {
-            ignoreDevErrors: true,
             ignoreBuildErrors: true,
         },
         webpack: (config, { dev }) => {
