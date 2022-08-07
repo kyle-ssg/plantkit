@@ -124,7 +124,7 @@ const BottomNav = ({ state, navigation }) => {
             </Flex>
           </Row>
         </Flex>
-        {/*<NavMenu index={state.index} />*/}
+        <NavMenu index={state.index} />
       </Row>
     </View>
   )

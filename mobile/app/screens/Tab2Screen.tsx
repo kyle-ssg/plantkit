@@ -5,13 +5,11 @@ import { useDeviceToken } from 'common/hooks/useDeviceToken'
 import OnboardingWall from 'components/OnboardingWall'
 import { useTab } from 'common/hooks/useTab'
 import { useSharedValue } from 'react-native-reanimated'
-import Button from 'components/base/forms/Button'
-import openConfirm from 'components/utility-components/openConfirm'
 
 type Tab2Screen = Screen & {}
 
 const Tab2Screen: FC<Tab2Screen> = ({}) => {
-  const { deviceToken, setDeviceToken } = useDeviceToken()
+  const { deviceToken } = useDeviceToken()
 
   const { tab } = useTab()
   const isFocused = tab === 1
@@ -19,15 +17,6 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
   useEffect(() => {
     active.value = isFocused ? 1 : 0
   }, [isFocused])
-  const clearDeviceToken = () => {
-    openConfirm(
-      'Are you sure?',
-      'This will clear your garden, you can access it again later by re-entering your key.',
-      () => {
-        setDeviceToken(null)
-      },
-    )
-  }
 
   if (!deviceToken)
     return (
@@ -35,13 +24,7 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
         <OnboardingWall animatedValue={active} />
       </ScreenContainer>
     )
-  return (
-    <ScreenContainer style={Styles.body}>
-      <Button onPress={clearDeviceToken} theme='secondary'>
-        Clear
-      </Button>
-    </ScreenContainer>
-  )
+  return <ScreenContainer style={Styles.body}></ScreenContainer>
 }
 
 export default withScreen(Tab2Screen)

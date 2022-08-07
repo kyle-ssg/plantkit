@@ -9,7 +9,9 @@ export default asStyle({
     fontSize: styleVariables.fontSizeH1,
     fontFamily: styleVariables.boldFontFamily,
   },
-
+  navIcon: {
+    fontSize: styleVariables.fontSizeH4,
+  },
   h2: {
     fontSize: styleVariables.fontSizeH2,
     fontFamily: styleVariables.boldFontFamily,
@@ -73,5 +75,9 @@ export default asStyle({
 
   textMuted: {
     color: palette.textMuted,
+  },
+
+  textDanger: {
+    color: palette.danger,
   },
 })

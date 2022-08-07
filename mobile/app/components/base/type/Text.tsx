@@ -21,6 +21,7 @@ const textWeightClass = asStyleProp({
 export type TextType = TextProps & {
   muted?: boolean
   light?: boolean
+  danger?: boolean
   size?: keyof typeof textSizeClass
   weight?: keyof typeof textWeightClass
   animated?: boolean
@@ -37,6 +38,7 @@ const TextComponent: FC<TextType> = (props) => {
         {
           text: true,
           textMuted: props.muted,
+          textDanger: props.danger,
           textWhite: props.light,
         },
         Styles[textSizeClass[props.size]],

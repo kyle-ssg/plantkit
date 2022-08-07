@@ -6,7 +6,6 @@ export enum RouteUrls {
   'Tab2Screen' = '/tab2',
   'ModalScreen' = '/modal',
   'PlantScreen' = 'plant',
-  'PlantScreen' = 'plant',
   'SettingsScreen' = 'settings',
   // END OF SCREENS
 }

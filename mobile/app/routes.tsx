@@ -71,7 +71,11 @@ export const routes: Record<RouteUrls, IRoute> = {
     component: PlantScreen,
   },
   [RouteUrls.SettingsScreen]: {
-    options: {},
+    options: {
+      headerShown: true,
+      headerBackTitle: '',
+      title: 'Settings',
+    },
     component: SettingsScreen,
   },
   // END OF SCREENS
