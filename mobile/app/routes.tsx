@@ -8,6 +8,8 @@ import Tab2Screen from 'screens/Tab2Screen'
 import ModalScreen from 'screens/ModalScreen'
 import PlantScreen from 'screens/PlantScreen'
 
+import SettingsScreen from 'screens/SettingsScreen'
+
 // END OF IMPORT
 
 export interface IRoute {
@@ -67,6 +69,10 @@ export const routes: Record<RouteUrls, IRoute> = {
       headerBackTitle: '',
     },
     component: PlantScreen,
+  },
+  [RouteUrls.SettingsScreen]: {
+    options: {},
+    component: SettingsScreen,
   },
   // END OF SCREENS
 }

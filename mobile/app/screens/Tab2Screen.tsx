@@ -6,6 +6,7 @@ import OnboardingWall from 'components/OnboardingWall'
 import { useTab } from 'common/hooks/useTab'
 import { useSharedValue } from 'react-native-reanimated'
 import Button from 'components/base/forms/Button'
+import openConfirm from 'components/utility-components/openConfirm'
 
 type Tab2Screen = Screen & {}
 
@@ -19,7 +20,13 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
     active.value = isFocused ? 1 : 0
   }, [isFocused])
   const clearDeviceToken = () => {
-    setDeviceToken(null)
+    openConfirm(
+      'Are you sure?',
+      'This will clear your garden, you can access it again later by re-entering your key.',
+      () => {
+        setDeviceToken(null)
+      },
+    )
   }
 
   if (!deviceToken)

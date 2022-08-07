@@ -37,7 +37,7 @@ const createStore = () => {
     reducer: persistReducer(
       {
         key: 'root',
-        whitelist: ['user'],
+        whitelist: ['user', 'DeviceToken'],
         version: 1,
         storage,
       },
