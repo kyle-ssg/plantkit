@@ -9,6 +9,7 @@ import { useSharedValue } from 'react-native-reanimated'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { API } from 'project/api'
 import { useTab } from 'common/hooks/useTab'
+import PlantList from 'components/PlantList'
 type Tab1Screen = Screen & {}
 const months = [
   'January',
@@ -31,29 +32,21 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
   const active = useSharedValue(isFocused ? 1 : 0)
   useEffect(() => {
     active.value = isFocused ? 1 : 0
-  }, [isFocused])
+  }, [isFocused, active])
   const data = useMemo(() => {
-    return filter(plantData.plants, (plant, key) => {
+    return filter(plantData.plants, (plant) => {
       return plant.sow.includes(month)
-    }).map((v, i) => (
-      <PlantSummary
-        delay={Math.floor(i / 6)}
-        animatedValue={active}
-        plant={v}
-        key={v.title}
-      />
-    ))
-  }, [month, active])
+    })
+  }, [month])
   const showMonthSelect = useCallback(() => {
     API.showOptions('Select a Month', months).then((res) => {
       active.value = 0
       setMonth(months[res])
       active.value = 1
     })
-  }, [setMonth])
-  // const month = moment().format('MMMM')
+  }, [setMonth, active])
   return (
-    <ScreenContainer style={[Styles.body]}>
+    <ScreenContainer withTabs style={[Styles.body]}>
       <View style={[Styles.container, Styles.mh15, Styles.mt10]}>
         <TouchableOpacity onPress={showMonthSelect}>
           <Text animated weight='bold' size='medium' muted>
@@ -61,17 +54,9 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <ScrollView bounces={false}>
-        <Row style={styles.container}>{data}</Row>
-      </ScrollView>
+      <PlantList animatedValue={active} data={data} />
     </ScreenContainer>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexWrap: 'wrap',
-    marginHorizontal: 10,
-  },
-})
 export default withScreen(Tab1Screen)

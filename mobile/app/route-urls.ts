@@ -7,5 +7,6 @@ export enum RouteUrls {
   'ModalScreen' = '/modal',
   'PlantScreen' = 'plant',
   'SettingsScreen' = 'settings',
+  'SearchScreen' = 'search',
   // END OF SCREENS
 }

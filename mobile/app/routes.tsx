@@ -10,6 +10,8 @@ import PlantScreen from 'screens/PlantScreen'
 
 import SettingsScreen from 'screens/SettingsScreen'
 
+import SearchScreen from 'screens/SearchScreen'
+
 // END OF IMPORT
 
 export interface IRoute {
@@ -77,6 +79,14 @@ export const routes: Record<RouteUrls, IRoute> = {
       title: 'Settings',
     },
     component: SettingsScreen,
+  },
+  [RouteUrls.SearchScreen]: {
+    options: {
+      headerShown: true,
+      headerBackTitle: '',
+      title: 'Settings',
+    },
+    component: SearchScreen,
   },
   // END OF SCREENS
 }

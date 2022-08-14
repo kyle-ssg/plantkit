@@ -4,7 +4,6 @@ import { TouchableOpacity, View } from 'react-native'
 import Text from 'components/base/type/Text'
 import { palette, styleVariables } from '../style/style_variables'
 import { FC, useEffect } from 'react'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -15,9 +14,9 @@ import {
   easingConfigSlide,
 } from 'project/animation-util/reanimations'
 import Logo from 'components/Logo'
-import { useNavigationState } from '@react-navigation/core'
 import NavMenu from 'components/NavMenu'
 import { useTab } from 'common/hooks/useTab'
+
 type TabItemType = {
   isActive: boolean
   index: number

@@ -145,6 +145,12 @@ const AppNavigator: FC<ComponentType> = ({}) => {
           component={routes[RouteUrls.SettingsScreen].component}
         />
 
+        <Stack.Screen
+          name={RouteUrls.SearchScreen}
+          options={routes[RouteUrls.SearchScreen].options}
+          component={routes[RouteUrls.SearchScreen].component}
+        />
+
         {/* END OF ROUTES*/}
       </Navigator>
       <LinkHandler />

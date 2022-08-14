@@ -1,17 +1,5 @@
 import cn from 'classnames'
 import { FC, ButtonHTMLAttributes } from 'react'
-export type ButtonType = ButtonHTMLAttributes<HTMLButtonElement> & {
-  iconRight?: string
-  iconLeft?: string
-  theme?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'text'
-    | 'danger'
-    | 'outlinePrimary'
-  size?: 'large' | 'default'
-}
 
 export const themeClassNames = {
   primary: 'btn-primary',
@@ -25,6 +13,13 @@ export const themeClassNames = {
 export const sizeClassNames = {
   large: 'btn-lg',
   default: '',
+}
+
+export type ButtonType = ButtonHTMLAttributes<HTMLButtonElement> & {
+  iconRight?: string
+  iconLeft?: string
+  theme?: keyof typeof themeClassNames
+  size?: keyof typeof sizeClassNames
 }
 
 export const Button: FC<ButtonType> = ({

@@ -4,11 +4,15 @@ import Flex from 'components/base/grid/Flex'
 import useInsets from 'components/base/useInset'
 import { SafeAreaView, ViewProps } from 'react-native'
 
-type ComponentType = ViewProps & { withoutSafeAreaView?: boolean }
+type ComponentType = ViewProps & {
+  withoutSafeAreaView?: boolean
+  withTabs?: boolean
+}
 
 const ScreenContainer: FC<ComponentType> = ({
   children,
   withoutSafeAreaView,
+  withTabs,
   ...props
 }) => {
   const insets = useInsets()
@@ -16,7 +20,7 @@ const ScreenContainer: FC<ComponentType> = ({
   return !withoutSafeAreaView ? (
     <SafeAreaView
       {...props}
-      style={[{ flex: 1 }, { marginTop: insets.top + 50 }]}
+      style={[{ flex: 1 }, { marginTop: insets.top + (withTabs ? 50 : 0) }]}
     >
       {children}
     </SafeAreaView>

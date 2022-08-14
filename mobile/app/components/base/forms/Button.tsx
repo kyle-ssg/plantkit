@@ -95,13 +95,7 @@ const Button: FunctionComponent<ButtonType> = ({
         disabled={disabled}
         android_ripple={android_ripple || darkAndroidRipple}
       >
-        {({ pressed }) => (
-          // @ts-ignore
-          <Text style={textStyles(pressed)}>
-            {/*@ts-ignore*/}
-            {children}
-          </Text>
-        )}
+        {({ pressed }) => <Text style={textStyles(pressed)}>{children}</Text>}
       </Pressable>
       {icon ? (
         <View style={Styles.buttonIcon}>

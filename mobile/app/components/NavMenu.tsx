@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { useNavigationState } from '@react-navigation/core'
 import { paddingBase } from '../style/style_grid'
 import { RouteUrls } from '../route-urls'
 import { useNavigation } from '@react-navigation/native' // we need this to make JSX compile
@@ -10,28 +9,40 @@ type NavMenuType = {
 
 const NavMenu: FC<NavMenuType> = ({ index }) => {
   const { push } = useNavigation()
+  const goSearch = () => {
+    push(RouteUrls.SearchScreen)
+  }
   const goSettings = () => {
     push(RouteUrls.SettingsScreen)
   }
   switch (index) {
     default:
       return (
-        <TouchableOpacity onPress={goSettings} style={styles.navItem}>
-          <Text weight='bold' light>
-            <FA5Pro style={Styles.navIcon} name='user-cog' />
-          </Text>
-        </TouchableOpacity>
+        <Row style={styles.navContainer}>
+          <TouchableOpacity onPress={goSearch} style={styles.navItem}>
+            <Text weight='bold' light>
+              <FA5Pro style={Styles.navIcon} name='search' />
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={goSettings} style={styles.navItem}>
+            <Text weight='bold' light>
+              <FA5Pro style={Styles.navIcon} name='user-cog' />
+            </Text>
+          </TouchableOpacity>
+        </Row>
       )
   }
 }
 
 const styles = StyleSheet.create({
-  navItem: {
+  navContainer: {
     position: 'absolute',
-    paddingRight: paddingBase * 2,
     right: 0,
-    width: 100,
-    alignItems: 'flex-end',
+    height: '100%',
+    justifyContent: 'flex-end',
+  },
+  navItem: {
+    paddingHorizontal: paddingBase * 2,
   },
 })
 
