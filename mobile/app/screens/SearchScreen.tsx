@@ -26,7 +26,7 @@ const SearchScreen: React.FC<SearchScreen> = ({ children }) => {
     )
   }, [search])
   return (
-    <ScreenContainer>
+    <ScreenContainer style={Styles.mt0}>
       <PlantList
         HeaderComponent={
           <View style={styles.searchContainer}>

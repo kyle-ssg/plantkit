@@ -10,6 +10,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { API } from 'project/api'
 import { useTab } from 'common/hooks/useTab'
 import PlantList from 'components/PlantList'
+import moment from 'moment'
 type Tab1Screen = Screen & {}
 const months = [
   'January',
@@ -26,7 +27,7 @@ const months = [
   'December',
 ]
 const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
-  const [month, setMonth] = useState('March')
+  const [month, setMonth] = useState(moment().format('MMMM'))
   const { tab } = useTab()
   const isFocused = tab === 0
   const active = useSharedValue(isFocused ? 1 : 0)
@@ -46,7 +47,7 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
     })
   }, [setMonth, active])
   return (
-    <ScreenContainer withTabs style={[Styles.body]}>
+    <ScreenContainer withTabs>
       <View style={[Styles.container, Styles.mh15, Styles.mt10]}>
         <TouchableOpacity onPress={showMonthSelect}>
           <Text animated weight='bold' size='medium' muted>

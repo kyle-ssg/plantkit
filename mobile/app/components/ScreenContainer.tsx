@@ -19,8 +19,8 @@ const ScreenContainer: FC<ComponentType> = ({
   // Note: if we use a transparent status bar we need to add StatusBar.currentHeight to padding top for android
   return !withoutSafeAreaView ? (
     <SafeAreaView
-      {...props}
       style={[{ flex: 1 }, { marginTop: insets.top + (withTabs ? 50 : 0) }]}
+      {...props}
     >
       {children}
     </SafeAreaView>

@@ -20,7 +20,7 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
 
   if (!deviceToken)
     return (
-      <ScreenContainer withTabs style={Styles.body}>
+      <ScreenContainer>
         <OnboardingWall animatedValue={active} />
       </ScreenContainer>
     )
