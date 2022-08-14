@@ -18,6 +18,7 @@ import { RouteUrls } from '../route-urls'
 type PlantSummaryType = {
   plant: TPlant
   delay: number
+  replace?: boolean
   animatedValue: SharedValue<number>
 }
 
@@ -25,11 +26,13 @@ const PlantSummary: FC<PlantSummaryType> = ({
   plant,
   delay,
   animatedValue,
+  replace: _replace,
 }) => {
   // @ts-ignore
-  const { push } = useNavigation()
+  const { push, replace } = useNavigation()
   const onPress = useCallback(() => {
-    push(RouteUrls.PlantScreen, {
+    const func = _replace ? replace : push
+    func(RouteUrls.PlantScreen, {
       plant,
       screenOptions: { title: plant.title },
     })

@@ -1,6 +1,6 @@
 import Text from 'components/base/type/Text'
 import ScreenContainer from 'components/ScreenContainer'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import withScreen, { Screen } from './withScreen'
 import { useIsFocused } from '@react-navigation/native'
 import { useSharedValue } from 'react-native-reanimated'
@@ -14,7 +14,11 @@ type SearchScreen = Screen & {}
 
 const SearchScreen: React.FC<SearchScreen> = ({ children }) => {
   const isFocused = useIsFocused()
-  const active = useSharedValue(isFocused ? 1 : 0)
+  const ref = useRef()
+  const active = useSharedValue(0)
+  useEffect(() => {
+    ref.current?.focus()
+  }, [ref.current])
   useEffect(() => {
     active.value = isFocused ? 1 : 0
   }, [isFocused, active])
@@ -28,9 +32,14 @@ const SearchScreen: React.FC<SearchScreen> = ({ children }) => {
   return (
     <ScreenContainer style={Styles.mt0}>
       <PlantList
+        replace
         HeaderComponent={
           <View style={styles.searchContainer}>
-            <TextInput placeholder='Search...' onChangeText={setSearch} />
+            <TextInput
+              inputRef={ref}
+              placeholder='Search...'
+              onChangeText={setSearch}
+            />
           </View>
         }
         animatedValue={active}

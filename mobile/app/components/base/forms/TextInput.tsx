@@ -20,6 +20,7 @@ export type TextInputProps = _TextInputProps & {
   style?: StyleProp<ViewStyle>
   invalid?: boolean
   disabled?: boolean
+  inputRef?: React.Ref<TextInputProps>
   textStyle?: TextStyle
   isLight?: boolean
   icon?: string
@@ -27,7 +28,6 @@ export type TextInputProps = _TextInputProps & {
 }
 
 const TextInput: FunctionComponent<TextInputProps> = (props) => {
-  const inputRef = useRef<_TextInput>()
   const [isSecureTextEntry, setIsSecureTextEntry] = useState<boolean>(
     props.secureTextEntry,
   )
@@ -75,11 +75,11 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
           ]}
           value={props.value}
           testID={props.testID}
-          ref={inputRef}
           blurOnSubmit={Platform.OS === 'ios' && !props.multiline}
           placeholderTextColor={
             props.invalid ? palette.danger : 'rgba(11,16,46,0.5)'
           }
+          ref={props.inputRef}
           selectionColor={palette.primary}
           multiline={props.multiline}
           textAlignVertical={props.textAlignVertical}
