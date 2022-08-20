@@ -5,69 +5,8 @@ import MD from 'react-native-markdown-display'
 
 type Tab3Screen = Screen & {}
 const recipes = [
-  {
-    instructions: `
-# Pasta alla Zozzona
-
-### Egg & Pecorino Paste
-- Beat **Egg** & **Pecorino** 
-- Add **Pepper**
-
-## Guanciale 
-- Add **Guanciale** on low for **15 mins**
-- Set Aside
-
-## Pasta Sauce 
-- Cook **Onion** & **Chorizo** at 310c for **5 mins**
-- Add **Salt** & **Pepper flakes**
-- **Start Pasta 3 mins less than package**
-- Add **Passata** after **5 mins**
-
-
-## Combine 
-- Add 1/4 cup **Pasta Water** to **Egg & Pecorino Paste**
-- Add **Pasta** with 1/2 cup **Pasta Water** for **2 minutes**
-- **Turn off heat** and add **remaining ingredients** stirring Rapidly.
-`,
-    ingredients: `
-# Ingredients
-
-- 3x **Egg Yolk** (45g)
-- 60g **Pecorino Cheese**
-- 115g **Guanciale**
-- 170g **Chorizo**
-- 1 **Onion**
-- 500g **Passata**
-- 400g **Pasta**
-`,
-  },
-  {
-    instructions: `
-# Spaghetti Bolognese
-
-- Add **Onion** to 310c for **5 mins** 
-- Add **Celery** + **Carrots** for **5 mins** 
-- Add **118ml Wine** for **5 mins** 
-- Add **Mince** and **Salt & Pepper**
-- Add **118ml Wine** once there is no liquid for **5 mins** 
-- Add **Passata, paste & Peeled Tomatoes**  
-- Fill up with **Water** 
-- Re-fill every **1 hour** for **4 hours**
-`,
-    ingredients: `
-# Ingredients
-
-- 1x **Onion**
-- 3x **Celery**
-- 3x **Carrots**
-- 500g **Beef Mince**
-- 500g **Pork Mince**
-- 1 Litre **Passata**
-- 400g **Tomatoes**
-- 150g **Tomato Paste**
-- 2x 118ml **Wine**
-`,
-  },
+  require('../recipes/pasta-alla-zozzona').default,
+  require('../recipes/bolognese').default,
 ]
 const Tab3Screen: React.FC<Tab3Screen> = ({ children }) => {
   return (
