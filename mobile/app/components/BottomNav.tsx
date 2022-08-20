@@ -107,7 +107,7 @@ const BottomNav = ({ state, navigation }) => {
               Grow
             </TabItem>
             <TabItem onPress={onPress} index={2} isActive={state.index === 2}>
-              Plants
+              Garden
             </TabItem>
             <Flex
               pointerEvents='none'

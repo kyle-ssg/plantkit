@@ -1,4 +1,3 @@
-import Text from 'components/base/type/Text'
 import ScreenContainer from 'components/ScreenContainer'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import withScreen, { Screen } from './withScreen'
