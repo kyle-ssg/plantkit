@@ -29,7 +29,7 @@ const months = [
 const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
   const [month, setMonth] = useState(moment().format('MMMM'))
   const { tab } = useTab()
-  const isFocused = tab === 0
+  const isFocused = tab === 1
   const active = useSharedValue(isFocused ? 1 : 0)
   useEffect(() => {
     active.value = isFocused ? 1 : 0

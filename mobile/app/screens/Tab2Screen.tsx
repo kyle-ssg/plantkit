@@ -16,7 +16,7 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
   const { deviceToken } = useDeviceToken()
 
   const { tab } = useTab()
-  const isFocused = tab === 1
+  const isFocused = tab === 0
   const active = useSharedValue(isFocused ? 1 : 0)
   const data = usePlantData(deviceToken?.id)
   useEffect(() => {
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
       width: 2,
       height: 2,
     },
-    shadowOpacity: 0.13,
-    shadowRadius: 2.62,
+    shadowOpacity: 0.05,
+    shadowRadius: 5,
     elevation: 3,
     borderRadius: 20,
   },
