@@ -19,7 +19,7 @@ const usePlantData = (id: string) => {
         })
     }
     return () => snapRef.current?.()
-  }, [id, data])
+  }, [id])
   return data
 }
 

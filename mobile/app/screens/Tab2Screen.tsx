@@ -43,7 +43,9 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
                 <View style={Styles.centeredContainer}>
                   <Doughnut
                     radius={100}
-                    percentage={Math.max(0, Math.min(100, value))}
+                    percentage={
+                      Math.ceil(Math.max(0, Math.min(100, value)) / 10) * 10
+                    }
                   />
                 </View>
               </View>
