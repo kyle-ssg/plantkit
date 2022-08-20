@@ -18,7 +18,9 @@ export const palette = {
   link: '#60A5FA',
   success: '#64CC8E',
   textHighlight: '#64CC8E',
-  danger: '#B83B3B',
+  warn: '#ec8441',
+  primaryLight: '#9acc64',
+  danger: '#e04958',
 }
 
 export type TProjectPalette = typeof palette

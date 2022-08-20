@@ -25,6 +25,15 @@ export const Project = {
       staging: 'wP_hi3rhZrahFSetndAeBt2FAuLe-gzABtKys',
     },
   },
+  firebase: {
+    apiKey: 'AIzaSyCfV3iSjeJJmN7YbotjqlgrtcXTWg0l3d4',
+    authDomain: 'plantkit-a8f60.firebaseapp.com',
+    projectId: 'plantkit-a8f60',
+    storageBucket: 'plantkit-a8f60.appspot.com',
+    messagingSenderId: '92292927743',
+    appId: '1:92292927743:web:fbe00f40064c6757783cca',
+    measurementId: 'G-4MFB6SP1LN',
+  },
   logs: {
     EVENTS: true,
     DATA: false,

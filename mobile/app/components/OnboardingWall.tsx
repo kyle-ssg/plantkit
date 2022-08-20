@@ -95,7 +95,8 @@ const OnboardingWall: FC<OnboardingWallType> = ({ animatedValue }) => {
             <View style={styles.inputContainer}>
               <TextInput
                 invalid={!!touched.apiKey && !!errors.apiKey}
-                onChangeText={(v) => changeHandler('apiKey', v)}
+                value={values.apiKey}
+                onChangeText={(v) => changeHandler('apiKey', v.toLowerCase())}
                 onBlur={() => setTouched({ apiKey: true })}
                 title='Set Up Your Garden'
                 placeholder='Growkit API Key'
