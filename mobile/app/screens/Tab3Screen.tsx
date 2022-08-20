@@ -5,8 +5,12 @@ import MD from 'react-native-markdown-display'
 
 type Tab3Screen = Screen & {}
 const recipes = [
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/pasta-alla-zozzona').default,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/bolognese').default,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('../recipes/pasanda').default,
 ]
 const Tab3Screen: React.FC<Tab3Screen> = ({ children }) => {
   return (
