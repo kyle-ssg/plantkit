@@ -6,7 +6,7 @@ import { SharedValue } from 'react-native-reanimated'
 type PlantListType = {
   data: TPlant[]
   replace?: boolean
-  animatedValue: SharedValue<number>
+  animatedValue?: SharedValue<number>
   HeaderComponent?: ReactNode
 }
 

@@ -15,6 +15,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import BreakpointProvider from 'components/base/BreakpointProvider'
 import { Constants } from 'common/utils'
 import CodepushUpdater from 'components/utility-components/CodePushUpdater'
+import StickyPlants from 'components/StickyPlants'
 
 const launchArgs = LaunchArguments.value()
 if (launchArgs.namespace) {
@@ -48,6 +49,7 @@ const App: FunctionComponent<Props> = () => (
                 <NavigationContainer linking={linking} ref={navigationRef}>
                   <AppNavigator />
                 </NavigationContainer>
+                <StickyPlants />
                 <CodepushUpdater />
               </LanguageHandler>
             </BreakpointProvider>

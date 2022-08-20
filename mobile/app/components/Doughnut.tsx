@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FC } from 'react' // we need this to make JSX compile
+import { FC, useState } from 'react' // we need this to make JSX compile
 import { StyleSheet, TextInput, View } from 'react-native'
 
 import Animated, {
@@ -16,6 +16,7 @@ const AnimatedCircle = Animated.createAnimatedComponent(Circle)
 type DoughnutType = {
   percentage?: number
   radius?: number
+  prefix?: string
   strokeWidth?: number
   max?: number
 }
@@ -24,6 +25,7 @@ const Doughnut: FC<DoughnutType> = ({
   percentage = 0,
   radius = 40,
   strokeWidth = 10,
+  prefix = '',
   max = 100,
 }) => {
   const animated = useSharedValue(0)
@@ -31,6 +33,8 @@ const Doughnut: FC<DoughnutType> = ({
   const inputRef = React.useRef()
   const circumference = 2 * Math.PI * radius
   const halfCircle = radius + strokeWidth
+  const [active, setActive] = useState()
+
   const animation = (toValue: number) => {
     animated.value = withTiming(toValue, {
       duration: 1000,
@@ -51,7 +55,7 @@ const Doughnut: FC<DoughnutType> = ({
   })
   const animatedTextProps = useAnimatedProps(() => {
     return {
-      text: `${Math.round(animated.value)}%`,
+      text: active && prefix ? prefix : `${Math.round(animated.value)}%`,
     }
   })
 
@@ -60,7 +64,11 @@ const Doughnut: FC<DoughnutType> = ({
   }, [percentage])
 
   return (
-    <View style={{ width: radius * 2, height: radius * 2 }}>
+    <View
+      onTouchStart={() => setActive(true)}
+      onTouchEnd={() => setActive(false)}
+      style={{ width: radius * 2, height: radius * 2 }}
+    >
       <Svg
         height={radius * 2}
         width={radius * 2}

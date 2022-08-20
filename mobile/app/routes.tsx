@@ -12,6 +12,8 @@ import SettingsScreen from 'screens/SettingsScreen'
 
 import SearchScreen from 'screens/SearchScreen'
 
+import Tab3Screen from 'screens/Tab3Screen'
+
 // END OF IMPORT
 
 export interface IRoute {
@@ -87,6 +89,10 @@ export const routes: Record<RouteUrls, IRoute> = {
       title: 'Settings',
     },
     component: SearchScreen,
+  },
+  [RouteUrls.Tab3Screen]: {
+    options: {},
+    component: Tab3Screen,
   },
   // END OF SCREENS
 }

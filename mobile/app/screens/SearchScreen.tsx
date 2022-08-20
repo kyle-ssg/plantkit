@@ -42,7 +42,6 @@ const SearchScreen: React.FC<SearchScreen> = ({ children }) => {
             />
           </View>
         }
-        animatedValue={active}
         data={data}
       />
     </ScreenContainer>

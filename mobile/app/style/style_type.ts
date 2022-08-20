@@ -7,7 +7,7 @@ export default asStyle({
   // --------------------------------------------------
   h1: {
     fontSize: styleVariables.fontSizeH1,
-    fontFamily: styleVariables.boldFontFamily,
+    fontFamily: styleVariables.headingFontFamily,
   },
   navIcon: {
     fontSize: styleVariables.fontSizeH4,
@@ -46,6 +46,7 @@ export default asStyle({
   },
 
   text: {
+    fontWeight: '300',
     letterSpacing: 1.1,
     backgroundColor: 'transparent',
     color: palette.text,

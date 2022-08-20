@@ -19,7 +19,7 @@ type PlantSummaryType = {
   plant: TPlant
   delay: number
   replace?: boolean
-  animatedValue: SharedValue<number>
+  animatedValue?: SharedValue<number>
 }
 
 const PlantSummary: FC<PlantSummaryType> = ({
@@ -37,29 +37,33 @@ const PlantSummary: FC<PlantSummaryType> = ({
       screenOptions: { title: plant.title },
     })
   }, [plant, push])
-  const style = useAnimatedStyle(() => {
-    const delayMultiple = (delay + 3) * (animatedValue.value ? 50 : 0)
-    const translateY = withDelay(
-      delayMultiple,
-      withTiming(
-        animatedValue.value ? 0 : 19,
-        animatedValue.value ? easingConfigSlideLong : immediateConfig,
-      ),
-    )
+  const style =
+    !!animatedValue &&
+    useAnimatedStyle(() => {
+      const delayMultiple = (delay + 3) * (animatedValue.value ? 50 : 0)
+      const translateY = withDelay(
+        delayMultiple,
+        withTiming(
+          animatedValue.value ? 0 : 19,
+          animatedValue.value ? easingConfigSlideLong : immediateConfig,
+        ),
+      )
 
-    const opacity = withDelay(
-      delayMultiple,
-      withTiming(
-        animatedValue.value ? 1 : 0,
-        animatedValue.value ? easingConfigSlideLong : immediateConfig,
-      ),
-    )
+      const opacity =
+        !!animatedValue &&
+        withDelay(
+          delayMultiple,
+          withTiming(
+            animatedValue.value ? 1 : 0,
+            animatedValue.value ? easingConfigSlideLong : immediateConfig,
+          ),
+        )
 
-    return {
-      transform: [{ translateY }],
-      opacity,
-    }
-  }, [])
+      return {
+        transform: [{ translateY }],
+        opacity,
+      }
+    }, [])
   return (
     <Animated.View style={cn(styles.container, Styles.mb10, style)}>
       <TouchableOpacity onPress={onPress} style={Styles.centeredContainer}>

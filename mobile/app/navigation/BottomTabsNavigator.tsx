@@ -39,6 +39,20 @@ const Stack2 = () => (
   </Navigator>
 )
 
+const Stack3 = () => (
+  <Navigator
+    screenOptions={defaultNavigationOptions}
+    initialRouteName={RouteUrls.Tab3Screen}
+  >
+    <Stack.Screen
+      name={RouteUrls.Tab3Screen}
+      options={routes[RouteUrls.Tab3Screen].options}
+      component={routes[RouteUrls.Tab3Screen].component}
+      initialParams={routes[RouteUrls.Tab3Screen].params}
+    />
+  </Navigator>
+)
+
 const MainAppNavigator = ({}) => {
   const insets = useInsets()
   const navStyle = useMemo(() => {
@@ -48,16 +62,20 @@ const MainAppNavigator = ({}) => {
     <Flex style={navStyle}>
       <Tab.Navigator
         screenOptions={defaultNavigationOptions as any}
-        initialRouteName={`${RouteUrls.Tab2Screen}Container`}
+        initialRouteName={`${RouteUrls.Tab3Screen}Container`}
         tabBar={(props) => <BottomNav {...props} />}
       >
         <Tab.Screen
-          name={`${RouteUrls.Tab2Screen}Container`}
-          component={Stack2}
+          name={`${RouteUrls.Tab3Screen}Container`}
+          component={Stack3}
         />
         <Tab.Screen
           name={`${RouteUrls.Tab1Screen}Container`}
           component={Stack1}
+        />
+        <Tab.Screen
+          name={`${RouteUrls.Tab2Screen}Container`}
+          component={Stack2}
         />
       </Tab.Navigator>
     </Flex>

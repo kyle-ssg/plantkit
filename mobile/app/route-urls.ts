@@ -8,5 +8,6 @@ export enum RouteUrls {
   'PlantScreen' = 'plant',
   'SettingsScreen' = 'settings',
   'SearchScreen' = 'search',
+  'Tab3Screen' = '/tab3',
   // END OF SCREENS
 }

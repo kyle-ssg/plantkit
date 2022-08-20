@@ -2,13 +2,13 @@ import em from './style-utils/style_pxToEm'
 import { Platform } from 'react-native'
 
 export const palette = {
-  bodyBackground: '#f9f9f9', // General app  background (overriding palette)
+  bodyBackground: '#f6f6f6', // General app  background (overriding palette)
   primary: '#3BB874',
   primaryOutline: '#3BB873',
   primaryPressed: '#3ec078',
   secondary: '#406661',
   secondaryPressed: '#446c66',
-  text: '#000000',
+  text: '#020202',
   textInactive: '#000000',
   textMuted: '#6A6A6A',
   inputBorder: '#e1e1e1',
@@ -30,7 +30,7 @@ export const styleVariables = {
   //= = Typography
   fontSizeBase: em(1), //16px
   fontSizeSmall: em(0.8), //14px
-  fontSizeH1: em(2), // 32px
+  fontSizeH1: em(3), // 32px
   fontSizeH2: em(1.45), // 24px
   fontSizeH3: em(1.25), // 20px
   fontSizeH4: em(1), // 16px
@@ -38,19 +38,25 @@ export const styleVariables = {
 
   // rename font files to match their
   normalFontFamily: Platform.select({
-    ios: 'Lato-Regular',
-    android: 'Lato-Regular',
+    ios: 'JosefinSans-SemiBold',
+    android: 'JosefinSans-SemiBold',
   }),
   italicFontFamily: Platform.select({
-    ios: 'Lato-Italic',
-    android: 'Lato-Italic',
+    ios: 'JosefinSans-Italic',
+    android: 'JosefinSans-Italic',
   }),
-  boldFontFamily: Platform.select({ ios: 'Lato-Bold', android: 'Lato-Bold' }),
+  boldFontFamily: Platform.select({
+    ios: 'JosefinSans-Bold',
+    android: 'JosefinSans-Bold',
+  }),
+  headingFontFamily: Platform.select({
+    ios: 'Allura-Regular',
+    android: 'Allura-Regular',
+  }),
   buttonFontFamily: Platform.select({
-    ios: 'Lato-Regular',
-    android: 'Lato-Regular',
+    ios: 'JosefinSans-SemiBold',
+    android: 'JosefinSans-SemiBold',
   }),
-
   // Buttons
   buttonHeight: 48,
 

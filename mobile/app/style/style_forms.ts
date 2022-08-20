@@ -7,6 +7,7 @@ export default asStyle({
     height: 48,
     fontSize: styleVariables.fontSizeH3,
     fontFamily: styleVariables.normalFontFamily,
+    fontWeight: '300',
     backgroundColor: 'white',
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: palette.inputBorder,

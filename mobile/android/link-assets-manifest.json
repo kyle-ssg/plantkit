@@ -18,12 +18,52 @@
       "sha1": "6aff2c579be62802b4ea861f7e2289693b7fc30a"
     },
     {
-      "path": "assets/fonts/Lato-Bold.ttf",
-      "sha1": "6b2c7b124cbf0aaeba48d57fb0fa19f2c6c69683"
+      "path": "assets/fonts/JosefinSans-Bold.ttf",
+      "sha1": "bd9707aad222a53f88a00d8389e7e0fbeefeaa52"
     },
     {
-      "path": "assets/fonts/Lato-Regular.ttf",
-      "sha1": "f59f9e4f3cbee981a5e6f58a279f9b9613f22599"
+      "path": "assets/fonts/JosefinSans-BoldItalic.ttf",
+      "sha1": "0dcd6b0232832a12a1c497b0c3a2746dc33a391b"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-Italic.ttf",
+      "sha1": "7acf1ab5a0305bed376c097072de4b5601e32dae"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-Light.ttf",
+      "sha1": "2913c10d2c6b2b12f4c4844381523c7a790e1e10"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-LightItalic.ttf",
+      "sha1": "4c8f3429a15b0038dea81ea94d46bb87fcb25a9e"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-Regular.ttf",
+      "sha1": "95f405d66578ae639e154a5249f4590098684ba1"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-SemiBold.ttf",
+      "sha1": "9695f75e7b8d95d6db3130eb7be32286538e4af7"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-SemiBoldItalic.ttf",
+      "sha1": "b8ec4d6c33033901489df706156609e528ed3d0f"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-Thin.ttf",
+      "sha1": "748c251e8bd6174f65e460dbc112605b2ef923da"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-ThinItalic.ttf",
+      "sha1": "22f143f4b10cf2ab536edd085d6dc630c29d87c4"
+    },
+    {
+      "path": "assets/fonts/SIL Open Font License.txt",
+      "sha1": "1c9f7a5962a3e7adab04938568df88656189b675"
+    },
+    {
+      "path": "assets/fonts/allura.regular.ttf",
+      "sha1": "9f36627fa1afab68887d63cf002ab6646e62a798"
     }
   ]
 }
