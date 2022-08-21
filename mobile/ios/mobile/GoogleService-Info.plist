@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>92292927743-ao57qt0vir1e3iioc51kpfao8mochok2.apps.googleusercontent.com</string>
+	<string>92292927743-edsctgnhbu6n1o003v9hf7fu200go8j9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.92292927743-ao57qt0vir1e3iioc51kpfao8mochok2</string>
+	<string>com.googleusercontent.apps.92292927743-edsctgnhbu6n1o003v9hf7fu200go8j9</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDqE_zbuVrYu-h-LZhLrVbb5LXLHBHgiwA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.plantkit.app</string>
+	<string>co.plantkit.app</string>
 	<key>PROJECT_ID</key>
 	<string>plantkit-a8f60</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:92292927743:ios:546f2ad368930e68783cca</string>
+	<string>1:92292927743:ios:6e6b2bd5316a06b8783cca</string>
 </dict>
 </plist>

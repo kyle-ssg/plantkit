@@ -20,8 +20,8 @@ const SettingsScreen: React.FC<SettingsScreen> = ({ children }) => {
   }
 
   return (
-    <Flex style={Styles.container}>
-      <Text danger style={Styles.mb10} size='h2'>
+    <Flex style={[Styles.container, Styles.mt20]}>
+      <Text danger style={Styles.mb10} weight='bold' size='h2'>
         Danger Zone
       </Text>
       <Row>

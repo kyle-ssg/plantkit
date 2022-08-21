@@ -17,12 +17,12 @@ export const Project = {
   },
   codepush: {
     android: {
-      production: 'yV-yBHA5oN37VcIbK6beYJpxEP5bwLnfxRFlg',
-      staging: 'J0SLIPWal3apmqRASVN4GhKLhpOeRVsIZiemU',
+      production: 'k8sD7nBA-5rr4wbirErJK5fGL81PZFaJpiPNN',
+      staging: 'Wy71o_xKWJaeovpTUs4RWQ_Js6XwEoTp_FZHb',
     },
     ios: {
-      production: 'cphbl2WbvVo3Maa_I8yW97-9W5RryaKklTWhx',
-      staging: 'wP_hi3rhZrahFSetndAeBt2FAuLe-gzABtKys',
+      production: 'k8sD7nBA-5rr4wbirErJK5fGL81PZFaJpiPNN',
+      staging: 'Wy71o_xKWJaeovpTUs4RWQ_Js6XwEoTp_FZHb',
     },
   },
   firebase: {

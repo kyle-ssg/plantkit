@@ -99,6 +99,8 @@ const OnboardingWall: FC<OnboardingWallType> = ({ animatedValue }) => {
                 onChangeText={(v) => changeHandler('apiKey', v.toLowerCase())}
                 onBlur={() => setTouched({ apiKey: true })}
                 title='Set Up Your Garden'
+                autoCorrect={false}
+                onSubmitEditing={onSubmit}
                 placeholder='Growkit API Key'
               />
             </View>
