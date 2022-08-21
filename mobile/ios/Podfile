@@ -4,7 +4,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
-IS_CI = ENV['APPCENTER_BUILD_ID']
+IS_CI = ENV['APPCENTER_BUILD_ID'] || ENV['BITRISE_PROJECT_PATH']
 PRODUCTION = IS_CI || ENV["PRODUCTION"] == "1"
 FLIPPER_ENABLED = !IS_CI
 FABRIC_ENABLED = false
