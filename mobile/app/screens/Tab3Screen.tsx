@@ -11,6 +11,8 @@ const recipes = [
   require('../recipes/bolognese').default,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/pasanda').default,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('../recipes/curry-base').default,
 ]
 const Tab3Screen: React.FC<Tab3Screen> = ({ children }) => {
   return (

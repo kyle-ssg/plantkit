@@ -5,6 +5,7 @@ import Text from 'components/base/type/Text'
 import { palette, styleVariables } from '../style/style_variables'
 import { FC, useEffect } from 'react'
 import Animated, {
+  interpolateColor,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -12,6 +13,7 @@ import Animated, {
 import {
   easingConfigFade,
   easingConfigSlide,
+  immediateConfig,
 } from 'project/animation-util/reanimations'
 import Logo from 'components/Logo'
 import NavMenu from 'components/NavMenu'
@@ -89,13 +91,23 @@ const BottomNav = ({ state, navigation }) => {
     if (!isFocused && !event.defaultPrevented) {
       navigation.navigate(route.name)
     }
+    setTab(index)
   }
-  useEffect(() => {
-    setTab(state.index)
-  }, [state.index])
 
+  const tabStyle = useAnimatedStyle(() => {
+    return {
+      backgroundColor: withTiming(
+        interpolateColor(
+          state.index,
+          [0, 1, 2],
+          [palette.primaryCooking, palette.primaryGrow, palette.primary],
+        ),
+        immediateConfig,
+      ),
+    }
+  }, [state.index])
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, tabStyle]}>
       <TabLine index={state.index} />
       <Row>
         <Flex>
@@ -128,7 +140,7 @@ const BottomNav = ({ state, navigation }) => {
         </Flex>
         <NavMenu index={state.index} />
       </Row>
-    </View>
+    </Animated.View>
   )
 }
 

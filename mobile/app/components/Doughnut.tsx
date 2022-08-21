@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useEffect, useRef } from 'react'
 import { FC, useState } from 'react' // we need this to make JSX compile
 import { StyleSheet, TextInput, View } from 'react-native'
 
@@ -26,14 +27,12 @@ const Doughnut: FC<DoughnutType> = ({
   radius = 40,
   strokeWidth = 10,
   prefix = '',
-  max = 100,
 }) => {
   const animated = useSharedValue(0)
-  const circleRef = React.useRef()
-  const inputRef = React.useRef()
+  const inputRef = useRef()
   const circumference = 2 * Math.PI * radius
   const halfCircle = radius + strokeWidth
-  const [active, setActive] = useState()
+  const [active, setActive] = useState(false)
 
   const animation = (toValue: number) => {
     animated.value = withTiming(toValue, {
@@ -41,7 +40,7 @@ const Doughnut: FC<DoughnutType> = ({
     })
   }
   const animatedProps = useAnimatedProps(() => {
-    const maxPerc = (100 * animated.value) / max
+    const maxPerc = (100 * animated.value) / 100
     const stroke = interpolateColor(
       animated.value,
       [0, 50, 70, 100],
@@ -59,7 +58,7 @@ const Doughnut: FC<DoughnutType> = ({
     }
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     animation(percentage)
   }, [percentage])
 
@@ -76,7 +75,6 @@ const Doughnut: FC<DoughnutType> = ({
       >
         <G rotation='-90' origin={`${halfCircle}, ${halfCircle}`}>
           <AnimatedCircle
-            ref={circleRef}
             cx='50%'
             cy='50%'
             r={radius}
@@ -99,10 +97,8 @@ const Doughnut: FC<DoughnutType> = ({
         </G>
       </Svg>
       <AnimatedTextInput
-        ref={inputRef}
         underlineColorAndroid='transparent'
         editable={false}
-        defaultValue={0}
         style={[
           StyleSheet.absoluteFillObject,
           { fontSize: radius / 2, textAlign: 'center' },

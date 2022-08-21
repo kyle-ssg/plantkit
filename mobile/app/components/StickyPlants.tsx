@@ -7,7 +7,7 @@ type StickyPlantsType = {}
 
 const StickyPlants: FC<StickyPlantsType> = ({}) => {
   const { tab } = useTab()
-  const show = tab !== 1
+  const show = tab !== 2
   return (
     <Fade style={styles.container} value={show ? 1 : 0}>
       <PlantData size='mini' />

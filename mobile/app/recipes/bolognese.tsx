@@ -7,7 +7,7 @@ export default {
 - Add **118ml Wine** for **5 mins** 
 - Add **Mince** and **Salt & Pepper**
 - Add **118ml Wine** once there is no liquid for **5 mins** 
-- Add **Passata, paste & Peeled Tomatoes**  
+- Add **Passata, Tomato Paste & Peeled Tomatoes**  
 - Fill up with **Water** 
 - Re-fill every **1 hour** for **4 hours**
 `,

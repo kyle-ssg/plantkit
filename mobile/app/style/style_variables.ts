@@ -3,7 +3,9 @@ import { Platform } from 'react-native'
 
 export const palette = {
   bodyBackground: '#f6f6f6', // General app  background (overriding palette)
-  primary: '#3BB874',
+  primaryCooking: '#ccad5e',
+  primaryGrow: '#3bb85e',
+  primary: '#3bb85e',
   primaryOutline: '#3BB873',
   primaryPressed: '#3ec078',
   secondary: '#406661',
