@@ -5,7 +5,13 @@ platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
 PRODUCTION = ENV["PRODUCTION"] == "1"
-IS_CI = ENV['APPCENTER_BUILD_ID']
+FLIPPER_ENABLED = true
+
+if (ENV['APPCENTER_BUILD_ID']) {
+    FLIPPER_ENABLED = false;
+    PRODUCTION = true;
+}
+
 $RNFirebaseAnalyticsWithoutAdIdSupport = true
 # ENV['RCT_NEW_ARCH_ENABLED'] = '1'
 
@@ -19,7 +25,7 @@ def shared_pods
     :path => config[:reactNativePath],
     # to enable hermes on iOS, change `false` to `true` and then install pods
     :production => PRODUCTION,
-    :flipper_configuration => FlipperConfiguration.enabled,
+    :flipper_configuration => FLIPPER_ENABLED,
     :hermes_enabled => true,
     :fabric_enabled => flags[:fabric_enabled],
     # An absolute path to your application root.
