@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		09203F9A7C58A11B15227E17 /* libPods-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D16B0A6500562420EBEAA18 /* libPods-mobile.a */; };
 		0B9B1D5D91B2496599ECC181 /* JosefinSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA821F7AE1C74E538029B4D4 /* JosefinSans-Regular.ttf */; };
-		0C63C108D2C7459C445149AF /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		0C63C108D2C7459C445149AF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		1ADBBF91F23742929019A00A /* JosefinSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16801FB1561540388926D195 /* JosefinSans-Thin.ttf */; };
 		2765AE8F24C4781500373166 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4F24C3984A00373166 /* main.m */; };
-		2765AE9224C4781500373166 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		2765AE9224C4781500373166 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2765AE9524C4781500373166 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5124C3984A00373166 /* Images.xcassets */; };
 		2765AE9724C4781500373166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
 		2765AEE724C4A74900373166 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4F24C3984A00373166 /* main.m */; };
@@ -38,7 +38,7 @@
 		4C0E73B13C454BBA86B86A6C /* JosefinSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6493A323F67542F690E2FC65 /* JosefinSans-LightItalic.ttf */; };
 		62FC2C1F21AE403587675496 /* JosefinSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BD5B1FCF17845508CBEA871 /* JosefinSans-Light.ttf */; };
 		6A4CC62FE4A94684AD48D5D9 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 211EC23537AB4D53B575C7FF /* SIL Open Font License.txt */; };
-		75A15D746B57DE8488FDF2BF /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		75A15D746B57DE8488FDF2BF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		7D69833B9F484054B4A8D382 /* FontAwesome5_Pro_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99863E139B7B47E49141BA60 /* FontAwesome5_Pro_Solid.ttf */; };
 		8D893E17DDE64DE5855DBD90 /* JosefinSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6564385555DE46D1BA867817 /* JosefinSans-ThinItalic.ttf */; };
 		9D91CAEB46CA4898AC67F567 /* JosefinSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A6AC3D0B4574AA50799E /* JosefinSans-SemiBold.ttf */; };
@@ -115,9 +115,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2765AE9224C4781500373166 /* BuildFile in Frameworks */,
-				0C63C108D2C7459C445149AF /* BuildFile in Frameworks */,
-				75A15D746B57DE8488FDF2BF /* BuildFile in Frameworks */,
+				2765AE9224C4781500373166 /* (null) in Frameworks */,
+				0C63C108D2C7459C445149AF /* (null) in Frameworks */,
+				75A15D746B57DE8488FDF2BF /* (null) in Frameworks */,
 				09203F9A7C58A11B15227E17 /* libPods-mobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1279,6 +1279,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RS9E45N5W4;
+				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
