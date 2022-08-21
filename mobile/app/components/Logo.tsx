@@ -7,7 +7,6 @@ type LogoType = {}
 
 const Logo: FC<LogoType> = (props) => {
   const { tab } = useTab()
-  console.log(tab)
   return (
     <View
       style={{
