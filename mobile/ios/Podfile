@@ -4,8 +4,9 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
-PRODUCTION = ENV["PRODUCTION"] == "1"
-IS_CI = ENV['APPCENTER_BUILD_ID']
+IS_CI = ENV['APPCENTER_BUILD_ID'] || ENV['BITRISE_PROJECT_PATH']
+PRODUCTION = IS_CI || ENV["PRODUCTION"] == "1"
+
 $RNFirebaseAnalyticsWithoutAdIdSupport = true
 # ENV['RCT_NEW_ARCH_ENABLED'] = '1'
 
@@ -31,19 +32,28 @@ target 'mobile' do
     shared_pods
 end
 
-target 'mobile-staging' do
-    shared_pods
-end
+#target 'mobile-staging' do
+#    shared_pods
+#end
+
+#target 'appcenter-staging' do
+#    shared_pods
+#end
+
 
 target 'appcenter-production' do
     shared_pods
 end
 
-target 'appcenter-staging' do
-    shared_pods
-end
-
 post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      if config.name == 'Debug'
+        config.build_settings['OTHER_SWIFT_FLAGS'] = ['$(inherited)', '-Onone']
+        config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
+      end
+    end
+  end
   react_native_post_install(installer)
   __apply_Xcode_12_5_M1_post_install_workaround(installer)
 end
