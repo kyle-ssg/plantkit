@@ -17,7 +17,7 @@ const recipes = [
 const Tab3Screen: React.FC<Tab3Screen> = ({ children }) => {
   return (
     <ScreenContainer withoutSafeAreaView withTabs>
-      <ScrollView style={{ flex: 1 }} bounces={false} pagingEnabled>
+      <ScrollView bounces={false} pagingEnabled>
         {recipes.map((r, i) => (
           <Row key={i} style={styles.slide}>
             <Flex value={2} style={styles.container}>
