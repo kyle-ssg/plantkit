@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 40,
-    paddingTop: 100,
+    paddingTop: 70,
   },
   dark: {
     backgroundColor: '#eaeaea',
