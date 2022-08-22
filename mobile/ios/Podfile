@@ -4,11 +4,8 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
-IS_CI = ENV['APPCENTER_BUILD_ID'] || ENV['BITRISE_PROJECT_PATH']
-PRODUCTION = IS_CI || ENV["PRODUCTION"] == "1"
-FLIPPER_ENABLED = !IS_CI
-FABRIC_ENABLED = false
-
+PRODUCTION = ENV["PRODUCTION"] == "1"
+IS_CI = ENV['APPCENTER_BUILD_ID']
 $RNFirebaseAnalyticsWithoutAdIdSupport = true
 # ENV['RCT_NEW_ARCH_ENABLED'] = '1'
 
@@ -24,7 +21,7 @@ def shared_pods
     :production => PRODUCTION,
     :flipper_configuration => FlipperConfiguration.enabled,
     :hermes_enabled => true,
-    :fabric_enabled => FABRIC_ENABLED,
+    :fabric_enabled => flags[:fabric_enabled],
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
