@@ -11,6 +11,10 @@ const plantNames = [
     text: 'Tomatoes',
     short: '🍅',
   },
+  {
+    text: 'Strawberries',
+    short: '🍓',
+  },
 ]
 
 const PlantData: FC<PlantDataType> = ({ size = 'regular' }) => {
@@ -23,7 +27,7 @@ const PlantData: FC<PlantDataType> = ({ size = 'regular' }) => {
         Object.keys(data).map((v, i) => {
           const value = data[v]
           return (
-            <View key={v} style={styles[`card${size}`]}>
+            <View key={v} style={[styles[`card${size}`], Styles.mr10]}>
               {size !== 'mini' && (
                 <Text style={Styles.mb10} size='h2'>
                   {plantNames[i].text}
