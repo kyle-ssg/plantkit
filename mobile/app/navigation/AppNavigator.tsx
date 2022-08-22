@@ -74,7 +74,9 @@ const AppNavigator: FC<ComponentType> = ({}) => {
       }
       setUser(user)
     })
-    DevSettings.addMenuItem('Toggle Storybook', toggleStorybook)
+    if (__DEV__) {
+      DevSettings.addMenuItem('Toggle Storybook', toggleStorybook)
+    }
     // eslint-disable-next-line
   }, [])
 
