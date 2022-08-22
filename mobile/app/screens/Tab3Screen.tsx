@@ -2,6 +2,8 @@ import ScreenContainer from 'components/ScreenContainer'
 import React from 'react'
 import withScreen, { Screen } from './withScreen'
 import MD from 'react-native-markdown-display'
+import { useDeviceOrientation } from '@react-native-community/hooks'
+import { Dimensions } from 'react-native'
 
 type Tab3Screen = Screen & {}
 const recipes = [
@@ -15,15 +17,30 @@ const recipes = [
   require('../recipes/curry-base').default,
 ]
 const Tab3Screen: React.FC<Tab3Screen> = ({ children }) => {
+  const orientation = useDeviceOrientation()
   return (
     <ScreenContainer withoutSafeAreaView withTabs>
       <ScrollView bounces={false} pagingEnabled>
         {recipes.map((r, i) => (
           <Row key={i} style={styles.slide}>
-            <Flex value={2} style={styles.container}>
+            <Flex
+              value={2}
+              style={[
+                styles.container,
+                { height: Dimensions.get('window').height },
+              ]}
+            >
               <MD style={mdStyle}>{r.instructions}</MD>
             </Flex>
-            <Flex style={[styles.container, styles.dark]}>
+            <Flex
+              style={[
+                styles.container,
+                {
+                  height: Dimensions.get('window').height,
+                },
+                styles.dark,
+              ]}
+            >
               <MD style={ingredientsStyle}>{r.ingredients}</MD>
             </Flex>
           </Row>
@@ -35,8 +52,6 @@ const Tab3Screen: React.FC<Tab3Screen> = ({ children }) => {
 
 const styles = StyleSheet.create({
   slide: {
-    height: DeviceHeight,
-    width: DeviceWidth,
     alignItems: 'stretch',
   },
   container: {

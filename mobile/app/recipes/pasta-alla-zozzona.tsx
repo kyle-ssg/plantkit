@@ -8,12 +8,12 @@ export default {
 
 ## Guanciale 
 - Add **Guanciale** on low for **15 mins**
-- Set Aside
+- **Set aside**
 
 ## Pasta Sauce 
 - Cook **Onion** & **Chorizo** at 310c for **5 mins**
 - Add **Salt** & **Pepper flakes**
-- **Start Pasta 3 mins less than package**
+- Start Pasta **3 mins less than package**
 - Add **Passata** after **5 mins**
 
 
@@ -31,6 +31,6 @@ export default {
 - 170g **Chorizo**
 - 1 **Onion**
 - 500g **Passata**
-- 400g **Pasta**
+- 400g **Pasta** (40g Salt, 4 litres Water)
 `,
 }
