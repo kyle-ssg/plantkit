@@ -1,9 +1,9 @@
 import ScreenContainer from 'components/ScreenContainer'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import withScreen, { Screen } from './withScreen'
 import MD from 'react-native-markdown-display'
 import { useDeviceOrientation } from '@react-native-community/hooks'
-import { Dimensions } from 'react-native'
+import { Dimensions, ScrollViewProps, ScrollView } from 'react-native'
 
 type Tab3Screen = Screen & {}
 const recipes = [
@@ -16,11 +16,15 @@ const recipes = [
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/curry-base').default,
 ]
-const Tab3Screen: React.FC<Tab3Screen> = ({ children }) => {
+const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()
+  const ref = useRef<ScrollView>()
+  useEffect(() => {
+    ref?.current?.scrollTo({ y: 0, animated: false })
+  }, [orientation])
   return (
     <ScreenContainer withoutSafeAreaView withTabs>
-      <ScrollView bounces={false} pagingEnabled>
+      <ScrollView ref={ref} bounces={false} pagingEnabled>
         {recipes.map((r, i) => (
           <Row key={i} style={styles.slide}>
             <Flex
