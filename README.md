@@ -1,4 +1,10 @@
+# A React Native Project with Arduino to detect soil moisture / when plants need watering
+
 ![gif1.gif](gif1.gif)gif
+
+
+### Allows you to see what to grow during each month in England
+
 ![gif2.gif](gif2.gif)gif
 
 

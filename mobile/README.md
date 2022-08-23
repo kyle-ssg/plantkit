@@ -1,6 +1,5 @@
 Manual changes from a vanilla react-native setup
 
-- disabled flipper for now since it doesnt compile in prod mode
 - added .jsconfig for aliases
 - added appcenter pre/postbuild
 - changed app.json
@@ -12,7 +11,7 @@ Manual changes from a vanilla react-native setup
 - added postinstall step to auto pod install
 - added pre-build/post-build step sh files for appcenter
 - added react-native-reanimated and turbo module support, see babel.config
-- using hermes engine, mainly due to react-native-reanimated
+- using hermes engine, mainly due to react-native-reanimated and Flipper
 
 ** iOS Changes **
 - added Swift Bridging Header
