@@ -47,14 +47,26 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
   }, [setMonth, active])
   return (
     <ScreenContainer withTabs>
-      <View style={[Styles.container, Styles.mh15, Styles.mt10]}>
-        <TouchableOpacity onPress={showMonthSelect}>
-          <Text animated weight='bold' size='medium' muted>
-            {month} <FA5Pro name='chevron-down' />
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <PlantList month={month} animatedValue={active} data={data} />
+      <PlantList
+        HeaderComponent={
+          <View style={[Styles.container, Styles.mh15, Styles.mt10]}>
+            <TouchableOpacity onPress={showMonthSelect}>
+              <Text
+                style={Styles.pv10}
+                animated
+                weight='bold'
+                size='medium'
+                muted
+              >
+                {month} <FA5Pro name='chevron-down' />
+              </Text>
+            </TouchableOpacity>
+          </View>
+        }
+        month={month}
+        animatedValue={active}
+        data={data}
+      />
     </ScreenContainer>
   )
 }

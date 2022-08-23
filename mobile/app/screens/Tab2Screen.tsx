@@ -27,9 +27,7 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
     )
   return (
     <ScreenContainer withTabs>
-      <Flex style={{ position: 'relative' }}>
-        <PlantData />
-      </Flex>
+      <PlantData />
     </ScreenContainer>
   )
 }
