@@ -15,6 +15,8 @@ const recipes = [
   require('../recipes/pasanda').default,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/curry-base').default,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('../recipes/cookies').default,
 ]
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()
