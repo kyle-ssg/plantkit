@@ -73,7 +73,7 @@ const PlantSummary: FC<PlantSummaryType> = ({
     <Animated.View style={cn(styles.container, Styles.mb10, style)}>
       <TouchableOpacity onPress={onPress} style={Styles.centeredContainer}>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={plant.image} resizeMode='cover' />
+          <Image style={styles.image} source={plant.image} />
         </View>
         <Row style={Styles.centeredContainer}>
           <Text size='small'>{plant.title}</Text>
