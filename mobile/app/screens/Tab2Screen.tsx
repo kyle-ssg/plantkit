@@ -6,14 +6,12 @@ import OnboardingWall from 'components/OnboardingWall'
 import { useTab } from 'common/hooks/useTab'
 import { useSharedValue } from 'react-native-reanimated'
 import PlantData from 'components/PlantData'
-import { useCameraDevices, Camera } from 'react-native-vision-camera'
 type Tab2Screen = Screen & {}
 
 const Tab2Screen: FC<Tab2Screen> = ({}) => {
   const { deviceToken } = useDeviceToken()
 
   const { tab } = useTab()
-  const devices = useCameraDevices('wide-angle-camera')
 
   const isFocused = tab === 2
   const active = useSharedValue(isFocused ? 1 : 0)
