@@ -29,12 +29,22 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
     )
   return (
     <ScreenContainer withTabs>
-      <PlantData />
-      <View style={{ width: 200, height: 200 }}>
-        {!!devices?.back && (
-          <Camera style={{ flex: 1 }} isActive device={devices?.back} />
-        )}
-      </View>
+      <Flex style={{ position: 'relative' }}>
+        <PlantData />
+        <View
+          style={{
+            width: 300,
+            height: 300,
+            position: 'absolute',
+            right: 20,
+            top: 10,
+          }}
+        >
+          {!!devices?.front && (
+            <Camera style={{ flex: 1 }} isActive device={devices?.front} />
+          )}
+        </View>
+      </Flex>
     </ScreenContainer>
   )
 }
