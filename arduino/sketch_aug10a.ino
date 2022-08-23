@@ -1,29 +1,33 @@
 #include <SPI.h>
 #include <WiFiNINA.h>
 #include <Bridge.h>
-#include <HttpClient.h>
 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
 char ssid[] = "2.4Ghz Where's the any key?";        // your network SSID (name)
 char pass[] = "Succul3nt!";    // your network password (use for WPA, or use as key for WEP)
 int status = WL_IDLE_STATUS;     // the Wifi radio's status
-char data[] = "";
 
-#define MAXREADINGS 50
-#define INT_DELAY  100
-#define SERIAL_FREQUENCY 5
+#define MAXREADINGS 10 // How many readings to hold for average
+#define INT_DELAY  1000 // How long to delay per reading
+#define REQUEST_FREQUENCY 100 // How many readings to do before posting to the server
 
+float wets[] = {200.0,212.0,200.0,180,180,180}; // Analog readings that are considered 100%
+float drys[] = {521.0,521.0,522.0,400,400,400}; // Analog readings that are considered 0%
+char server[] = "plantkit.vercel.app";    // name address for Google (using DNS)
 
-;float wets[] = {200.0,212.0,200.0,180,180,180};
-float drys[] = {521.0,521.0,522.0,400,400,400};
+// Analog readings
 int readings1[MAXREADINGS];
 int readings2[MAXREADINGS];
 int readings3[MAXREADINGS];
 int readings4[MAXREADINGS];
 int readings5[MAXREADINGS];
 int readings6[MAXREADINGS];
-int index;
-boolean arraysAreReady;
+
+int index; // Current index for averages
+int readIndex; // Current index for reads
+int lastPosted;
+int lastPosted2;
+boolean arraysAreReady; // Whether to start recalculating the average again
 
 // -----------------------------------------------------------------
 //
@@ -47,13 +51,14 @@ if (WiFi.status() == WL_NO_MODULE) {
   Serial.println(ssid);
 
   // Create open network. Change this line if you want to create an WEP network:
-  status = WiFi.beginAP(ssid, pass);
+  status = WiFi.begin(ssid, pass);
 
- if (status != WL_AP_LISTENING) {
-    Serial.println("Creating access point failed");
-    // don't continue
-    while (true);
+   while (WiFi.status() != WL_CONNECTED) {  //Wait for the WiFI connection completion
+    delay(500);
+    Serial.println("Waiting for connection");
   }
+
+
  // print the SSID of the network you're attached to:
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());
@@ -95,30 +100,16 @@ int calculateAverage(int * readings)
 
 void displayAverages()
 {
-  Serial.print("Digital");
-  digitalRead(0);
-  
-  Serial.print("Index is = ");
-  Serial.print(index);
-  Serial.println("");
-  Serial.print("A0 - ");
-  Serial.print(calculateAverage(readings1));
-  Serial.println("");
-  Serial.print("A1 - ");
-  Serial.print(calculateAverage(readings2));
-  Serial.println("");
-  Serial.print("A2 - ");
-  Serial.print(calculateAverage(readings3));
-  Serial.println("");
-  Serial.print("A3 - ");
-  Serial.print(calculateAverage(readings4));
-  Serial.println("");
-  Serial.print("A4 - ");
-  Serial.print(calculateAverage(readings5));
-  Serial.println("");
-  Serial.print("A5 - ");
-  Serial.print(calculateAverage(readings6));
-  Serial.println("");
+  lastPosted = calculateAverage(readings1) * 1;
+  lastPosted2= calculateAverage(readings2) * 1;
+  postData("{\"1\":" + String(lastPosted)+",\"2\":"+ String(lastPosted2) + "}");
+}
+
+void displayReading(int reading, int reading2)
+{
+  lastPosted = reading * 1;
+  lastPosted2 = reading2 * 1;
+  postData("{\"1\":" + String(lastPosted)+",\"2\":"+ String(lastPosted2) + "}");
 }
 
 // -----------------------------------------------------------------
@@ -128,18 +119,6 @@ void displayAverages()
 float getPercentage(float v,int index) {
   int wet = wets[index];
   int dry = drys[index];
-//  Serial.print("index:");
-//  Serial.print(index);
-//  Serial.println("");
-//  Serial.print("wet:");
-//  Serial.print(wet);
-//  Serial.println("");
-//  Serial.println("");
-//  Serial.print("dry:");
-//  Serial.print(dry);
-//  Serial.println("");
-//  Serial.print("actual:");
-//  Serial.print(v);
   float valueBaseline = v-wet;
   float baseline = dry-wet;
   float value = (float) valueBaseline/baseline;
@@ -155,29 +134,30 @@ void readSensors()
   readings5[index] = getPercentage(analogRead(A4),4);
   readings6[index] = getPercentage(analogRead(A5),5);
 
-  
-//  readings1[index] = analogRead(A0);
-//  readings2[index] = analogRead(A1);
-//  readings3[index] = analogRead(A2);
-//  readings4[index] = analogRead(A3);
-//  readings5[index] = analogRead(A4);
-//  readings6[index] = analogRead(A5);
   if (++index >= MAXREADINGS) {
     arraysAreReady = true;
     index = 0;
   }
 }
 
-void  postData() {
+WiFiClient client;
 
-  HttpClient client;
-  client.get("http://www.arduino.cc/asciilogo.txt");
-  while (client.available()) {
-    char c = client.read();
-    Serial.print(c);
+void postData(String body){
+  if(WiFi.status()== WL_CONNECTED){   //Check WiFi connection status
+     if (client.connectSSL(server, 443)){
+      Serial.println("connected to server");
+      client.println("POST /api/record/ HTTP/1.1");
+      client.println("Accept: text/html");
+      client.println("User-Agent: Arduino");
+      client.println("Content-Length: " + String(body.length()));
+      client.println("Host: plantkit.vercel.app");
+      client.println("Connection: close");
+      client.println();
+      client.println(body);
+     }else{
+      Serial.println("Error connecting to server");
+     }
   }
-  Serial.flush();
-  delay(5000);
 }
 
 
@@ -198,8 +178,32 @@ void setup()
 void loop()
 {
   readSensors();
-  delay(INT_DELAY);
-  if (index % SERIAL_FREQUENCY == 0) {
+  readIndex ++;
+  int currentAverage = calculateAverage(readings1);
+  int currentReading = readings1[index-1] * 1;
+  int currentAverage2 = calculateAverage(readings2);
+  int currentReading2 = readings2[index-1] * 1;
+  int difference = currentReading - lastPosted;
+  int differenceR2 = currentReading2 - lastPosted2;
+
+  if (readIndex == REQUEST_FREQUENCY) {
+    readIndex = 0;
     displayAverages();
+  } else if ((difference<=-5 || difference>=5) || (differenceR2<=-5 || differenceR2>=5)) { // Data is changing rapidly, keep sending up until it levels out
+    delay(INT_DELAY/2);
+    readSensors(); // Take another reading to make sure it wasn't a fluke
+    int currentReading2 = readings1[index-1] * 1;
+    int difference2 = currentReading2 - lastPosted;
+    int currentReading2R2 = readings2[index-1] * 1;
+    int difference2R2 = currentReading2R2 - lastPosted2;
+    if ((difference2<=-5 || difference2>=5) || (difference2R2<=-5 || difference2R2>=5)) {
+      displayReading(currentReading2, currentReading2R2);
+    }
+    //Clear all averages as they will be skewed
+    readIndex = 0;
+    index = 0;
   }
-  }
+
+    delay(INT_DELAY);
+
+}
