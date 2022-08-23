@@ -1,6 +1,6 @@
 export default {
   instructions: `
-# Chicken Pasanda
+# Curry Base
 
 - Add **Onion** 
 - Add **Pepper, Cabbage & tomato** 
