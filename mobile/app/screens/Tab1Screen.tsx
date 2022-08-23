@@ -3,14 +3,13 @@ import withScreen, { Screen } from './withScreen'
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import plantData from '../plantData'
 import { filter } from 'lodash'
-import PlantSummary from 'components/PlantSummary'
-import { useIsFocused } from '@react-navigation/native'
 import { useSharedValue } from 'react-native-reanimated'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { API } from 'project/api'
 import { useTab } from 'common/hooks/useTab'
 import PlantList from 'components/PlantList'
 import moment from 'moment'
+
 type Tab1Screen = Screen & {}
 const months = [
   'January',
@@ -55,7 +54,7 @@ const Tab1Screen: FC<Tab1Screen> = ({ push }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <PlantList animatedValue={active} data={data} />
+      <PlantList month={month} animatedValue={active} data={data} />
     </ScreenContainer>
   )
 }

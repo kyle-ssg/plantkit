@@ -14,11 +14,13 @@ import {
 } from 'project/animation-util/reanimations'
 import { useNavigation } from '@react-navigation/native'
 import { RouteUrls } from '../route-urls'
+import { paddingBase } from '../style/style_grid'
 
 type PlantSummaryType = {
   plant: TPlant
   delay: number
   replace?: boolean
+  month?: string
   animatedValue?: SharedValue<number>
 }
 
@@ -26,6 +28,7 @@ const PlantSummary: FC<PlantSummaryType> = ({
   plant,
   delay,
   animatedValue,
+  month,
   replace: _replace,
 }) => {
   // @ts-ignore
@@ -64,13 +67,18 @@ const PlantSummary: FC<PlantSummaryType> = ({
         opacity,
       }
     }, [])
+  const indoors =
+    !!plant.indoorsUntil && !!month && !plant.indoorsUntil.includes(month)
   return (
     <Animated.View style={cn(styles.container, Styles.mb10, style)}>
       <TouchableOpacity onPress={onPress} style={Styles.centeredContainer}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={plant.image} resizeMode='cover' />
         </View>
-        <Text size='small'>{plant.title}</Text>
+        <Row style={Styles.centeredContainer}>
+          <Text size='small'>{plant.title}</Text>
+          {indoors && <FA5Pro style={styles.icon} name='house' />}
+        </Row>
       </TouchableOpacity>
     </Animated.View>
   )
@@ -81,6 +89,10 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 5,
     shadowColor: '#000',
+  },
+  icon: {
+    color: palette.textMuted,
+    marginLeft: paddingBase / 2,
   },
   container: {
     width: '16.6666666667%',

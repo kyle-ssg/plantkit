@@ -6,6 +6,7 @@ import { SharedValue } from 'react-native-reanimated'
 type PlantListType = {
   data: TPlant[]
   replace?: boolean
+  month?: string
   animatedValue?: SharedValue<number>
   HeaderComponent?: ReactNode
 }
@@ -15,10 +16,12 @@ const PlantList: FC<PlantListType> = ({
   HeaderComponent,
   animatedValue,
   replace,
+  month,
 }) => {
   const renderItems = (v, i) => {
     return (
       <PlantSummary
+        month={month}
         replace={replace}
         delay={Math.floor(i / 6)}
         animatedValue={animatedValue}
