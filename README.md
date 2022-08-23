@@ -1,4 +1,4 @@
-### A React Native Project with Arduino to detect when plants need watering
+# A React Native Project with Arduino to detect soil moisture / when plants need watering
 
 ![gif1.gif](gif1.gif)gif
 
