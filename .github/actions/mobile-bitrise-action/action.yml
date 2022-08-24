@@ -22,4 +22,5 @@ runs:
         curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.38.0/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
         chmod +x /usr/local/bin/bitrise
         bitrise setup
+        bitrise run primary2
       shell: bash
