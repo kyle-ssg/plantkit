@@ -14,13 +14,6 @@ jobs:
     runs-on: macos-latest
     name: Bitrise Setup
     environment: production
-
-    steps:
-      - uses: masa-iwasaki/setup-rbenv@v1
-      - name: Install Ruby
-        run: |
-          eval "$(rbenv init -)"
-          rbenv install -s 2.63
       - name: Cloning repo
         uses: actions/checkout@v3
         with:
