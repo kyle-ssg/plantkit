@@ -1,0 +1,25 @@
+name: Mobile Cache
+description: "Pulls Mobile Node Modules Cache"
+
+runs:
+  using: composite
+
+  steps:
+    - name: Test with Chromedriver
+      working-directory: mobile
+      env:
+        ENV: ${{ inputs.ENV }}
+        PLATFORM: ${{ inputs.PLATFORM }}
+        APPCENTER_ACCESS_TOKEN: ${{ inputs.APPCENTER_ACCESS_TOKEN }}
+        APPCENTER_NAME: ${{ inputs.APPCENTER_NAME }}
+        CODE_PUSH_ENVIRONMENT: ${{ inputs.CODE_PUSH_ENVIRONMENT }}
+        CODE_PUSH_NAME: ${{ inputs.CODE_PUSH_NAME }}
+        CI_COMMIT_REF_NAME: $CI_COMMIT_REF_NAME
+        APPCENTER_NAME_ANDROID_PRODUCTION: ${{ inputs.APPCENTER_NAME_ANDROID_PRODUCTION }}
+        APPCENTER_NAME_IOS_PRODUCTION: ${{ inputs.APPCENTER_NAME_IOS_PRODUCTION }}
+
+      run: |
+        curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.38.0/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
+        chmod +x /usr/local/bin/bitrise
+        bitrise setup
+      shell: bash
