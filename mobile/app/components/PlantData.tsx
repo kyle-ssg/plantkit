@@ -38,7 +38,7 @@ const PlantData: FC<PlantDataType> = ({ size = 'regular' }) => {
                   prefix={plantNames[i].short}
                   radius={size === 'regular' ? 100 : 40}
                   percentage={
-                    Math.ceil(Math.max(0, Math.min(100, value)) / 10) * 10
+                    Math.ceil(Math.max(0, Math.min(100, value)) / 5) * 5
                   }
                 />
               </View>
