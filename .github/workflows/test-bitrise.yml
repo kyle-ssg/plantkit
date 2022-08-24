@@ -16,17 +16,16 @@ jobs:
     environment: production
 
     steps:
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.6.3' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Cloning repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Mobile Cache
         uses: ./.github/actions/mobile-cache-action
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.6.3' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Mobile Bitrise
         uses: ./.github/actions/mobile-bitrise-action
         with:
