@@ -6,7 +6,7 @@ runs:
 
   steps:
     - name: Test with Chromedriver
-      working-directory: mobile
+      working-directory: .
       env:
         ENV: ${{ inputs.ENV }}
         PLATFORM: ${{ inputs.PLATFORM }}
