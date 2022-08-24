@@ -14,16 +14,12 @@ workflows:
           inputs:
             - workdir: "$WORKDIR"
             - command: install
-      - cocoapods-install@2.3: {}
-#      - certificate-and-profile-installer@1: {}
-      - xcode-archive@4:
-          inputs:
-            - distribution_method: ad-hoc
-      - deploy-to-bitrise-io@2: {}
-      - cache-push@2:
-          inputs:
-            - cache_paths: "./mobile/node_modules"
-          is_always_run: true
+#      - cocoapods-install@2.3: {}
+##      - certificate-and-profile-installer@1: {}
+#      - xcode-archive@4:
+#          inputs:
+#            - distribution_method: ad-hoc
+#      - deploy-to-bitrise-io@2: {}
 meta:
   bitrise.io:
     stack: osx-xcode-13.2.x
