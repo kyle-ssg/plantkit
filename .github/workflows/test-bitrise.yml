@@ -1,4 +1,4 @@
-name: iOS Deploy to Production
+name: Bitrise Setup
 
 on:
   push:
@@ -10,9 +10,9 @@ defaults:
     working-directory: .
 
 jobs:
-  ios-production:
+  bitrise-setup:
     runs-on: ubuntu-latest
-    name: iOS Production
+    name: Bitrise Setup
     environment: production
 
     steps:
