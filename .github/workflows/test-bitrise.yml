@@ -16,10 +16,11 @@ jobs:
     environment: production
 
     steps:
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.6.3' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - uses: masa-iwasaki/setup-rbenv@v1
+      - name: Install Ruby
+        run: |
+          eval "$(rbenv init -)"
+          rbenv install -s 2.63
       - name: Cloning repo
         uses: actions/checkout@v3
         with:
