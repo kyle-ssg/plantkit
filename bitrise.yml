@@ -14,7 +14,7 @@ workflows:
           inputs:
             - workdir: "$WORKDIR"
             - command: install
-#      - cocoapods-install@2.3: {}
+      - cocoapods-install@2.3: {}
 ##      - certificate-and-profile-installer@1: {}
 #      - xcode-archive@4:
 #          inputs:
