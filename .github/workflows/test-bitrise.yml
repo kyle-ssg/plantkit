@@ -14,6 +14,8 @@ jobs:
     runs-on: macos-latest
     name: Bitrise Setup
     environment: production
+
+    steps:
       - name: Cloning repo
         uses: actions/checkout@v3
         with:
