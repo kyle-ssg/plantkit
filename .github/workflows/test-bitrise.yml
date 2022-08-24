@@ -20,6 +20,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Mobile Cache
+        uses: ./.github/actions/mobile-cache-action
       - name: Mobile Bitrise
         uses: ./.github/actions/mobile-bitrise-action
         with:
