@@ -8,6 +8,7 @@ runs:
     - name: Test with Chromedriver
       working-directory: .
       run: |
+        ruby -v
         curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.49.0/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
         chmod +x /usr/local/bin/bitrise
         bitrise setup
