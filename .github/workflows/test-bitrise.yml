@@ -23,9 +23,10 @@ jobs:
       - name: Mobile Cache
         uses: ./.github/actions/mobile-cache-action
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+          ruby-version: '2.6.3p62' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Mobile Bitrise
         uses: ./.github/actions/mobile-bitrise-action
         with:
