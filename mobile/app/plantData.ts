@@ -4,6 +4,7 @@ export type TPlant = {
   id: string
   title: string
   category: string
+  notes?: string
   sow: string[]
   indoorsUntil?: string[]
   durationMonths: number
@@ -550,6 +551,86 @@ const plantData: { plants: Record<string, TPlant> } = {
       'image': require('./images/turnip.jpg'),
       'content': 'https://www.rhs.org.uk/vegetables/turnips/grow-your-own',
       'ph': '6–7',
+    },
+    'apricot': {
+      'title': 'Apricot',
+      'id': 'apricot',
+      'category': 'fruit',
+      'sow': ['January', 'February', 'March'],
+      'durationMonths': 36,
+      'image': require('./images/apricot.jpg'),
+      'content': 'https://www.rhs.org.uk/fruit/apricots/grow-your-own',
+      'ph': '6–7',
+    },
+    'blackberries': {
+      'title': 'Blackberries',
+      'id': 'blackberries',
+      'category': 'fruit',
+      'sow': ['January', 'February', 'March', 'April'],
+      'durationMonths': 36,
+      'image': require('./images/blackberries.jpg'),
+      'content':
+        'https://www.rhs.org.uk/fruit/blackberries-and-hybrid-berries/grow-your-own',
+      'ph': '6–7',
+    },
+    'blueberries': {
+      'title': 'Blueberries',
+      'id': 'blueberries',
+      'category': 'fruit',
+      'sow': ['January', 'February', 'March', 'June', 'November'],
+      'durationMonths': 36,
+      'notes': 'Low PH',
+      'image': require('./images/blueberries.jpg'),
+      'content': 'https://www.rhs.org.uk/fruit/blueberries/grow-your-own',
+      'ph': '4.5–5.5',
+    },
+    'cherries': {
+      'title': 'Cherries',
+      'id': 'cherries',
+      'category': 'fruit',
+      'sow': [
+        'January',
+        'February',
+        'March',
+        'October',
+        'November',
+        'December',
+      ],
+      'durationMonths': 24,
+      'image': require('./images/cherries.jpg'),
+      'content': 'https://www.rhs.org.uk/fruit/cherries/grow-your-own',
+      'ph': '4.5–5.5',
+    },
+    'damsons': {
+      'title': 'Damsons',
+      'id': 'damsons',
+      'category': 'fruit',
+      'sow': ['January', 'February', 'March', 'November', 'December'],
+      'durationMonths': 24,
+      'image': require('./images/damson.jpg'),
+      'content': 'https://www.rhs.org.uk/fruit/damsons/grow-your-own',
+      'ph': '6.5–7.5',
+    },
+    'kiwis': {
+      'title': 'Kiwis',
+      'id': 'damsons',
+      'category': 'fruit',
+      'sow': ['March', 'April', 'May'],
+      'durationMonths': 3,
+      'image': require('./images/kiwis.jpg'),
+      'content': 'https://www.rhs.org.uk/fruit/kiwi/grow-your-own',
+      'ph': '6.5–7.5',
+    },
+    'melon': {
+      'title': 'Melon',
+      'id': 'melon',
+      'category': 'fruit',
+      'sow': ['April'],
+      'indoorsUntil': ['June'],
+      'durationMonths': 3,
+      'image': require('./images/melon.jpg'),
+      'content': 'https://www.rhs.org.uk/fruit/melons/grow-your-own',
+      'ph': '6.5–7.5',
     },
   },
 }
