@@ -11,6 +11,7 @@ const recipes = [
   require('../recipes/pasta-alla-zozzona').default,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/bolognese').default,
+  require('../recipes/beurre-blanc').default,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/pasanda').default,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
