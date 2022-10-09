@@ -17,6 +17,8 @@ const recipes = [
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/curry-base').default,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('../recipes/pizza-dough').default,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../recipes/cookies').default,
 ]
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
