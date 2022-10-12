@@ -7,8 +7,9 @@ export default {
 - Leave **24 hours**
 
 ## Dough 
-- Mix **Salt** on and **Water**
-- Add to Poolish and mix with spoon
+- Leave **Poolish** out for **30 mins** 
+- Mix **Salt** and **Water**
+- Add to **Poolish** and mix with spoon
 - Add **Poolish** to *KitchenAid**
 - Slowly Add **Flour**
 - Mix for **1 minute** on **speed 2**
