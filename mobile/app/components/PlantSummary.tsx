@@ -22,6 +22,7 @@ type PlantSummaryType = {
   replace?: boolean
   month?: string
   onPress?: (plant: TPlant) => void
+  hideData?: boolean
   style: ViewStyle
   animatedValue?: SharedValue<number>
 }
@@ -32,6 +33,7 @@ const PlantSummary: FC<PlantSummaryType> = ({
   animatedValue,
   onPress: _onPress,
   month,
+  hideData,
   style: _style,
   replace: _replace,
 }) => {
@@ -79,18 +81,22 @@ const PlantSummary: FC<PlantSummaryType> = ({
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={plant.image} />
         </View>
-        <Row style={Styles.centeredContainer}>
-          <Text size='small'>{plant.title}</Text>
-          {indoors && <FA5Pro style={styles.icon} name='house' />}
-        </Row>
-        <Row style={Styles.centeredContainer}>
-          {plant.durationMonths && (
-            <FA5Pro style={[styles.icon, Styles.mr5]} name='calendar' />
-          )}
-          <Text muted size='small'>
-            {plant.durationMonths}m
-          </Text>
-        </Row>
+        {!hideData && (
+          <>
+            <Row style={Styles.centeredContainer}>
+              <Text size='small'>{plant.title}</Text>
+              {indoors && <FA5Pro style={styles.icon} name='house' />}
+            </Row>
+            <Row style={Styles.centeredContainer}>
+              {plant.durationMonths && (
+                <FA5Pro style={[styles.icon, Styles.mr5]} name='calendar' />
+              )}
+              <Text muted size='small'>
+                {plant.durationMonths}m
+              </Text>
+            </Row>
+          </>
+        )}
       </TouchableOpacity>
     </Animated.View>
   )
