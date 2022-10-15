@@ -66,9 +66,12 @@ const CurrentPlants: FC<CurrentPlantsType> = ({}) => {
                   <Button
                     onPress={() => removePlant({ index: i })}
                     style={Styles.ph10}
-                    theme='secondary'
+                    theme='text'
                   >
-                    <FA5Pro style={Styles.h5} name='trash' />
+                    <FA5Pro
+                      style={[Styles.h3, Styles.textDanger]}
+                      name='trash'
+                    />
                   </Button>
                 </Row>
               </Row>
