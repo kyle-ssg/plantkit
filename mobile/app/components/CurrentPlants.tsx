@@ -34,17 +34,24 @@ const CurrentPlants: FC<CurrentPlantsType> = ({}) => {
       </Button>
       <Row style={styles.container}>
         {plants?.map((plant, i) => (
-          <View style={Styles.mr20} key={i}>
-            <View style={Styles.centeredContainer}>
-              <PlantSummary
-                style={styles.summary}
-                plant={plant.plant}
-                delay={0}
-              />
-            </View>
+          <Row style={[Styles.mr20, Styles.alignStart]} key={i}>
+            <PlantSummary
+              style={styles.summary}
+              plant={plant.plant}
+              delay={0}
+            />
+            <View style={Styles.m10}>
+              <View style={styles.removeContainer}>
+                <Button
+                  onPress={() => removePlant({ index: i })}
+                  style={Styles.ph10}
+                  theme='text'
+                >
+                  <FA5Pro style={[Styles.h3, Styles.textDanger]} name='trash' />
+                </Button>
+              </View>
 
-            <Row style={Styles.mb5}>
-              <Text>Planted: </Text>
+              <Text style={Styles.mb5}>Planted</Text>
               <DateTimePicker
                 onChange={(v) => {
                   updatePlant({
@@ -54,32 +61,18 @@ const CurrentPlants: FC<CurrentPlantsType> = ({}) => {
                 }}
                 value={plant.datePlanted}
               />
-            </Row>
-            <View style={Styles.centeredContainer}>
-              <Row>
-                <Text>Harvest: </Text>
-                <Flex>
+              <View style={Styles.mt10}>
+                <Text style={Styles.mb5}>Harvest</Text>
+                <View>
                   <Text weight='bold'>
                     {dayjs(plant.datePlanted)
                       .add(plant.plant.durationMonths, 'month')
                       .format('Do MMM YY')}
                   </Text>
-                </Flex>
-                <Row>
-                  <Button
-                    onPress={() => removePlant({ index: i })}
-                    style={Styles.ph10}
-                    theme='text'
-                  >
-                    <FA5Pro
-                      style={[Styles.h3, Styles.textDanger]}
-                      name='trash'
-                    />
-                  </Button>
-                </Row>
-              </Row>
+                </View>
+              </View>
             </View>
-          </View>
+          </Row>
         ))}
       </Row>
     </>
@@ -90,8 +83,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginHorizontal: 10,
   },
+  removeContainer: {
+    position: 'absolute',
+    right: 0,
+    top: -20,
+  },
   summary: {
-    width: 200,
+    width: 150,
   },
   summaryContainer: {},
 })
