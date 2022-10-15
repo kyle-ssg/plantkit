@@ -1,6 +1,6 @@
 import { FC, useCallback } from 'react'
 import { TPlant } from '../plantData'
-import { Image } from 'react-native'
+import { Image, ViewStyle } from 'react-native'
 import { cn } from '../style/_style_screen'
 import Animated, {
   SharedValue,
@@ -21,6 +21,8 @@ type PlantSummaryType = {
   delay: number
   replace?: boolean
   month?: string
+  onPress?: (plant: TPlant) => void
+  style: ViewStyle
   animatedValue?: SharedValue<number>
 }
 
@@ -28,18 +30,20 @@ const PlantSummary: FC<PlantSummaryType> = ({
   plant,
   delay,
   animatedValue,
+  onPress: _onPress,
   month,
+  style: _style,
   replace: _replace,
 }) => {
   // @ts-ignore
   const { push, replace } = useNavigation()
   const onPress = useCallback(() => {
-    const func = _replace ? replace : push
+    const func = _onPress ? () => _onPress(plant) : _replace ? replace : push
     func(RouteUrls.PlantScreen, {
       plant,
       screenOptions: { title: plant.title },
     })
-  }, [plant, push])
+  }, [plant, push, _onPress])
   const style =
     !!animatedValue &&
     useAnimatedStyle(() => {
@@ -70,7 +74,7 @@ const PlantSummary: FC<PlantSummaryType> = ({
   const indoors =
     !!plant.indoorsUntil && !!month && !plant.indoorsUntil.includes(month)
   return (
-    <Animated.View style={cn(styles.container, Styles.mb10, style)}>
+    <Animated.View style={cn(styles.container, Styles.mb10, style, _style)}>
       <TouchableOpacity onPress={onPress} style={Styles.centeredContainer}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={plant.image} />
@@ -78,6 +82,14 @@ const PlantSummary: FC<PlantSummaryType> = ({
         <Row style={Styles.centeredContainer}>
           <Text size='small'>{plant.title}</Text>
           {indoors && <FA5Pro style={styles.icon} name='house' />}
+        </Row>
+        <Row style={Styles.centeredContainer}>
+          {plant.durationMonths && (
+            <FA5Pro style={[styles.icon, Styles.mr5]} name='calendar' />
+          )}
+          <Text muted size='small'>
+            {plant.durationMonths}m
+          </Text>
         </Row>
       </TouchableOpacity>
     </Animated.View>

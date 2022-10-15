@@ -4,14 +4,16 @@ import withScreen, { Screen } from './withScreen'
 import { useIsFocused } from '@react-navigation/native'
 import { useSharedValue } from 'react-native-reanimated'
 import TextInput from 'components/base/forms/TextInput'
-import plantData from '../plantData'
+import plantData, { TPlant } from '../plantData'
 import { filter } from 'lodash'
 import PlantList from 'components/PlantList'
 import { paddingBase } from '../style/style_grid'
 
-type SearchScreen = Screen & {}
+type SearchScreen = Screen & {
+  onPress?: (plant: TPlant) => void
+}
 
-const SearchScreen: React.FC<SearchScreen> = ({ children }) => {
+const SearchScreen: React.FC<SearchScreen> = ({ onPress }) => {
   const isFocused = useIsFocused()
   const ref = useRef()
   const active = useSharedValue(0)
@@ -32,6 +34,7 @@ const SearchScreen: React.FC<SearchScreen> = ({ children }) => {
     <ScreenContainer style={Styles.mt0}>
       <PlantList
         replace
+        onPress={onPress}
         HeaderComponent={
           <View style={styles.searchContainer}>
             <TextInput

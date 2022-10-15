@@ -28,19 +28,6 @@ def shared_pods
   )
 end
 
-target 'mobile' do
-    shared_pods
-end
-
-#target 'mobile-staging' do
-#    shared_pods
-#end
-
-#target 'appcenter-staging' do
-#    shared_pods
-#end
-
-
 target 'appcenter-production' do
     shared_pods
 end

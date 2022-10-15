@@ -6,6 +6,7 @@ import OnboardingWall from 'components/OnboardingWall'
 import { useTab } from 'common/hooks/useTab'
 import { useSharedValue } from 'react-native-reanimated'
 import PlantData from 'components/PlantData'
+import CurrentPlants from 'components/CurrentPlants'
 type Tab2Screen = Screen & {}
 
 const Tab2Screen: FC<Tab2Screen> = ({}) => {
@@ -28,6 +29,7 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
   return (
     <ScreenContainer withTabs>
       <PlantData />
+      <CurrentPlants />
     </ScreenContainer>
   )
 }

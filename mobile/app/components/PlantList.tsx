@@ -7,6 +7,7 @@ type PlantListType = {
   data: TPlant[]
   replace?: boolean
   month?: string
+  onPress?: (plant: TPlant) => void
   animatedValue?: SharedValue<number>
   HeaderComponent?: ReactNode
 }
@@ -15,12 +16,14 @@ const PlantList: FC<PlantListType> = ({
   data,
   HeaderComponent,
   animatedValue,
+  onPress,
   replace,
   month,
 }) => {
   const renderItems = (v, i) => {
     return (
       <PlantSummary
+        onPress={onPress}
         month={month}
         replace={replace}
         delay={Math.floor(i / 6)}

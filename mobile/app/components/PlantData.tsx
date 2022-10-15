@@ -4,7 +4,7 @@ import usePlantData from '../usePlantData'
 import { useDeviceToken } from 'common/hooks/useDeviceToken' // we need this to make JSX compile
 
 type PlantDataType = {
-  size: 'regular' | 'mini'
+  size?: 'regular' | 'mini'
 }
 const plantNames = [
   {

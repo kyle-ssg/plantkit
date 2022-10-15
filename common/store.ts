@@ -17,6 +17,7 @@ import { Persistor } from 'redux-persist/es/types'
 
 import { tabSlice } from './hooks/useTab'
 import { DeviceTokenSlice } from './hooks/useDeviceToken'
+import { plantsSlice } from './hooks/usePlants'
 // END OF IMPORTS
 const createStore = () => {
   const storage =
@@ -30,6 +31,7 @@ const createStore = () => {
     user: userSlice.reducer,
     tab: tabSlice.reducer,
     DeviceToken: DeviceTokenSlice.reducer,
+    plants: plantsSlice.reducer,
     // END OF REDUCERS
   })
 
@@ -37,7 +39,7 @@ const createStore = () => {
     reducer: persistReducer(
       {
         key: 'root',
-        whitelist: ['user', 'DeviceToken'],
+        whitelist: ['user', 'DeviceToken', 'plants'],
         version: 1,
         storage,
       },

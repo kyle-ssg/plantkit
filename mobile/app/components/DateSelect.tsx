@@ -17,7 +17,7 @@ const DateSelect: FC<Props> = ({
   value,
   format = 'Do MMMM YYYY',
   onChange,
-  title = 'Date',
+  title = '',
   datePickerProps = {},
 }) => {
   const [formattedDate, setFormattedDate] = useState<string>(
