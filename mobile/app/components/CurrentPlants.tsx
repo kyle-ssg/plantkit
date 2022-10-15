@@ -35,12 +35,15 @@ const CurrentPlants: FC<CurrentPlantsType> = ({}) => {
       <Row style={styles.container}>
         {plants?.map((plant, i) => (
           <View style={Styles.mr20} key={i}>
-            <PlantSummary
-              style={styles.summary}
-              plant={plant.plant}
-              delay={0}
-            />
-            <Row style={Styles.mb10}>
+            <View style={Styles.centeredContainer}>
+              <PlantSummary
+                style={styles.summary}
+                plant={plant.plant}
+                delay={0}
+              />
+            </View>
+
+            <Row style={Styles.mb5}>
               <Text>Planted: </Text>
               <DateTimePicker
                 onChange={(v) => {
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   summary: {
-    width: 300,
+    width: 200,
   },
   summaryContainer: {},
 })
