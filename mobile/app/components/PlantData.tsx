@@ -8,12 +8,12 @@ type PlantDataType = {
 }
 const plantNames = [
   {
-    text: 'Tomatoes',
-    short: '🍅',
+    text: 'Garlic',
+    short: '🧄',
   },
   {
-    text: 'Strawberries',
-    short: '🍓',
+    text: 'Spinach',
+    short: '🥬',
   },
 ]
 
