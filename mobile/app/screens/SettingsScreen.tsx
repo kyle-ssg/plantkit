@@ -4,7 +4,7 @@ import withScreen, { Screen } from './withScreen'
 import Button from 'components/base/forms/Button'
 import openConfirm from 'components/utility-components/openConfirm'
 import { useDeviceToken } from 'common/hooks/useDeviceToken'
-
+import DeviceInfo from 'react-native-device-info'
 type SettingsScreen = Screen & {}
 
 const SettingsScreen: React.FC<SettingsScreen> = ({ children }) => {
@@ -24,6 +24,7 @@ const SettingsScreen: React.FC<SettingsScreen> = ({ children }) => {
       <Text danger style={Styles.mb10} weight='bold' size='h2'>
         Danger Zone
       </Text>
+      <Text>{DeviceInfo.getReadableVersion()}</Text>
       <Row>
         {!!deviceToken && (
           <Button
