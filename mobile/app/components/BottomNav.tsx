@@ -118,7 +118,7 @@ const BottomNav = ({ state, navigation }) => {
     }
   }, [state.index])
   const insets = useInsets()
-  const isMobile = useBreakpointSmallerOrEqual('lg')
+  const isMobile = useBreakpointSmallerOrEqual('md')
   return (
     <Animated.View
       style={[

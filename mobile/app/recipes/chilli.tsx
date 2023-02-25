@@ -1,7 +1,7 @@
 export default {
-  title: 'Cookies',
+  title: 'Chilli',
   instructions: `
-  # Cookies
+  # Chilli
   
 - Add **Onion**
 - Add **Beef** until brown
