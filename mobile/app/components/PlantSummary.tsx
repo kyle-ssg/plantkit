@@ -15,6 +15,7 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import { RouteUrls } from '../route-urls'
 import { paddingBase } from '../style/style_grid'
+import { useBreakpointSmallerOrEqual } from 'components/base/BreakpointProvider'
 
 type PlantSummaryType = {
   plant: TPlant
@@ -75,8 +76,13 @@ const PlantSummary: FC<PlantSummaryType> = ({
     }, [])
   const indoors =
     !!plant.indoorsUntil && !!month && !plant.indoorsUntil.includes(month)
+  const isMobile = useBreakpointSmallerOrEqual('lg')
+  const width = isMobile ? '33.333333%' : '16.6666666667%'
+
   return (
-    <Animated.View style={cn(styles.container, Styles.mb10, style, _style)}>
+    <Animated.View
+      style={cn(styles.container, Styles.mb10, { width }, style, _style)}
+    >
       <TouchableOpacity onPress={onPress} style={Styles.centeredContainer}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={plant.image} />
@@ -113,7 +119,6 @@ const styles = StyleSheet.create({
     marginLeft: paddingBase / 2,
   },
   container: {
-    width: '16.6666666667%',
     alignItems: 'center',
   },
   imageContainer: {

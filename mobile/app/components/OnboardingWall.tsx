@@ -115,8 +115,8 @@ const OnboardingWall: FC<OnboardingWallType> = ({ animatedValue }) => {
 }
 const styles = StyleSheet.create({
   inputContainer: {
-    width: 300,
-    marginRight: paddingBase * 2,
+    width: 200,
+    marginRight: 10,
   },
 })
 export default OnboardingWall

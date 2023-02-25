@@ -18,6 +18,8 @@ import {
 import Logo from 'components/Logo'
 import NavMenu from 'components/NavMenu'
 import { useTab } from 'common/hooks/useTab'
+import useInsets from 'components/base/useInset'
+import { useBreakpointSmallerOrEqual } from 'components/base/BreakpointProvider'
 
 type TabItemType = {
   isActive: boolean
@@ -29,6 +31,10 @@ const TabItem: FC<TabItemType> = ({ children, isActive, index, onPress }) => {
   const handlePress = () => {
     onPress(index)
   }
+
+  const isMobile = useBreakpointSmallerOrEqual('lg')
+  const tabWidth = isMobile ? 120 : 150
+
   const animatedValue = useSharedValue(
     isActive ? palette.textLight : palette.textLightInactive,
   )
@@ -47,7 +53,11 @@ const TabItem: FC<TabItemType> = ({ children, isActive, index, onPress }) => {
   return (
     <TouchableOpacity
       activeOpacity={1}
-      style={isActive ? [styles.tab, styles.activeTab] : styles.tab}
+      style={[
+        isActive ? styles.activeTab : null,
+        styles.tab,
+        { width: tabWidth },
+      ]}
       onPress={handlePress}
     >
       <Text animated size='medium' style={style}>
@@ -56,8 +66,9 @@ const TabItem: FC<TabItemType> = ({ children, isActive, index, onPress }) => {
     </TouchableOpacity>
   )
 }
-const tabWidth = 150
 const TabLine: FC<{ index: number }> = ({ index }) => {
+  const isMobile = useBreakpointSmallerOrEqual('lg')
+  const tabWidth = isMobile ? 120 : 150
   const animatedValue = useSharedValue(index * tabWidth)
   const style = useAnimatedStyle(() => {
     const padding = 40
@@ -106,9 +117,17 @@ const BottomNav = ({ state, navigation }) => {
       ),
     }
   }, [state.index])
+  const insets = useInsets()
+  const isMobile = useBreakpointSmallerOrEqual('lg')
   return (
-    <Animated.View style={[styles.container, tabStyle]}>
-      <TabLine index={state.index} />
+    <Animated.View
+      style={[
+        styles.container,
+        tabStyle,
+        isMobile && { paddingTop: insets.top },
+      ]}
+    >
+      {!isMobile && <TabLine index={state.index} />}
       <Row>
         <Flex>
           <Row>
@@ -121,24 +140,26 @@ const BottomNav = ({ state, navigation }) => {
             <TabItem onPress={onPress} index={2} isActive={state.index === 2}>
               Garden
             </TabItem>
-            <Flex
-              pointerEvents='none'
-              style={[
-                Styles.centeredContainer,
-                {
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                },
-              ]}
-            >
-              <View>
-                <Logo />
-              </View>
-            </Flex>
+            {!isMobile && (
+              <Flex
+                pointerEvents='none'
+                style={[
+                  Styles.centeredContainer,
+                  {
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                  },
+                ]}
+              >
+                <View>
+                  <Logo />
+                </View>
+              </Flex>
+            )}
           </Row>
         </Flex>
-        <NavMenu index={state.index} />
+        {!isMobile && <NavMenu index={state.index} />}
       </Row>
     </Animated.View>
   )
@@ -154,7 +175,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: styleVariables.paddingBase,
     paddingRight: styleVariables.paddingBase,
-    width: tabWidth,
   },
   lastTab: {
     paddingRight: 0,

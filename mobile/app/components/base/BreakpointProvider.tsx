@@ -1,6 +1,7 @@
 import {
   createContext,
   FunctionComponent,
+  useContext,
   useEffect,
   useRef,
   useState,
@@ -37,6 +38,33 @@ export const breakpointValues = {
 }
 
 export const BreakpointContext = createContext<string>(getBreakpoint())
+
+export const useBreakpoint = () => {
+  const context = useContext(BreakpointContext)
+  return context
+}
+export const useBreakpointLarger = (value: keyof typeof breakpointValues) => {
+  const breakpoint = useBreakpoint()
+  return breakpointValues[breakpoint] > breakpointValues[value]
+}
+
+export const useBreakpointLargerOrEqual = (
+  value: keyof typeof breakpointValues,
+) => {
+  const breakpoint = useBreakpoint()
+  return breakpointValues[breakpoint] >= breakpointValues[value]
+}
+
+export const useBreakpointSmaller = (value: keyof typeof breakpointValues) => {
+  const breakpoint = useBreakpoint()
+  return breakpointValues[breakpoint] < breakpointValues[value]
+}
+export const useBreakpointSmallerOrEqual = (
+  value: keyof typeof breakpointValues,
+) => {
+  const breakpoint = useBreakpoint()
+  return breakpointValues[breakpoint] <= breakpointValues[value]
+}
 
 type ComponentType = {}
 

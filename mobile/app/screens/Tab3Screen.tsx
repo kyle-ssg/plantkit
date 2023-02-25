@@ -1,5 +1,5 @@
 import ScreenContainer from 'components/ScreenContainer'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import withScreen, { Screen } from './withScreen'
 import MD from 'react-native-markdown-display'
 import { useDeviceOrientation } from '@react-native-community/hooks'
@@ -32,6 +32,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 import { easingConfigFade } from 'project/animation-util/reanimations'
+import {
+  useBreakpoint,
+  useBreakpointLargerOrEqual,
+  useBreakpointSmaller,
+} from 'components/base/BreakpointProvider'
+import Button from 'components/base/forms/Button'
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()
   const ref = useRef<ScrollView>()
@@ -53,6 +59,9 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
       opacity: scrollValue.value,
     }
   }, [scrollValue])
+  const [tab, setTab] = useState(0)
+  const tabs = useBreakpointSmaller('lg')
+  const columns = tabs ? 1 : 3
   return (
     <Flex>
       <ScreenContainer withoutSafeAreaView withTabs>
@@ -70,7 +79,7 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
               { height: Dimensions.get('window').height },
             ]}
           >
-            <Row style={{ flexWrap: 'wrap' }}>
+            <Row style={{ flexWrap: 'wrap', width: DeviceWidth }}>
               {recipes.map((v, i) => (
                 <TouchableOpacity
                   onPress={() => {
@@ -78,7 +87,7 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
                   }}
                   style={{
                     paddingVertical: 20,
-                    width: DeviceWidth / 3 - 27,
+                    width: DeviceWidth / columns,
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
@@ -88,30 +97,66 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
               ))}
             </Row>
           </Flex>
-          {recipes.map((r, i) => (
-            <Row key={i} style={styles.slide}>
+          {recipes.map((r, i) =>
+            tabs ? (
               <Flex
-                value={2}
                 style={[
                   styles.container,
                   { height: Dimensions.get('window').height },
                 ]}
               >
-                <MD style={mdStyle}>{r.instructions}</MD>
+                <Row style={Styles.p10}>
+                  <TouchableOpacity onPress={() => setTab(0)}>
+                    <Text
+                      weight={tab === 0 ? 'bold' : 'regular'}
+                      style={[Styles.mr5]}
+                    >
+                      Ingredients
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setTab(1)}>
+                    <Text
+                      weight={tab === 1 ? 'bold' : 'regular'}
+                      style={[Styles.ml5]}
+                    >
+                      Recipe
+                    </Text>
+                  </TouchableOpacity>
+                </Row>
+                <View style={[Styles.ph10]}>
+                  <View style={!tab ? { display: 'none' } : null}>
+                    <MD style={mdStyleSmall}>{r.instructions}</MD>
+                  </View>
+                  <View style={tab ? { display: 'none' } : null}>
+                    <MD style={ingredientsStyleSmall}>{r.ingredients}</MD>
+                  </View>
+                </View>
               </Flex>
-              <Flex
-                style={[
-                  styles.container,
-                  {
-                    height: Dimensions.get('window').height,
-                  },
-                  styles.dark,
-                ]}
-              >
-                <MD style={ingredientsStyle}>{r.ingredients}</MD>
-              </Flex>
-            </Row>
-          ))}
+            ) : (
+              <Row key={i} style={styles.slide}>
+                <Flex
+                  value={2}
+                  style={[
+                    styles.container,
+                    { height: Dimensions.get('window').height },
+                  ]}
+                >
+                  <MD style={mdStyle}>{r.instructions}</MD>
+                </Flex>
+                <Flex
+                  style={[
+                    styles.container,
+                    {
+                      height: Dimensions.get('window').height,
+                    },
+                    styles.dark,
+                  ]}
+                >
+                  <MD style={ingredientsStyle}>{r.ingredients}</MD>
+                </Flex>
+              </Row>
+            ),
+          )}
         </Animated.ScrollView>
       </ScreenContainer>
       <Animated.View style={buttonStyle}>
@@ -146,7 +191,6 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   container: {
-    padding: 40,
     paddingTop: 70,
   },
   dark: {
@@ -169,5 +213,31 @@ const mdStyle = {
   heading3: [Styles.textBold, Styles.mb10, { fontSize: 24 }],
   heading2: [Styles.textBold, Styles.mv10, { fontSize: 24 }],
   list_item: [styles.text, Styles.mb5],
+}
+const mdStyleSmall = {
+  // @ts-ignore
+  heading1: [Styles.h3, Styles.mb5],
+  heading3: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
+  heading2: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
+  list_item: [
+    {
+      fontSize: 14,
+      letterSpacing: 1.25,
+    },
+    Styles.mb5,
+  ],
+}
+const ingredientsStyleSmall = {
+  // @ts-ignore
+  heading1: { display: 'none' },
+  heading3: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
+  heading2: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
+  list_item: [
+    {
+      fontSize: 14,
+      letterSpacing: 1.25,
+    },
+    Styles.mb5,
+  ],
 }
 export default withScreen(Tab3Screen)

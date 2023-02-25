@@ -15,6 +15,8 @@ import { DevSettings } from 'react-native'
 import { API } from 'project/api'
 import StorybookUIRoot from '../../.storybook/Storybook'
 import { startup } from 'common/hooks/useStartup'
+enableFreeze(true)
+
 // import Cognito from "common/cognito";
 
 // API.auth.Cognito.init(Project.cognitoMobile)

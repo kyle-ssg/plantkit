@@ -22,12 +22,15 @@ const PlantData: FC<PlantDataType> = ({ size = 'regular' }) => {
   const data = usePlantData(deviceToken?.id)
 
   return (
-    <Row style={Styles.p15}>
+    <Row style={[Styles.p15, { flexWrap: 'wrap', justifyContent: 'center' }]}>
       {!!data &&
         Object.keys(data).map((v, i) => {
           const value = data[v]
           return (
-            <View key={v} style={[styles[`card${size}`], Styles.mr10]}>
+            <View
+              key={v}
+              style={[styles[`card${size}`], Styles.mb10, Styles.mr10]}
+            >
               {size !== 'mini' && (
                 <Text style={Styles.mb10} size='h2'>
                   {plantNames[i].text}
