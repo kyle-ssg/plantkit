@@ -87,12 +87,6 @@ npm run env_script
 echo "Last version: ${lastVersion:-N/A}. Current version: $currentVersion"
 vercomp $lastVersion $currentVersion
 
-if [[ $? == 2 ]]
-then
-    echo "Queueing new native build ($currentVersion) on AppCenter"
-    sh ./.bin/clone-config.sh
-    npx appcenter build queue -a $1 -b $3
-else
     echo "Code-pushing new bundle to $2 environment on AppCenter $5"
     if [[ $4 == "ios" ]]
     then
@@ -107,5 +101,4 @@ else
         npx appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
 
     fi
-fi
 
