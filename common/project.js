@@ -21,8 +21,8 @@ export const Project = {
       staging: 'Wy71o_xKWJaeovpTUs4RWQ_Js6XwEoTp_FZHb',
     },
     ios: {
-      production: 'k8sD7nBA-5rr4wbirErJK5fGL81PZFaJpiPNN',
-      staging: 'Wy71o_xKWJaeovpTUs4RWQ_Js6XwEoTp_FZHb',
+      production: 'D_ZXMIVJ3KTwIVVbicM1SWfsdEbY-rP4ZZmY2',
+      staging: 'qSqto45WfNW2LF4mlMaIE2Z-TUfXIIwuKxyCQ',
     },
   },
   firebase: {
