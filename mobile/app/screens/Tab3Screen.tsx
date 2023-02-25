@@ -38,6 +38,7 @@ import {
   useBreakpointSmaller,
 } from 'components/base/BreakpointProvider'
 import Button from 'components/base/forms/Button'
+import useInsets from 'components/base/useInset'
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()
   const ref = useRef<ScrollView>()
@@ -62,6 +63,7 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const [tab, setTab] = useState(0)
   const tabs = useBreakpointSmaller('lg')
   const columns = tabs ? 1 : 3
+  const insets = useInsets()
   return (
     <Flex>
       <ScreenContainer withoutSafeAreaView withTabs>
@@ -83,7 +85,9 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
               {recipes.map((v, i) => (
                 <TouchableOpacity
                   onPress={() => {
-                    ref.current.scrollTo({ y: DeviceHeight * (i + 1) })
+                    ref.current.scrollTo({
+                      y: DeviceHeight * (i + 1),
+                    })
                   }}
                   style={{
                     paddingVertical: 20,
@@ -102,7 +106,10 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
               <Flex
                 style={[
                   styles.container,
-                  { height: Dimensions.get('window').height },
+                  {
+                    height: Dimensions.get('window').height,
+                    paddingTop: insets.top + 50,
+                  },
                 ]}
               >
                 <Row style={Styles.p10}>

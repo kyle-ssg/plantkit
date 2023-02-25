@@ -49,7 +49,6 @@ const App: FunctionComponent<Props> = () => (
                 <NavigationContainer linking={linking} ref={navigationRef}>
                   <AppNavigator />
                 </NavigationContainer>
-                <StickyPlants />
                 <CodepushUpdater />
               </LanguageHandler>
             </BreakpointProvider>
