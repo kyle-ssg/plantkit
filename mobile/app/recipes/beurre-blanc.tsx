@@ -1,4 +1,5 @@
 export default {
+  title: 'Beurre Blanc',
   instructions: `
 # Beurre Blanc
 

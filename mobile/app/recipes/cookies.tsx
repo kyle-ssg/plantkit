@@ -1,4 +1,5 @@
 export default {
+  title: 'Cookies',
   instructions: `
   # Cookies
   

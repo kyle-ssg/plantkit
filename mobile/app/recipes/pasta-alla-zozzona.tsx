@@ -1,4 +1,5 @@
 export default {
+  title: 'Pasta alla Zozzona',
   instructions: `
 # Pasta alla Zozzona
 

@@ -1,4 +1,5 @@
 export default {
+  title: 'Chicken Pasanda',
   instructions: `
 # Chicken Pasanda
 
