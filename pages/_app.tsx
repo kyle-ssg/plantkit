@@ -74,7 +74,6 @@ const AppComponent: FC<ComponentType> = ({ Component, pageProps }) => {
           href='/fonts/JosefinSans-Bold.ttf'
           crossOrigin={'crossorigin'}
         />
-        <meta property='og:title' content='TheProject' />
       </Head>
       <NProgress />
       {getLayout(<Component {...pageProps} />, pageProps)}

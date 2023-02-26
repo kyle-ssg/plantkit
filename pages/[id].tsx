@@ -27,6 +27,7 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
         title={`${query.id}`}
         openGraph={{
           title: `${query.id}`,
+          description: 'View the recipe',
         }}
         description=''
       />
