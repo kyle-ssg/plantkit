@@ -6,12 +6,12 @@ import {
 } from './Ingredient'
 
 export default {
-  title: 'Chicken Pasanda',
+  title: 'Curry Base',
   instructions: `
 # Chicken Pasanda
 
 - Add **Oil** for **high heat**
-- Add **Ginger** && **Garlic** for **30 seconds**
+- Add **Ginger** & **Garlic** for **30 seconds**
 - Add **Flour**, **Almonds** & **sugar** for **30 seconds**
 - Add **half Curry Base**
 - Add **Chicken** 
