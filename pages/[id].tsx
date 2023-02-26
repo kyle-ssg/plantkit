@@ -17,11 +17,18 @@ import { singular } from 'ssgrtk/dist/helpers/plural'
 import Row from 'components/base/grid/Row'
 import Tooltip from 'components/Tooltip'
 export type HomePageType = {}
+import { NextSeo } from 'next-seo'
 const HomePage: NextPageWithLayout<HomePageType> = () => {
   const { query } = useRouter()
   const recipe = recipes.find((v) => v.title === query.id)
   return (
-    <>
+    <NextSeo
+      title={`${query.id}`}
+      openGraph={{
+        title: `${query.id}`,
+      }}
+      description=''
+    >
       <main>
         <Head>
           <title>{query.id}</title>
@@ -81,7 +88,7 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
           </div>
         </div>
       </main>
-    </>
+    </NextSeo>
   )
 }
 
