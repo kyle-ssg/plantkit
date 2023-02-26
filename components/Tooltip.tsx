@@ -15,8 +15,15 @@ const Tooltip: FC<TooltipType> = ({ children, id }) => {
         className='ms-2 fa fa-info-circle'
         id={id}
       />
-      <_Tooltip placement='bottom' isOpen={isOpen} target={id}>
-        {children}
+      <_Tooltip
+        style={{ background: 'white' }}
+        placement='bottom'
+        isOpen={isOpen}
+        target={id}
+      >
+        <div className='p-2' style={{ background: 'white', color: 'black' }}>
+          {children}
+        </div>
       </_Tooltip>
     </>
   )
