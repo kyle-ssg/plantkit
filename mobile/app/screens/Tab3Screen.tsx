@@ -14,36 +14,39 @@ import Animated, {
 import { easingConfigFade } from 'project/animation-util/reanimations'
 import { useBreakpointSmaller } from 'components/base/BreakpointProvider'
 import useInsets from 'components/base/useInset'
-import { d2f, Ingredient, IngredientConversions } from '../recipes/Ingredient'
+import {
+  d2f,
+  Ingredient,
+  IngredientConversions,
+} from 'common/recipes/Ingredient'
 import { singular } from 'ssgrtk/dist/helpers/plural'
 
 type Tab3Screen = Screen & {}
 const recipes = _.sortBy(
   [
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/pasta-alla-zozzona').default,
+    require('common/recipes/pasta-alla-zozzona').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/bolognese').default,
+    require('common/recipes/bolognese').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/beurre-blanc').default,
+    require('common/recipes/beurre-blanc').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/pasanda').default,
+    require('common/recipes/pasanda').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/curry-base').default,
+    require('common/recipes/curry-base').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/pizza-dough').default,
+    require('common/recipes/pizza-dough').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/pizza-poolish').default,
+    require('common/recipes/pizza-poolish').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/cookies').default,
+    require('common/recipes/cookies').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('../recipes/chilli').default,
+    require('common/recipes/chilli').default,
   ],
   'title',
 )
 
 import Tooltip from 'components/Tooltip'
-import { PortalProvider } from '@gorhom/portal'
 
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()
