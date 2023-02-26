@@ -9,27 +9,15 @@ const Nav: FC<ComponentType> = ({}) => {
   return (
     <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
       <div className='container-fluid'>
-        <button
-          onClick={() => setIsActive(!isActive)}
-          className='navbar-toggler'
-          type='button'
-          data-bs-toggle='collapse'
-          data-bs-target='#navbarCollapse'
-          aria-controls='navbarCollapse'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
-        >
-          <span className='navbar-toggler-icon'></span>
-        </button>
         <div
-          className={cx({ collapse: !isActive }, 'navbar-collapse')}
+          className={cx({ collapse: false }, 'navbar-collapse')}
           id='navbarCollapse'
         >
-          <ul className='navbar-nav me-auto mb-2 mb-md-0'>
+          <ul className='navbar-nav me-auto mb-md-0'>
             <li className='nav-item'>
               <ActiveLink href='/'>
                 <span className='nav-link cursor-pointer' aria-current='page'>
-                  {Strings.home}
+                  <span className='fa fa-house' />
                 </span>
               </ActiveLink>
             </li>

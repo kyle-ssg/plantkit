@@ -2,6 +2,8 @@ import { MassIngredient, MiscIngredient, VolumeIngredient } from './Ingredient'
 
 export default {
   title: 'Chilli',
+  image:
+    'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1001451_6-c8d72b8.jpg?quality=90&webp=true&resize=300,272',
   instructions: `
   # Chilli
   
