@@ -26,7 +26,6 @@ const AppComponent: FC<ComponentType> = ({ Component, pageProps }) => {
       <Head>
         <meta charSet='utf-8' />
         <meta httpEquiv='x-ua-compatible' content='ie=edge' />
-        <meta name='description' content='TheApp' />
         <meta name='theme-color' content='#317EFB' />
         <meta
           name='viewport'
