@@ -1,3 +1,5 @@
+import { MassIngredient, MiscIngredient, VolumeIngredient } from './Ingredient'
+
 export default {
   title: 'Chilli',
   instructions: `
@@ -13,21 +15,20 @@ export default {
 - Season with **Salt** and **Pepper**
 - Simmer and reduce for **45 minutes**
 `,
-  ingredients: `
-# Ingredients
-
-- 500g **Ground Beef**
-- 2 Medium **Onions**
-- 3 **Garlic Cloves**
-- 1 **Chilli**
-- 2 TSP **Coriander**
-- 2 TSP **Cumin**
-- 2 TSP **Flour**
-- 150ml **Red wine or stock**
-- 300ml **Beef Stock**
-- 400g **Chopped Tomatoes**
-- 400g **Kidney beans**
-- 3 TBSP **Tomato Purée**
-- 1 TSP **Sugar**
-`,
+  ingredients: [
+    MassIngredient('Ground Beef', 500, 'g'),
+    MiscIngredient('Onion', 2),
+    MiscIngredient('Garlic Cloves', 2),
+    MiscIngredient('Chilli', 1),
+    VolumeIngredient('Coriander', 2, 'Tbs'),
+    VolumeIngredient('Cumin', 2, 'Tbs'),
+    VolumeIngredient('Flour', 2, 'Tbs'),
+    VolumeIngredient('Red Wine', 150, 'ml'),
+    VolumeIngredient('Beef Stock', 300, 'ml'),
+    MassIngredient('Chopped Tomatoes', 500, 'g'),
+    MassIngredient('Kidney Beans', 400, 'g'),
+    MassIngredient('Pork Mince', 500, 'g'),
+    MassIngredient('Tomato Puree', 150, 'g'),
+    VolumeIngredient('Sugar', 1, 'Tbs'),
+  ],
 }

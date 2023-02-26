@@ -3,8 +3,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import withScreen, { Screen } from './withScreen'
 import MD from 'react-native-markdown-display'
 import { useDeviceOrientation } from '@react-native-community/hooks'
-import { Dimensions, ScrollViewProps, ScrollView } from 'react-native'
+import { Dimensions, ScrollView } from 'react-native'
 import _ from 'lodash'
+import Animated, {
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated'
+import { easingConfigFade } from 'project/animation-util/reanimations'
+import { useBreakpointSmaller } from 'components/base/BreakpointProvider'
+import useInsets from 'components/base/useInset'
+import { d2f, Ingredient, IngredientConversions } from '../recipes/Ingredient'
+import { singular } from 'ssgrtk/dist/helpers/plural'
+
 type Tab3Screen = Screen & {}
 const recipes = _.sortBy(
   [
@@ -27,20 +39,10 @@ const recipes = _.sortBy(
   ],
   'title',
 )
-import Animated, {
-  useAnimatedScrollHandler,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated'
-import { easingConfigFade } from 'project/animation-util/reanimations'
-import {
-  useBreakpoint,
-  useBreakpointLargerOrEqual,
-  useBreakpointSmaller,
-} from 'components/base/BreakpointProvider'
-import Button from 'components/base/forms/Button'
-import useInsets from 'components/base/useInset'
+
+import Tooltip from 'components/Tooltip'
+import { PortalProvider } from '@gorhom/portal'
+
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()
   const ref = useRef<ScrollView>()
@@ -137,7 +139,57 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
                     <MD style={mdStyleSmall}>{r.instructions}</MD>
                   </View>
                   <View style={tab ? { display: 'none' } : null}>
-                    <MD style={ingredientsStyleSmall}>{r.ingredients}</MD>
+                    <Text
+                      weight='bold'
+                      style={(tabs ? mdStyleSmall : mdStyle).heading1}
+                    >
+                      {r.title}
+                    </Text>
+                    {(r.ingredients as any[]).map(
+                      (ingredient: Ingredient, i) => {
+                        const moreInfo = IngredientConversions[
+                          singular(
+                            ingredient.name.toLowerCase().replace(/ /g, '_'),
+                          )
+                        ]?.(ingredient.qty)
+
+                        return (
+                          <Row key={i} style={Styles.mb10}>
+                            <Text
+                              weight='bold'
+                              style={{
+                                width: 80,
+                                marginRight: 8,
+                                textAlign: 'left',
+                              }}
+                            >
+                              {d2f(ingredient.qty)} {ingredient.unit}
+                            </Text>
+                            <Text>{ingredient.name}</Text>
+                            {!!moreInfo && (
+                              <Tooltip>
+                                <View style={Styles.ph10}>
+                                  <Text
+                                    style={Styles.mv10}
+                                    size='h4'
+                                    weight='bold'
+                                    key={i}
+                                  >
+                                    {d2f(ingredient.qty)} {ingredient.unit}
+                                    {ingredient.name}
+                                  </Text>
+                                  {moreInfo.map((v, i) => (
+                                    <Text style={Styles.mb10} key={i}>
+                                      {v}
+                                    </Text>
+                                  ))}
+                                </View>
+                              </Tooltip>
+                            )}
+                          </Row>
+                        )
+                      },
+                    )}
                   </View>
                 </View>
               </Flex>
@@ -225,7 +277,7 @@ const mdStyle = {
 }
 const mdStyleSmall = {
   // @ts-ignore
-  heading1: [Styles.h3, Styles.mb5],
+  heading1: [Styles.h3, Styles.mb10],
   heading3: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
   heading2: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
   list_item: [

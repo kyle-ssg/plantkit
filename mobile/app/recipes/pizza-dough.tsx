@@ -1,13 +1,9 @@
+import { GramIngredient, MiscIngredient, MlIngredient } from './Ingredient'
+
 export default {
-  title: 'Pizza',
+  title: 'Pizza Dough',
   instructions: `
-# Pizza
-
-### Poolish
-- Mix **all ingredients** until smooth
-- Leave **24 hours**
-
-## Dough 
+  ## Pizza Dough 
 - Leave **Poolish** out for **30 mins** 
 - Mix **Salt** and **Water**
 - Add to **Poolish** and mix with spoon
@@ -17,21 +13,10 @@ export default {
 - Keep covered for **15 minutes**
 - Roll into ball and leave for **3-4 hours**
 `,
-  ingredients: `
-# Ingredients
-
-## Poolish
-
-- 100ml **Water**
-- 100g **Flour**
-- 2g **Yeast**
-- Drop of **Honey**
-
-## Dough
-
-- 10g Cold **Water**
-- 5g **Salt**
-- 65g **Flour**
-- The **Poolish**
-`,
+  ingredients: [
+    GramIngredient('Cold Water', 10),
+    GramIngredient('Salt', 5),
+    GramIngredient('Flour', 65),
+    GramIngredient('Poolish', 200),
+  ],
 }

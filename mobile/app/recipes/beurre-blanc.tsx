@@ -1,3 +1,5 @@
+import { CupIngredient, GramIngredient, TbspIngredient } from './Ingredient'
+
 export default {
   title: 'Beurre Blanc',
   instructions: `
@@ -26,13 +28,11 @@ export default {
 - Strain through sieve
 - Add **dill** and a bit more **lemon zest**
 `,
-  ingredients: `
-# Ingredients
-
-- 225g **Butter** (55g + 170g) 
-- 1/4 Cup **Shallot** () 
-- 1/2 Cup **Chardonnay** 
-- 1/4 Cup **Lemon Juice** 
-- 2 Tbsp **Dill** **Wine**
-`,
+  ingredients: [
+    GramIngredient('Butter', 225),
+    CupIngredient('Shallot', 1 / 4),
+    CupIngredient('Chardonnay', 1 / 2),
+    CupIngredient('Lemon Juice', 1 / 4),
+    TbspIngredient('Dill', 2),
+  ],
 }

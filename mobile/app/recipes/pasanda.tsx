@@ -1,3 +1,10 @@
+import {
+  GramIngredient,
+  MiscIngredient,
+  TbspIngredient,
+  TeaspoonIngredient,
+} from './Ingredient'
+
 export default {
   title: 'Pasanda',
   instructions: `
@@ -8,16 +15,17 @@ export default {
 - Fill with **Water** for **45 mins**
 - Add **Remaining ingredients** for **30 mins**
 `,
-  ingredients: `
-# Ingredients
-
-- 900g **Onions**
-- 1TSP **Salt**
-- 2x **Peppers**
-- 60g **Cabbage**
-- 200g **Chopped Tomato**
-- 5TBSP **Garlic, Ginger**
-- 1 1/2TBSP **Garam, Cumin, Corianda, Paprika**
-- 1/2TBSP **Turmeric**
-`,
+  ingredients: [
+    GramIngredient('Onion', 900),
+    TeaspoonIngredient('Salt', 1),
+    MiscIngredient('Peppers', 2),
+    GramIngredient('Chopped Tomato', 200),
+    TbspIngredient('Garlic', 5),
+    TbspIngredient('Ginger', 5),
+    TbspIngredient('Garam', 1.5),
+    TbspIngredient('Cumin', 1.5),
+    TbspIngredient('Coriander', 1.5),
+    TbspIngredient('Paprika', 1.5),
+    TbspIngredient('Turmeric', 0.5),
+  ],
 }

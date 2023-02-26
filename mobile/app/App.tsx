@@ -16,6 +16,7 @@ import BreakpointProvider from 'components/base/BreakpointProvider'
 import { Constants } from 'common/utils'
 import CodepushUpdater from 'components/utility-components/CodePushUpdater'
 import StickyPlants from 'components/StickyPlants'
+import { PortalProvider } from '@gorhom/portal'
 
 const launchArgs = LaunchArguments.value()
 if (launchArgs.namespace) {

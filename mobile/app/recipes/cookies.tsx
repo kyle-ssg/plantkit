@@ -1,3 +1,14 @@
+import {
+  CupIngredient,
+  GramIngredient,
+  MassIngredient,
+  MiscIngredient,
+  MlIngredient,
+  TbspIngredient,
+  TeaspoonIngredient,
+  VolumeIngredient,
+} from './Ingredient'
+
 export default {
   title: 'Cookies',
   instructions: `
@@ -12,18 +23,16 @@ export default {
 - Roll balls into size of 2TBSP
 - Cook for **11 minutes**
 `,
-  ingredients: `
-# Ingredients
-
-- 1/2 Cup **Granulated Sugar**
-- 1/2 Cup **Brown Sugar**
-- 1/2 Cup **Softened Butter**
-- 1 Egg **Softened Butter**
-- 1 TSP **Vanilla**
-- 1/8 TSP **Bicarbonate of Soda** or 1/2 TSP **Baking Soda**
-- 1/2 TSP **Salt**
-- 1 1/2 Cup **Flour**
-- 120 grams **Chocolate Pretzels**
-- 50 grams **Chocolate Chips**
-`,
+  ingredients: [
+    CupIngredient('Sugar', 1 / 2),
+    CupIngredient('Brown Sugar', 1 / 2),
+    CupIngredient('Butter', 1 / 2),
+    MiscIngredient('Egg', 1),
+    TeaspoonIngredient('Vanilla', 1),
+    TeaspoonIngredient('Bicarbonate of Soda', 1 / 8),
+    TeaspoonIngredient('Salt', 1 / 2),
+    CupIngredient('Flour', 1.5),
+    GramIngredient('Chocolate Pretzels', 120),
+    GramIngredient('Chocolate Chips', 50),
+  ],
 }

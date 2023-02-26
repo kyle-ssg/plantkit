@@ -1,3 +1,10 @@
+import {
+  GramIngredient,
+  LitreIngredient,
+  MiscIngredient,
+  MlIngredient,
+} from './Ingredient'
+
 export default {
   title: 'Spaghetti Bolognese',
   instructions: `
@@ -12,17 +19,15 @@ export default {
 - Fill up with **Water** 
 - Re-fill every **1 hour** for **4 hours**
 `,
-  ingredients: `
-# Ingredients
-
-- 1x **Onion**
-- 3x **Celery**
-- 3x **Carrots**
-- 500g **Beef Mince**
-- 500g **Pork Mince**
-- 1 Litre **Passata**
-- 400g **Tomatoes**
-- 150g **Tomato Paste**
-- 2x 118ml **Wine**
-`,
+  ingredients: [
+    MiscIngredient('Onion', 1),
+    MiscIngredient('Celery', 3),
+    MiscIngredient('Carrot', 3),
+    GramIngredient('Beef Mince', 500),
+    GramIngredient('Pork Mince', 500),
+    LitreIngredient('Passata', 1),
+    GramIngredient('Chopped Tomato', 400),
+    GramIngredient('Tomato Puree', 42),
+    MlIngredient('Red Wine', 118, 'x2'),
+  ],
 }

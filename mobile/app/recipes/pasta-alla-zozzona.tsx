@@ -1,3 +1,5 @@
+import { GramIngredient, MiscIngredient } from './Ingredient'
+
 export default {
   title: 'Pasta alla Zozzona',
   instructions: `
@@ -23,15 +25,14 @@ export default {
 - Add **Pasta** with 1/2 cup **Pasta Water** for **2 minutes**
 - **Turn off heat** and add **remaining ingredients** stirring Rapidly.
 `,
-  ingredients: `
-# Ingredients
-
-- 3x **Egg Yolk** (45g)
-- 60g **Pecorino Cheese**
-- 115g **Guanciale**
-- 170g **Chorizo**
-- 1 **Onion**
-- 500g **Passata**
-- 400g **Pasta** (40g Salt, 4 litres Water)
-`,
+  serves: 4,
+  ingredients: [
+    MiscIngredient('Egg Yolk', 3),
+    GramIngredient('Pecorino Cheese', 60),
+    GramIngredient('Guanciale', 115),
+    GramIngredient('Chorizo', 170),
+    MiscIngredient('Onion', 1),
+    GramIngredient('Passata', 500),
+    GramIngredient('Pasta', 400),
+  ],
 }
