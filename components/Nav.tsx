@@ -7,12 +7,9 @@ type ComponentType = {}
 const Nav: FC<ComponentType> = ({}) => {
   const [isActive, setIsActive] = useState<boolean>(false)
   return (
-    <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
+    <nav className='navbar navbar-dark bg-dark'>
       <div className='container-fluid'>
-        <div
-          className={cx({ collapse: false }, 'navbar-collapse')}
-          id='navbarCollapse'
-        >
+        <div className={cx({ collapse: false })} id='navbarCollapse'>
           <ul className='navbar-nav me-auto mb-md-0'>
             <li className='nav-item'>
               <ActiveLink href='/'>
