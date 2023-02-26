@@ -22,13 +22,14 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
   const { query } = useRouter()
   const recipe = recipes.find((v) => v.title === query.id)
   return (
-    <NextSeo
-      title={`${query.id}`}
-      openGraph={{
-        title: `${query.id}`,
-      }}
-      description=''
-    >
+    <>
+      <NextSeo
+        title={`${query.id}`}
+        openGraph={{
+          title: `${query.id}`,
+        }}
+        description=''
+      />
       <main>
         <Head>
           <title>{query.id}</title>
@@ -88,7 +89,7 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
           </div>
         </div>
       </main>
-    </NextSeo>
+    </>
   )
 }
 
