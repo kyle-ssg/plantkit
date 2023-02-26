@@ -7,7 +7,7 @@ type ComponentType = {}
 const Nav: FC<ComponentType> = ({}) => {
   const [isActive, setIsActive] = useState<boolean>(false)
   return (
-    <nav className='navbar navbar-expand-md navbar-dark bg-dark mb-4'>
+    <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
       <div className='container-fluid'>
         <button
           onClick={() => setIsActive(!isActive)}
@@ -33,26 +33,7 @@ const Nav: FC<ComponentType> = ({}) => {
                 </span>
               </ActiveLink>
             </li>
-            <li className='nav-item'>
-              <ActiveLink href='/other/'>
-                <span className='nav-link cursor-pointer'>{Strings.link}</span>
-              </ActiveLink>
-            </li>
-            <li className='nav-item'>
-              <span className='nav-link disabled'>{Strings.disabled}</span>
-            </li>
           </ul>
-          <form onSubmit={(e) => e.preventDefault()} className='d-flex'>
-            <input
-              className='form-control me-2'
-              type='search'
-              placeholder='Search'
-              aria-label='Search'
-            />
-            <button className='btn btn-outline-success' type='submit'>
-              {Strings.search}
-            </button>
-          </form>
         </div>
       </div>
     </nav>

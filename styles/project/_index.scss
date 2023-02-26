@@ -1,3 +1,37 @@
 //PROJECT STYLES
 @import "buttons";
 @import "forms";
+
+body {
+  font-family: JosefinSans, sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+h1,h2,h3,h4,h5 {
+  font-weight: bold;
+}
+
+strong {
+  font-weight: bold !important;
+}
+
+@font-face {
+  font-family: "JosefinSans";
+  src: local("JosefinSans-SemiBold"), local("JosefinSans-SemiBold"),
+  url("/fonts/JosefinSans-SemiBold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "JosefinSans";
+  src: local("JosefinSans-Light"), local("JosefinSans-Light"),
+  url("/fonts/JosefinSans-Light.ttf");
+  font-weight: 300;
+}
+
+.recipe {
+  h1 {
+    display: none;
+  }
+}

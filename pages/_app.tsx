@@ -47,6 +47,34 @@ const AppComponent: FC<ComponentType> = ({ Component, pageProps }) => {
           sizes='16x16'
           href='/images/favicon-16x16.png'
         />
+        <link
+          rel='preload'
+          as='font'
+          type='font/ttf'
+          href='/fonts/JosefinSans-SemiBold.ttf'
+          crossOrigin={'crossorigin'}
+        />
+        <link
+          rel='preload'
+          as='font'
+          type='font/ttf'
+          href='/fonts/JosefinSans-Regular.ttf'
+          crossOrigin={'crossorigin'}
+        />
+        <link
+          rel='preload'
+          as='font'
+          type='font/ttf'
+          href='/fonts/allura.regular.ttf'
+          crossOrigin={'crossorigin'}
+        />
+        <link
+          rel='preload'
+          as='font'
+          type='font/ttf'
+          href='/fonts/JosefinSans-Bold.ttf'
+          crossOrigin={'crossorigin'}
+        />
         <meta property='og:title' content='TheProject' />
       </Head>
       <NProgress />

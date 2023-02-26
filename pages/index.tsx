@@ -7,7 +7,8 @@ import Nav from 'components/Nav'
 import Button from 'components/base/forms/Button'
 import { toast } from 'components/Toast'
 import Head from 'next/head'
-
+import { recipes } from 'common/recipes'
+import Link from 'next/link'
 export type HomePageType = {}
 const HomePage: NextPageWithLayout<HomePageType> = () => {
   return (
@@ -16,23 +17,12 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
         <Head>
           <title>Boilerplate homepage</title>
         </Head>
-        <div className='bg-light p-5 rounded'>
-          <h1>Toast example</h1>
-          <p className='lead'>The button below will show a toast message.</p>
-          <Button
-            size='large'
-            onClick={() => toast(<div>Title</div>, <div>Content</div>)}
-          >
-            Click me!
-          </Button>
-          <div className='mb-2'>
-            <Button
-              size='large'
-              onClick={() => toast(<div>Title</div>, <div>Content</div>)}
-            >
-              Click me!
-            </Button>
-          </div>
+        <div className='row'>
+          {recipes.map((v, i) => (
+            <div key={i} className='col-md-4 py-2'>
+              <Link href={`/${v.title}`}>{v.title}</Link>
+            </div>
+          ))}
         </div>
       </main>
     </>
@@ -47,7 +37,6 @@ HomePage.getLayout = (page) => {
     </>
   )
 }
-
 //serverside fetching
 export const getServerSideProps = nextReduxWrapper.getServerSideProps(
   () => async (): Promise<ServerSidePageProps<HomePageType>> => {

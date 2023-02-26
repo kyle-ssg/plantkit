@@ -22,31 +22,9 @@ import {
 import { singular } from 'ssgrtk/dist/helpers/plural'
 
 type Tab3Screen = Screen & {}
-const recipes = _.sortBy(
-  [
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/pasta-alla-zozzona').default,
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/bolognese').default,
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/beurre-blanc').default,
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/pasanda').default,
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/curry-base').default,
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/pizza-dough').default,
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/pizza-poolish').default,
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/cookies').default,
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/chilli').default,
-  ],
-  'title',
-)
 
 import Tooltip from 'components/Tooltip'
+import { recipes } from 'common/recipes'
 
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()

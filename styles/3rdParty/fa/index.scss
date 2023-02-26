@@ -3,3 +3,13 @@ $fa-font-path: "/fonts/fa";
 @import "scss/core";
 @import "scss/solid";
 @import "scss/brands";
+
+.text-left {
+  text-align: left;
+}
+
+@include media-breakpoint-up(lg) {
+  .vh-lg-100 {
+    height: 100vh;
+  }
+}

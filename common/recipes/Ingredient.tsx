@@ -1,13 +1,6 @@
 import configureMeasurements from 'convert-units-ssg'
 // @ts-ignore
-import mass from 'convert-units-ssg/lib/esm/definitions/mass'
-// @ts-ignore
-import volume, {
-  VolumeUnits,
-} from 'convert-units-ssg/lib/esm/definitions/volume'
-// @ts-ignore
-import length from 'convert-units-ssg/lib/esm/definitions/length'
-import { MassUnits } from 'convert-units-ssg/mass'
+import { mass, MassUnits, volume, length, VolumeUnits } from 'convert-units-ssg'
 
 /*
   `configureMeasurements` is a closure that accepts a directory
