@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import withScreen, { Screen } from './withScreen'
 import MD from 'react-native-markdown-display'
 import { useDeviceOrientation } from '@react-native-community/hooks'
-import { Dimensions, ScrollView } from 'react-native'
+import { Dimensions, ScrollView, Share } from 'react-native'
 import _ from 'lodash'
 import Animated, {
   useAnimatedScrollHandler,
@@ -122,12 +122,25 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
                     <MD style={mdStyleSmall}>{r.instructions}</MD>
                   </View>
                   <View style={tab ? { display: 'none' } : null}>
-                    <Text
-                      weight='bold'
-                      style={(tabs ? mdStyleSmall : mdStyle).heading1}
+                    <TouchableOpacity
+                      onPress={() => {
+                        Share.share({
+                          title: r.title,
+                          url: `https://plantkit.vercel.app/${encodeURIComponent(
+                            r.title,
+                          )}`,
+                        })
+                      }}
                     >
-                      {r.title}
-                    </Text>
+                      <Row>
+                        <Text
+                          weight='bold'
+                          style={(tabs ? mdStyleSmall : mdStyle).heading1}
+                        >
+                          {r.title}
+                        </Text>
+                      </Row>
+                    </TouchableOpacity>
                     {(r.ingredients as any[]).map(
                       (ingredient: Ingredient, i) => {
                         const moreInfo = IngredientConversions[
@@ -148,7 +161,9 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
                             >
                               {d2f(ingredient.qty)} {ingredient.unit}
                             </Text>
-                            <Text>{ingredient.name}</Text>
+                            <Row>
+                              <Text>{ingredient.name}</Text>
+                            </Row>
                             {!!moreInfo && (
                               <Tooltip>
                                 <View style={Styles.ph10}>
