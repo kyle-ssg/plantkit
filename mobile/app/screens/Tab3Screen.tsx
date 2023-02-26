@@ -280,10 +280,10 @@ const mdStyleSmall = {
   heading2: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
   list_item: [
     {
-      fontSize: 14,
+      fontSize: 18,
       letterSpacing: 1.25,
     },
-    Styles.mb5,
+    Styles.mb10,
   ],
 }
 const ingredientsStyleSmall = {
