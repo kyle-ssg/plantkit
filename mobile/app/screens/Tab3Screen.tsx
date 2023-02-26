@@ -33,6 +33,8 @@ const recipes = _.sortBy(
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('../recipes/pizza-dough').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('../recipes/pizza-poolish').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('../recipes/cookies').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('../recipes/chilli').default,
