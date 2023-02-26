@@ -21,7 +21,7 @@ const Tooltip: FC<TooltipType> = ({ children, id }) => {
         id={id}
       />
       <_Tooltip
-        style={{ background: 'white' }}
+        style={{ background: 'white', opacity: 1 }}
         placement='bottom'
         isOpen={isOpen}
         target={id}
