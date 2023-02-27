@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import withScreen, { Screen } from './withScreen'
 import MD from 'react-native-markdown-display'
 import { useDeviceOrientation } from '@react-native-community/hooks'
-import { Dimensions, ScrollView, Share } from 'react-native'
+import { Dimensions, ScrollView, Share, TouchableOpacity } from 'react-native'
 import _ from 'lodash'
 import Animated, {
   useAnimatedScrollHandler,
@@ -25,6 +25,7 @@ type Tab3Screen = Screen & {}
 
 import Tooltip from 'components/Tooltip'
 import { recipes } from 'common/recipes'
+import Recipe from 'components/Recipe'
 
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()
@@ -49,8 +50,10 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   }, [scrollValue])
   const [tab, setTab] = useState(0)
   const tabs = useBreakpointSmaller('lg')
-  const columns = tabs ? 1 : 3
   const insets = useInsets()
+  const [multiply, setMultiply] = useState(1)
+
+  const columns = tabs ? 2 : 3
   return (
     <Flex>
       <ScreenContainer withoutSafeAreaView withTabs>
@@ -68,7 +71,13 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
               { height: Dimensions.get('window').height },
             ]}
           >
-            <Row style={{ flexWrap: 'wrap', width: DeviceWidth }}>
+            <Row
+              style={{
+                flexWrap: 'wrap',
+                paddingTop: insets.top,
+                width: DeviceWidth,
+              }}
+            >
               {recipes.map((v, i) => (
                 <TouchableOpacity
                   onPress={() => {
@@ -88,134 +97,9 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
               ))}
             </Row>
           </Flex>
-          {recipes.map((r, i) =>
-            tabs ? (
-              <Flex
-                style={[
-                  styles.container,
-                  {
-                    height: Dimensions.get('window').height,
-                    paddingTop: insets.top + 50,
-                  },
-                ]}
-              >
-                <Row style={Styles.p10}>
-                  <TouchableOpacity onPress={() => setTab(0)}>
-                    <Text
-                      weight={tab === 0 ? 'bold' : 'regular'}
-                      style={[Styles.mr5]}
-                    >
-                      Ingredients
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setTab(1)}>
-                    <Text
-                      weight={tab === 1 ? 'bold' : 'regular'}
-                      style={[Styles.ml5]}
-                    >
-                      Recipe
-                    </Text>
-                  </TouchableOpacity>
-                </Row>
-                <View style={[Styles.ph10]}>
-                  <View style={!tab ? { display: 'none' } : null}>
-                    <MD style={mdStyleSmall}>{r.instructions}</MD>
-                  </View>
-                  <View style={tab ? { display: 'none' } : null}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        Share.share({
-                          title: r.title,
-                          url: `https://plantkit.vercel.app/${encodeURIComponent(
-                            r.title,
-                          )}`,
-                        })
-                      }}
-                    >
-                      <Row>
-                        <Text
-                          weight='bold'
-                          style={(tabs ? mdStyleSmall : mdStyle).heading1}
-                        >
-                          {r.title}
-                        </Text>
-                      </Row>
-                    </TouchableOpacity>
-                    {(r.ingredients as any[]).map(
-                      (ingredient: Ingredient, i) => {
-                        const moreInfo = IngredientConversions[
-                          singular(
-                            ingredient.name.toLowerCase().replace(/ /g, '_'),
-                          )
-                        ]?.(ingredient.qty)
-
-                        return (
-                          <Row key={i} style={Styles.mb10}>
-                            <Text
-                              weight='bold'
-                              style={{
-                                width: 80,
-                                marginRight: 8,
-                                textAlign: 'left',
-                              }}
-                            >
-                              {d2f(ingredient.qty)} {ingredient.unit}
-                            </Text>
-                            <Row>
-                              <Text>{ingredient.name}</Text>
-                            </Row>
-                            {!!moreInfo && (
-                              <Tooltip>
-                                <View style={Styles.ph10}>
-                                  <Text
-                                    style={Styles.mv10}
-                                    size='h4'
-                                    weight='bold'
-                                    key={i}
-                                  >
-                                    {d2f(ingredient.qty)} {ingredient.unit}
-                                    {ingredient.name}
-                                  </Text>
-                                  {moreInfo.map((v, i) => (
-                                    <Text style={Styles.mb10} key={i}>
-                                      {v}
-                                    </Text>
-                                  ))}
-                                </View>
-                              </Tooltip>
-                            )}
-                          </Row>
-                        )
-                      },
-                    )}
-                  </View>
-                </View>
-              </Flex>
-            ) : (
-              <Row key={i} style={styles.slide}>
-                <Flex
-                  value={2}
-                  style={[
-                    styles.container,
-                    { height: Dimensions.get('window').height },
-                  ]}
-                >
-                  <MD style={mdStyle}>{r.instructions}</MD>
-                </Flex>
-                <Flex
-                  style={[
-                    styles.container,
-                    {
-                      height: Dimensions.get('window').height,
-                    },
-                    styles.dark,
-                  ]}
-                >
-                  <MD style={ingredientsStyle}>{r.ingredients}</MD>
-                </Flex>
-              </Row>
-            ),
-          )}
+          {recipes.map((r, i) => (
+            <Recipe recipe={r} />
+          ))}
         </Animated.ScrollView>
       </ScreenContainer>
       <Animated.View style={buttonStyle}>
@@ -260,43 +144,4 @@ const styles = StyleSheet.create({
     letterSpacing: 1.25,
   },
 })
-
-const ingredientsStyle = {
-  // @ts-ignore
-  heading1: [Styles.h2, Styles.mb15, Styles.mt15],
-  list_item: [styles.text, Styles.mb5],
-}
-const mdStyle = {
-  // @ts-ignore
-  heading1: [Styles.h1, Styles.mb5],
-  heading3: [Styles.textBold, Styles.mb10, { fontSize: 24 }],
-  heading2: [Styles.textBold, Styles.mv10, { fontSize: 24 }],
-  list_item: [styles.text, Styles.mb5],
-}
-const mdStyleSmall = {
-  // @ts-ignore
-  heading1: [Styles.h3, Styles.mb10],
-  heading3: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
-  heading2: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
-  list_item: [
-    {
-      fontSize: 18,
-      letterSpacing: 1.25,
-    },
-    Styles.mb10,
-  ],
-}
-const ingredientsStyleSmall = {
-  // @ts-ignore
-  heading1: { display: 'none' },
-  heading3: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
-  heading2: [Styles.textBold, Styles.mv5, { fontSize: 18 }],
-  list_item: [
-    {
-      fontSize: 14,
-      letterSpacing: 1.25,
-    },
-    Styles.mb5,
-  ],
-}
 export default withScreen(Tab3Screen)
