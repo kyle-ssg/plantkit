@@ -45,7 +45,7 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
           <MD style={mdStyleSmall}>{r.instructions}</MD>
         </View>
         <View style={tab ? { display: 'none' } : null}>
-          <Row>
+          <Row style={Styles.mb10}>
             <TouchableOpacity
               onPress={() => {
                 Share.share({
@@ -63,13 +63,15 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
               </Row>
             </TouchableOpacity>
             <Row style={Styles.ml10}>
-              <Text>x{multiply}</Text>
               <TouchableOpacity
                 onPress={() => setMultiply(multiply - 1)}
                 disabled={multiply === 1}
               >
                 <FA5Pro style={styles.icon} name='minus' />
               </TouchableOpacity>
+              <Text style={{ color: palette.primary }} weight='bold'>
+                x{multiply}
+              </Text>
               <TouchableOpacity onPress={() => setMultiply(multiply + 1)}>
                 <FA5Pro style={styles.icon} name='plus' />
               </TouchableOpacity>
