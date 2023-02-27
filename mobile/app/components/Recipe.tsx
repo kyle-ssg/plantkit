@@ -82,7 +82,7 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
           {(r.ingredients as any[]).map((ingredient: Ingredient, i) => {
             const moreInfo = IngredientConversions[
               singular(ingredient.name.toLowerCase().replace(/ /g, '_'))
-            ]?.(ingredient.qty)
+            ]?.(ingredient.qty * multiply)
 
             return (
               <Row key={i} style={Styles.mb10}>
