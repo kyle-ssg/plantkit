@@ -36,4 +36,3 @@ export default {
     GramIngredient('Chocolate Chips', 50),
   ],
 }
-console.log('Hi')
