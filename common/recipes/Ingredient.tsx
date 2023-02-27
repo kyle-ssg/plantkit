@@ -50,7 +50,7 @@ export function d2f(v) {
   }
   const a = math.fraction(decimal)
   const fraction = math.format(a, { fraction: 'ratio' })
-  return `${whole || ''}${prettyFractions[fraction] || fraction}`
+  return `${whole || ''} ${prettyFractions[fraction] || fraction}`
 }
 export const IngredientConversions = {
   onion: (qty) => {
@@ -58,7 +58,7 @@ export const IngredientConversions = {
       `${parseInt(`${qty * 160}`)}g`,
       `${d2f(qty * 2)} cups`,
       `${d2f(qty * 3)} shallots (use 1:1 grams)`,
-      `${d2f((qty * 160) / 260)} large onions`,
+      `${d2f(qty * (160 / 260))} large onions`,
     ]
   },
   egg_yolk: (qty) => {
