@@ -23,6 +23,8 @@ export const recipes = sortBy(
     require('common/recipes/cookies').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/chilli').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('common/recipes/chilli').default,
   ],
   'title',
 )

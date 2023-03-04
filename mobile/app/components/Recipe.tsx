@@ -18,6 +18,80 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
   const tabs = useBreakpointSmaller('lg')
   const insets = useInsets()
   const [multiply, setMultiply] = useState(1)
+  const ingredients = (
+    <>
+      <Row style={Styles.mb10}>
+        <TouchableOpacity
+          onPress={() => {
+            Share.share({
+              title: r.title,
+              url: `https://plantkit.vercel.app/${encodeURIComponent(r.title)}`,
+            })
+          }}
+        >
+          <Row>
+            <Text size='h3' weight='bold'>
+              {r.title}
+            </Text>
+          </Row>
+        </TouchableOpacity>
+        <Row style={Styles.ml10}>
+          <TouchableOpacity
+            onPress={() => setMultiply(multiply - 1)}
+            disabled={multiply === 1}
+          >
+            <FA5Pro style={styles.icon} name='minus' />
+          </TouchableOpacity>
+          <Text style={{ color: palette.primary }} weight='bold'>
+            x{multiply}
+          </Text>
+          <TouchableOpacity onPress={() => setMultiply(multiply + 1)}>
+            <FA5Pro style={styles.icon} name='plus' />
+          </TouchableOpacity>
+          <View></View>
+        </Row>
+      </Row>
+
+      {(r.ingredients as any[]).map((ingredient: Ingredient, i) => {
+        const moreInfo = IngredientConversions[
+          singular(ingredient.name.toLowerCase().replace(/ /g, '_'))
+        ]?.(ingredient.qty * multiply)
+
+        return (
+          <Row key={i} style={Styles.mb10}>
+            <Text
+              weight='bold'
+              style={{
+                width: 80,
+                marginRight: 8,
+                textAlign: 'left',
+              }}
+            >
+              {d2f(ingredient.qty * multiply)} {ingredient.unit}
+            </Text>
+            <Row>
+              <Text>{ingredient.name}</Text>
+            </Row>
+            {!!moreInfo && (
+              <Tooltip>
+                <View style={Styles.ph10}>
+                  <Text style={Styles.mv10} size='h4' weight='bold' key={i}>
+                    {d2f(ingredient.qty * multiply)} {ingredient.unit}
+                    {ingredient.name}
+                  </Text>
+                  {moreInfo.map((v, i) => (
+                    <Text style={Styles.mb10} key={i}>
+                      {v}
+                    </Text>
+                  ))}
+                </View>
+              </Tooltip>
+            )}
+          </Row>
+        )
+      })}
+    </>
+  )
   return tabs ? (
     <Flex
       style={[
@@ -44,100 +118,32 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
         <View style={!tab ? { display: 'none' } : null}>
           <MD style={mdStyleSmall}>{r.instructions}</MD>
         </View>
-        <View style={tab ? { display: 'none' } : null}>
-          <Row style={Styles.mb10}>
-            <TouchableOpacity
-              onPress={() => {
-                Share.share({
-                  title: r.title,
-                  url: `https://plantkit.vercel.app/${encodeURIComponent(
-                    r.title,
-                  )}`,
-                })
-              }}
-            >
-              <Row>
-                <Text size='h3' weight='bold'>
-                  {r.title}
-                </Text>
-              </Row>
-            </TouchableOpacity>
-            <Row style={Styles.ml10}>
-              <TouchableOpacity
-                onPress={() => setMultiply(multiply - 1)}
-                disabled={multiply === 1}
-              >
-                <FA5Pro style={styles.icon} name='minus' />
-              </TouchableOpacity>
-              <Text style={{ color: palette.primary }} weight='bold'>
-                x{multiply}
-              </Text>
-              <TouchableOpacity onPress={() => setMultiply(multiply + 1)}>
-                <FA5Pro style={styles.icon} name='plus' />
-              </TouchableOpacity>
-              <View></View>
-            </Row>
-          </Row>
-
-          {(r.ingredients as any[]).map((ingredient: Ingredient, i) => {
-            const moreInfo = IngredientConversions[
-              singular(ingredient.name.toLowerCase().replace(/ /g, '_'))
-            ]?.(ingredient.qty * multiply)
-
-            return (
-              <Row key={i} style={Styles.mb10}>
-                <Text
-                  weight='bold'
-                  style={{
-                    width: 80,
-                    marginRight: 8,
-                    textAlign: 'left',
-                  }}
-                >
-                  {d2f(ingredient.qty * multiply)} {ingredient.unit}
-                </Text>
-                <Row>
-                  <Text>{ingredient.name}</Text>
-                </Row>
-                {!!moreInfo && (
-                  <Tooltip>
-                    <View style={Styles.ph10}>
-                      <Text style={Styles.mv10} size='h4' weight='bold' key={i}>
-                        {d2f(ingredient.qty * multiply)} {ingredient.unit}
-                        {ingredient.name}
-                      </Text>
-                      {moreInfo.map((v, i) => (
-                        <Text style={Styles.mb10} key={i}>
-                          {v}
-                        </Text>
-                      ))}
-                    </View>
-                  </Tooltip>
-                )}
-              </Row>
-            )
-          })}
-        </View>
+        <View style={tab ? { display: 'none' } : null}>{ingredients}</View>
       </View>
     </Flex>
   ) : (
     <Row style={styles.slide}>
       <Flex
         value={2}
-        style={[styles.container, { height: Dimensions.get('window').height }]}
+        style={[
+          styles.container,
+          Styles.ph10,
+          { height: Dimensions.get('window').height },
+        ]}
       >
         <MD style={mdStyle}>{r.instructions}</MD>
       </Flex>
       <Flex
         style={[
           styles.container,
+          Styles.ph10,
           {
             height: Dimensions.get('window').height,
           },
           styles.dark,
         ]}
       >
-        <MD style={ingredientsStyle}>{r.ingredients}</MD>
+        {ingredients}
       </Flex>
     </Row>
   )
@@ -146,6 +152,7 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
 const styles = StyleSheet.create({
   slide: {
     alignItems: 'stretch',
+    paddingHorizontal: 10,
   },
   container: {
     paddingTop: 70,

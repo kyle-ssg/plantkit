@@ -26,6 +26,8 @@ type Tab3Screen = Screen & {}
 import Tooltip from 'components/Tooltip'
 import { recipes } from 'common/recipes'
 import Recipe from 'components/Recipe'
+import { paddingBase } from '../style/style_grid'
+import { useIsLandscape } from 'components/useIsLandscape'
 
 const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
   const orientation = useDeviceOrientation()
@@ -48,12 +50,11 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
       opacity: scrollValue.value,
     }
   }, [scrollValue])
-  const [tab, setTab] = useState(0)
   const tabs = useBreakpointSmaller('lg')
   const insets = useInsets()
-  const [multiply, setMultiply] = useState(1)
 
   const columns = tabs ? 2 : 3
+  const isLandscape = useIsLandscape()
   return (
     <Flex>
       <ScreenContainer withoutSafeAreaView withTabs>
@@ -65,17 +66,23 @@ const Tab3Screen: React.FC<Tab3Screen> = ({}) => {
           bounces={false}
         >
           <Flex
-            value={2}
             style={[
               styles.container,
-              { height: Dimensions.get('window').height },
+              {
+                width: isLandscape
+                  ? Math.max(DeviceHeight, DeviceWidth)
+                  : Math.min(DeviceHeight, DeviceWidth),
+                height: Dimensions.get('window').height,
+              },
             ]}
           >
             <Row
               style={{
                 flexWrap: 'wrap',
                 paddingTop: insets.top,
-                width: DeviceWidth,
+                width: isLandscape
+                  ? Math.max(DeviceHeight, DeviceWidth)
+                  : Math.min(DeviceHeight, DeviceWidth),
               }}
             >
               {recipes.map((v, i) => (
