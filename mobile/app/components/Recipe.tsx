@@ -5,6 +5,7 @@ import {
   d2f,
   Ingredient,
   IngredientConversions,
+  IngredientTitle,
 } from 'common/recipes/Ingredient'
 import { singular } from 'ssgrtk/dist/helpers/plural'
 import Tooltip from 'components/Tooltip'
@@ -52,44 +53,51 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
         </Row>
       </Row>
 
-      {(r.ingredients as any[]).map((ingredient: Ingredient, i) => {
-        const moreInfo = IngredientConversions[
-          singular(ingredient.name.toLowerCase().replace(/ /g, '_'))
-        ]?.(ingredient.qty * multiply)
+      {(r.ingredients as any[]).map(
+        (ingredient: Ingredient | IngredientTitle, i) => {
+          if ((ingredient as IngredientTitle).title) {
+            return (
+              <Text size='h3'>{(ingredient as IngredientTitle).title}</Text>
+            )
+          }
+          const moreInfo = IngredientConversions[
+            singular(ingredient.name.toLowerCase().replace(/ /g, '_'))
+          ]?.(ingredient.qty * multiply)
 
-        return (
-          <Row key={i} style={Styles.mb10}>
-            <Text
-              weight='bold'
-              style={{
-                width: 80,
-                marginRight: 8,
-                textAlign: 'left',
-              }}
-            >
-              {d2f(ingredient.qty * multiply)} {ingredient.unit}
-            </Text>
-            <Row>
-              <Text>{ingredient.name}</Text>
-            </Row>
-            {!!moreInfo && (
-              <Tooltip>
-                <View style={Styles.ph10}>
-                  <Text style={Styles.mv10} size='h4' weight='bold' key={i}>
-                    {d2f(ingredient.qty * multiply)} {ingredient.unit}
-                    {ingredient.name}
-                  </Text>
-                  {moreInfo.map((v, i) => (
-                    <Text style={Styles.mb10} key={i}>
-                      {v}
+          return (
+            <Row key={i} style={Styles.mb10}>
+              <Text
+                weight='bold'
+                style={{
+                  width: 80,
+                  marginRight: 8,
+                  textAlign: 'left',
+                }}
+              >
+                {d2f(ingredient.qty * multiply)} {ingredient.unit}
+              </Text>
+              <Row>
+                <Text>{ingredient.name}</Text>
+              </Row>
+              {!!moreInfo && (
+                <Tooltip>
+                  <View style={Styles.ph10}>
+                    <Text style={Styles.mv10} size='h4' weight='bold' key={i}>
+                      {d2f(ingredient.qty * multiply)} {ingredient.unit}
+                      {ingredient.name}
                     </Text>
-                  ))}
-                </View>
-              </Tooltip>
-            )}
-          </Row>
-        )
-      })}
+                    {moreInfo.map((v, i) => (
+                      <Text style={Styles.mb10} key={i}>
+                        {v}
+                      </Text>
+                    ))}
+                  </View>
+                </Tooltip>
+              )}
+            </Row>
+          )
+        },
+      )}
     </>
   )
   return tabs ? (

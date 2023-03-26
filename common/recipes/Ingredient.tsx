@@ -114,6 +114,9 @@ export type Ingredient = {
   unit: MassUnits | VolumeUnits
   notes?: string
 }
+export type IngredientTitle = {
+  title: string
+}
 export const VolumeIngredient = (
   name: string,
   qty: number,

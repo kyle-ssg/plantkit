@@ -12,6 +12,7 @@ import {
   d2f,
   Ingredient,
   IngredientConversions,
+  IngredientTitle,
 } from '../common/recipes/Ingredient'
 import { singular } from 'ssgrtk/dist/helpers/plural'
 import Row from 'components/base/grid/Row'
@@ -44,8 +45,11 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
             >
               <div className='container pt-2'>
                 <h2>Ingredients</h2>
-                {(recipe?.ingredients as any[]).map(
-                  (ingredient: Ingredient, i) => {
+                {(recipe?.ingredients as Ingredient[]).map(
+                  (ingredient: Ingredient | IngredientTitle, i) => {
+                    if ((ingredient as IngredientTitle).title) {
+                      return <h3>{ingredient.title}</h3>
+                    }
                     const moreInfo = IngredientConversions[
                       singular(ingredient.name.toLowerCase().replace(/ /g, '_'))
                     ]?.(ingredient.qty)

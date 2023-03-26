@@ -24,7 +24,7 @@ export const recipes = sortBy(
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/chilli').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/chilli').default,
+    require('common/recipes/chicken-stir-fry').default,
   ],
   'title',
 )
