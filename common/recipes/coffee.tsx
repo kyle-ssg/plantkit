@@ -10,7 +10,7 @@ export default {
   instructions: `
   # Coffee
   
-  - **18g** in **38g** out in **28 seconds** - Light
+  - **18g** in **50g** out in **30 seconds** - Light
   - **18g** in **36g** out in **25 seconds** - Medium / Dark
   
   
