@@ -9,12 +9,12 @@ export default {
 - Add **Warm water**
 - Mix with for around **5 mins** 
 - Rest for around **20 mins** under a damp towel
-- Pull off into **60 gram** balls 
+- Pull off into **28 gram** balls 
 - 15-20 seconds on each side * 3
 - Put back under towel 
 `,
   ingredients: [
-    CupIngredient('Masa harina', 1),
+    CupIngredient('Masa harina', 1.5),
     CupIngredient('Warm Water', 1),
   ],
 }
