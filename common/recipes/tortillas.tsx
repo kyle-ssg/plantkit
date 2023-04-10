@@ -1,4 +1,4 @@
-import { CupIngredient } from './Ingredient'
+import { CupIngredient, TeaspoonIngredient } from './Ingredient'
 
 export default {
   title: 'Tortillas',
@@ -14,6 +14,7 @@ export default {
 - Put back under towel 
 `,
   ingredients: [
+    TeaspoonIngredient('Salt', 0.25),
     CupIngredient('Masa harina', 1.5),
     CupIngredient('Warm Water', 1),
   ],
