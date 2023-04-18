@@ -16,7 +16,7 @@ export default {
     MiscIngredient('Garlic', 1),
     VolumeIngredient('Pepper', 0.5, 'tsp'),
     VolumeIngredient('Salt', 0.5, 'tsp'),
-    VolumeIngredient('Mustard Poweder', 0.5, 'tsp'),
+    VolumeIngredient('Mustard Powder', 0.5, 'tsp'),
     MassIngredient('Blue Cheese', 50, 'g'),
   ],
 }
