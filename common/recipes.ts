@@ -31,6 +31,8 @@ export const recipes = sortBy(
     require('common/recipes/pasta').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/tortillas').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('common/recipes/meatballs').default,
   ],
   'title',
 )
