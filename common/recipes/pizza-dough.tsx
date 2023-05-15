@@ -13,6 +13,7 @@ export default {
 - Keep covered for **15 minutes**
 - Roll into ball and leave for **1 hour**
 - Cut into balls and leave for **2 hours**
+- Note: 250g = roughly a 12 inch pizza 
 `,
   ingredients: [
     GramIngredient('Cold Water', 50),
