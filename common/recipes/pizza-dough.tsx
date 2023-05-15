@@ -5,7 +5,7 @@ export default {
   instructions: `
   ## Pizza Dough 
 - Leave **Poolish** out for **30 mins** 
-- Mix **Salt** and **Water**
+- Mix **Salt**, **Oil** and **Water**
 - Add to **Poolish** and mix with spoon
 - Add **Poolish** to *KitchenAid**
 - Slowly Add **Flour**
@@ -14,9 +14,10 @@ export default {
 - Roll into ball and leave for **3-4 hours**
 `,
   ingredients: [
-    GramIngredient('Cold Water', 10),
+    GramIngredient('Cold Water', 50),
     GramIngredient('Salt', 5),
-    GramIngredient('Flour', 65),
+    GramIngredient('Flour', 110),
+    GramIngredient('Oil', 2),
     GramIngredient('Poolish', 200),
   ],
 }
