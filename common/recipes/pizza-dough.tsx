@@ -9,7 +9,7 @@ export default {
 - Add to **Poolish** and mix with spoon
 - Add **Poolish** to *KitchenAid**
 - Slowly Add **Flour**
-- Mix for **1 minute** on **speed 2**
+- Mix for **1 minute** on **speed 2** (Or kneed by hand until smooth)
 - Keep covered for **15 minutes**
 - Roll into ball and leave for **3-4 hours**
 `,
