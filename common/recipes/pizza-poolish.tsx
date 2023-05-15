@@ -6,6 +6,7 @@ export default {
 # Pizza Poolish
 
 - Mix **all ingredients** until smooth
+- Rest for **1 hour**
 - Leave **24 hours**
 `,
   ingredients: [
