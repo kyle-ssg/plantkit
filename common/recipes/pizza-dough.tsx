@@ -11,7 +11,8 @@ export default {
 - Slowly Add **Flour**
 - Mix for **1 minute** on **speed 2** (Or kneed by hand until smooth)
 - Keep covered for **15 minutes**
-- Roll into ball and leave for **3-4 hours**
+- Roll into ball and leave for **1 hour**
+- Cut into balls and leave for **2 hours**
 `,
   ingredients: [
     GramIngredient('Cold Water', 50),
