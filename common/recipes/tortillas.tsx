@@ -18,6 +18,7 @@ export default {
 - **Heat pan** and leave until to very hot (450f+)
 - **15 seconds** each side
 - **50 seconds** on each side
+- On the last side press down the edges with a spatula, this may puff up the center
 - Put into tortilla pouch to steam for **15 minutes** 
 `,
   ingredients: [
