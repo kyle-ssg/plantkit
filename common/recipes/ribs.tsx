@@ -11,10 +11,10 @@ export default {
 
 - Rub **Olive Oil** onto ribs
 - Rub a light coating of **Spice Mix**
-- Preheat to **175** for **10m**
+- Preheat to **175c** for **10m**
 - Add to middle shelf in a tray with foil for **1h 30m**
 - Toothpick test
-- Turn oven up to **230** and cook for **10m** 
+- Turn oven up to **230c** and cook for **10m** 
 
 **If Adding sauce**
 - If adding sauce, add a layer(on chopping board)
