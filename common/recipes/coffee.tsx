@@ -1,9 +1,4 @@
-import {
-  GramIngredient,
-  MassIngredient,
-  MiscIngredient,
-  VolumeIngredient,
-} from './Ingredient'
+import { GramIngredient } from './Ingredient'
 
 export default {
   title: 'Coffee',
