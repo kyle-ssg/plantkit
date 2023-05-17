@@ -16,9 +16,9 @@ export default {
 - Rest for around **20 mins** under a damp towel
 - Pull off into **35 gram** balls 
 - Heat pan to very hot (450f+)
-- 15 seconds each side
-- 50 seconds on each side
-- Put into tortilla pouch 
+- **15 seconds** each side
+- **50 seconds** on each side
+- Put into tortilla pouch to steam for 15 minutes 
 `,
   ingredients: [
     TeaspoonIngredient('Salt', 0.25),
