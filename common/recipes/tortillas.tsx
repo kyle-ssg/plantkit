@@ -1,4 +1,9 @@
-import { CupIngredient, TbspIngredient, TeaspoonIngredient } from './Ingredient'
+import {
+  CupIngredient,
+  MlIngredient,
+  TbspIngredient,
+  TeaspoonIngredient,
+} from './Ingredient'
 
 export default {
   title: 'Tortillas',
@@ -9,7 +14,8 @@ export default {
 - Add **Warm water**
 - Mix until the consistency of play dough 
 - Rest for around **20 mins** under a damp towel
-- Pull off into **32 gram** balls 
+- Pull off into **35 gram** balls 
+- Heat pan to very hot (450f+)
 - 15 seconds each side
 - 50 seconds on each side
 - Put into tortilla pouch 
@@ -20,6 +26,6 @@ export default {
     CupIngredient('Flour', 0.5),
     TbspIngredient('Fat(Any)', 1),
     TeaspoonIngredient('Honey', 0.5),
-    CupIngredient('Warm Water', 0.75 / 2),
+    MlIngredient('Warm Water', 85),
   ],
 }
