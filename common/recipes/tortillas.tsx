@@ -18,7 +18,7 @@ export default {
 - **Heat pan** and leave until to very hot (450f+)
 - **15 seconds** each side
 - **50 seconds** on each side
-- Put into tortilla pouch to steam for 15 minutes 
+- Put into tortilla pouch to steam for **15 minutes** 
 `,
   ingredients: [
     TeaspoonIngredient('Salt', 0.25),
