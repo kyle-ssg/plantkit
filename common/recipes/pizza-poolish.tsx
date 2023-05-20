@@ -12,7 +12,7 @@ export default {
   ingredients: [
     MlIngredient('Water', 100),
     GramIngredient('Flour', 100),
-    GramIngredient('Yeast', 2),
+    GramIngredient('Yeast', 3),
     MiscIngredient('Drop of Honey', 1),
   ],
 }
