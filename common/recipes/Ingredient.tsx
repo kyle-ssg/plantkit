@@ -55,7 +55,7 @@ export function d2f(v) {
 export const IngredientConversions = {
   onion: (qty) => {
     return [
-      `${parseInt(`${qty * 160}`)}g`,
+      `${parseInt(`${qty * 36}`)}g`,
       `${d2f(qty * 2)} cups`,
       `${d2f(qty * 3)} shallots (use 1:1 grams)`,
       `${d2f(qty * (160 / 260))} large onions`,
