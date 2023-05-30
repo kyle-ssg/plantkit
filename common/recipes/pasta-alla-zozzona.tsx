@@ -12,7 +12,7 @@ export default {
 ## Pasta Sauce 
 - Cook **Onion** & **Chorizo** at 310c for **5 mins**
 - Add **Salt** & **Pepper flakes**
-- Add **Passata** for **15 mins** on low
+- Add **Passata** for **15 mins(5x portion size)** on low
 - Boil Pasta for **12 minutes**
 
 ### Egg & Pecorino Paste
@@ -22,6 +22,7 @@ export default {
 ## Combine 
 - Add 1/4 cup **Pasta Water** to **Egg & Pecorino Paste**
 - Add **Pasta gradually** with 1/3 cup **Pasta Water** for **3 minutes**
+- **Keep extra pasta water** in case needed 
 - **Turn off heat** and add **remaining ingredients** stirring Rapidly.
 - Optionally, top with some parmesan.
 `,
