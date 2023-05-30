@@ -18,7 +18,11 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
   const [tab, setTab] = useState(0)
   const tabs = useBreakpointSmaller('lg')
   const insets = useInsets()
-  const [multiply, setMultiply] = useState(1)
+  const multiplies = [0.25, 0.333, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const [_multiply, setMultiply] = useState(2)
+  const disableNext = _multiply + 1 === multiplies.length
+  const disablePrev = _multiply === 0
+  const multiply = multiplies[_multiply]
   const ingredients = (
     <>
       <Row style={Styles.mb10}>
@@ -38,15 +42,22 @@ const Recipe: FC<RecipeType> = ({ recipe: r }) => {
         </TouchableOpacity>
         <Row style={Styles.ml10}>
           <TouchableOpacity
-            onPress={() => setMultiply(multiply - 1)}
-            disabled={multiply === 1}
+            onPress={() => {
+              setMultiply(_multiply - 1)
+            }}
+            disabled={disablePrev}
           >
             <FA5Pro style={styles.icon} name='minus' />
           </TouchableOpacity>
           <Text style={{ color: palette.primary }} weight='bold'>
             x{multiply}
           </Text>
-          <TouchableOpacity onPress={() => setMultiply(multiply + 1)}>
+          <TouchableOpacity
+            onPress={() => {
+              setMultiply(_multiply + 1)
+            }}
+            disabled={disablePrev}
+          >
             <FA5Pro style={styles.icon} name='plus' />
           </TouchableOpacity>
           <View></View>
