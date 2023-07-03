@@ -9,16 +9,17 @@ export default {
 - Add to **Poolish** and mix with spoon
 - Add **Poolish** to *KitchenAid**
 - Slowly Add **Flour**
-- Mix for **1 minute** on **speed 2** (Or kneed by hand until smooth)
+- Mix for **8-10 minutes** on **speed 2**
 - Keep covered for **15 minutes**
 - Roll into ball and leave for **1 hour**
 - Cut into balls and leave for **2 hours**
 - Note: 250g = roughly a 12 inch pizza 
+- Note: Leave out for 10 hours before freezing 
 `,
   ingredients: [
-    GramIngredient('Cold Water', 50),
-    GramIngredient('Salt', 5),
-    GramIngredient('Flour', 110),
+    GramIngredient('Cold Water', 230),
+    GramIngredient('Salt', 12),
+    GramIngredient('Flour', 420),
     GramIngredient('Oil', 2),
     GramIngredient('Poolish', 200),
   ],
