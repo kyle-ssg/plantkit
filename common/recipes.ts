@@ -14,6 +14,8 @@ export const recipes = sortBy(
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/pasanda').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('common/recipes/cacio').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/curry-base').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/pizza-dough').default,
