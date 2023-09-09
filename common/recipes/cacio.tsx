@@ -8,10 +8,11 @@ import {
 export default {
   title: 'Cacio e Pepe',
   instructions: `
-  # Cacio e Pepe
-  
+  # Pasta Times
   - 10 min **Linguine**
   - 14 min **Rigatoni / Spaghetti**
+  
+  # Cacio e Pepe
   - Mix into bowl of pecorino + pepper 
   - Mix with splash of pasta water 
   - Finish with olive oil 
