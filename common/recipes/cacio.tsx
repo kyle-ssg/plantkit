@@ -18,6 +18,7 @@ export default {
 `,
   ingredients: [
     GramIngredient('Pecorino Cheese', 25),
-    MiscIngredient('Pepper', 1),
+    MiscIngredient('Fresh Black Pepper', 1),
+    MiscIngredient('Extra Virgin Olive Oil', 1),
   ],
 }
