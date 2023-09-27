@@ -5,6 +5,15 @@ export default {
   instructions: `
   # Coffee
   
+  - Filter: todo
+  - 15g
+  - 250g out
+  - 4 mins
+  - stir crust
+  - scoop out grounds and foam
+  - wait 5-8 mins
+  - push plunger just underneath surface
+  
   - Espresso: see finger print / not gritty
   
   - **18g** in **50g** out in **25-30 seconds** - Light
