@@ -4,6 +4,7 @@ export default {
   title: 'Pizza Dough',
   instructions: `
   ## Pizza Dough 
+  **Note: needs 4 hours total**
 - Leave **Poolish** out for **30 mins** 
 - Mix **Salt**, **Oil** and **Water**
 - Add to **Poolish** and mix with spoon
