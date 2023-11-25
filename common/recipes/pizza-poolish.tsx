@@ -7,7 +7,7 @@ export default {
 
 - Mix **all ingredients** until smooth
 - Rest for **1 hour**
-- Leave **24 hours**
+- Leave **16 hours**
 `,
   ingredients: [
     MlIngredient('Water', 100),
