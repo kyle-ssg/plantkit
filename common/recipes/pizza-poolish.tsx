@@ -10,9 +10,9 @@ export default {
 - Leave **16 hours**
 `,
   ingredients: [
-    MlIngredient('Water', 100),
-    GramIngredient('Flour', 100),
+    MlIngredient('Water', 150),
+    GramIngredient('Flour', 150),
     GramIngredient('Yeast', 3),
-    MiscIngredient('Drop of Honey', 1),
+    GramIngredient('Honey', 3),
   ],
 }
