@@ -1,31 +1,32 @@
 import {
   GramIngredient,
   MiscIngredient,
+  MlIngredient,
   TbspIngredient,
-  TeaspoonIngredient,
 } from './Ingredient'
 
 export default {
-  title: 'Pasanda',
+  title: 'Chicken Pasanda',
   instructions: `
-# Curry Base
+# Chicken Pasanda
 
-- Add **Onion** 
-- Add **Pepper, Cabbage & tomato** 
-- Fill with **Water** for **45 mins**
-- Add **Remaining ingredients** for **30 mins**
+- Add **Oil** for **high heat**
+- Add **Ginger** & **Garlic** for **30 seconds**
+- Add **Flour**, **Almonds** & **sugar** for **30 seconds**
+- Add **half Curry Base**
+- Add **Chicken** 
+- Add **Coconut** and **Cream**
+- Add **remaining Curry Base** 
 `,
   ingredients: [
-    GramIngredient('Onion', 900),
-    TeaspoonIngredient('Salt', 1),
-    MiscIngredient('Peppers', 2),
-    GramIngredient('Chopped Tomato', 200),
-    TbspIngredient('Garlic', 5),
-    TbspIngredient('Ginger', 5),
-    TbspIngredient('Garam', 1.5),
-    TbspIngredient('Cumin', 1.5),
-    TbspIngredient('Coriander', 1.5),
-    TbspIngredient('Paprika', 1.5),
-    TbspIngredient('Turmeric', 0.5),
+    TbspIngredient('Oil', 2),
+    TbspIngredient('Garlic', 1),
+    TbspIngredient('Ginger', 1),
+    TbspIngredient('Flour', 1.5),
+    TbspIngredient('Ground Almonds', 1.5),
+    GramIngredient('Curry Base', 300),
+    GramIngredient('Coconut', 50),
+    MlIngredient('Cream', 125),
+    MiscIngredient('Chicken Breast', 2),
   ],
 }

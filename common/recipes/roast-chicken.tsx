@@ -1,10 +1,9 @@
 import { GramIngredient, MiscIngredient, MlIngredient } from './Ingredient'
 
 export default {
-  title: 'Pizza Dough',
+  title: 'Roast Chicken',
   instructions: `
-  ## Pizza Dough 
-  **Note: needs 6 hours total**
+  ## Roast Chicken 
 - Pull chicken out **1 hour before**
 - Rub chicken with neutral oil, season with rosemary salt
 - Stuff with slice of lemon, shallots and 2 cloves garlic
