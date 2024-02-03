@@ -11,19 +11,23 @@ export default {
   title: 'Orange Chicken',
   instructions: `
 # Orange Chicken
-**Prep**
+
+##Prep
 - Cut **Chicken** into **half inch strips** 
 - Prepare **Dry batter ingredients**
 - Juice Oranges into bowl, save peel
 - Make **Slurry**
-**Sauce**
+
+##Sauce
 - Mix **Juice** with **Sugar and vinegar** to taste
 - Mix **Fish sauce** and **Salt** to taste
-**Chicken**
+
+##Chicken
 - Mix **Salt, Cornstarch, Water, Egg**  with **chicken**
 - Mix **Batter** until consistency of yoghurt
 - Mix **Chicken** and **Batter**
-**Cook**
+
+##Cook
 - Fry in batches **300f** for **2.5-3 mins** (very light)
 - Fry in batches **400f** for **2.5-3 mins** 
 - Fry **Sauce**, **Slurry** and **orange peel**
