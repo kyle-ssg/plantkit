@@ -7,6 +7,7 @@ import { useTab } from 'common/hooks/useTab'
 import { useSharedValue } from 'react-native-reanimated'
 import PlantData from 'components/PlantData'
 import CurrentPlants from 'components/CurrentPlants'
+import { ScrollView } from 'react-native'
 type Tab2Screen = Screen & {}
 
 const Tab2Screen: FC<Tab2Screen> = ({}) => {
@@ -28,8 +29,10 @@ const Tab2Screen: FC<Tab2Screen> = ({}) => {
     )
   return (
     <ScreenContainer withTabs>
-      <PlantData />
-      <CurrentPlants />
+      {/*<PlantData />*/}
+      <ScrollView>
+        <CurrentPlants />
+      </ScrollView>
     </ScreenContainer>
   )
 }
