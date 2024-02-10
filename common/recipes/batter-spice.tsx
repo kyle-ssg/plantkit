@@ -8,14 +8,15 @@ import {
 } from './Ingredient'
 
 export default {
-  title: 'Batter',
+  title: 'Batter Spice',
   instructions: `
-Mix
+w
 `,
   ingredients: [
     GramIngredient('Flour', 30),
-    TbspIngredient('Cornstarch', 10),
-    TeaspoonIngredient('Baking powder', 5),
-    TeaspoonIngredient('Salt', 3),
+    GramIngredient('Cornstarch', 10),
+    GramIngredient('Baking powder', 5),
+    GramIngredient('Salt', 3),
+    GramIngredient('Sugar', 3),
   ],
 }
