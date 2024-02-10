@@ -40,7 +40,9 @@ export const recipes = sortBy(
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/roast-chicken').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('common/recipes/orange-chicken').default,
+    require('./recipes/batter-spice').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('./recipes/batter').default,
   ],
   'title',
 )
