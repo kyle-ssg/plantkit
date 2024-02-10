@@ -17,6 +17,7 @@ w
     GramIngredient('Cornstarch', 10),
     GramIngredient('Baking powder', 5),
     GramIngredient('Salt', 3),
-    GramIngredient('Sugar', 3),
+    GramIngredient('Sugar', 0.5),
+    GramIngredient('99x', 10),
   ],
 }
