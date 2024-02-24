@@ -16,7 +16,7 @@ export default {
 - Prepare **Stock, Worcestershire Sauce, thyme and bay**
 - Fine chop **Onions, Celery and Carrots**
 - Peel Potatoes and add to water
-- Measure milk and butter
+- Measure milk and butter, cheeses
 ## Cook
 - Brown Mince, set aside
 - Cook **Onion mix** **Low 20 mins**
@@ -32,6 +32,10 @@ export default {
 
 `,
   ingredients: [
+    GramIngredient('Cheese', 100),
+    GramIngredient('Potatoes', 1800),
+    GramIngredient('Milk', 225),
+    GramIngredient('Butter', 25),
     GramIngredient('Mince', 1250),
     MiscIngredient('Onion', 2),
     MiscIngredient('Carrot', 3),
@@ -43,5 +47,6 @@ export default {
     MlIngredient('Stock', 850),
     TbspIngredient('Worcestershire Sauce', 4),
     MiscIngredient('Bay leaves', 2),
+    GramIngredient('Cheese', 100),
   ],
 }
