@@ -28,7 +28,8 @@ export default {
 - Pass through potato ricer and mix with milk, butter and cheese
 - Season potato with salt and pepper
 ## Finish
-- Prepare in oven proof dish 
+- Prepare in oven proof dish
+- 200C for 25-30 mins
 
 `,
   ingredients: [
