@@ -36,6 +36,8 @@ export const recipes = sortBy(
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/cottage-pie').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('common/recipes/coleslaw').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/simple-margarita').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/carbonara').default,

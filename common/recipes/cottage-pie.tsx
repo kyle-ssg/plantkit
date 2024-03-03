@@ -8,7 +8,7 @@ import {
 } from './Ingredient'
 
 export default {
-  title: 'Batter',
+  title: 'Cottage Pie',
   instructions: `
   
 ## Prep
