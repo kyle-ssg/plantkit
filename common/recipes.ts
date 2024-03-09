@@ -24,6 +24,8 @@ export const recipes = sortBy(
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/chicken-stir-fry').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('common/recipes/smoke-pairings').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/coffee').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/pasta').default,
