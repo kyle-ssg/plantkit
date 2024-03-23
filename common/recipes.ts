@@ -26,6 +26,10 @@ export const recipes = sortBy(
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/smoke-pairings').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('common/recipes/adobo').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('common/recipes/green-salsa').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/coffee').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/pasta').default,
@@ -45,6 +49,8 @@ export const recipes = sortBy(
     require('common/recipes/carbonara').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('common/recipes/roast-chicken').default,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('common/recipes/roast-pork').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('./recipes/batter-spice').default,
     // eslint-disable-next-line @typescript-eslint/no-var-requires
